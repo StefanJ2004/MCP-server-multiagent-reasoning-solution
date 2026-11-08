@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+*.egg-info/
+.pytest_cache/
+.env
+
+# skinuti podaci (regenerisu se sa scripts/download_data.py)
+data/raw/

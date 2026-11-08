@@ -1,0 +1,23 @@
+[project]
+name = "hakaton"
+version = "0.1.0"
+description = "Multi-agent istrazivac nad SEC EDGAR podacima preko MCP servera"
+requires-python = ">=3.11"
+dependencies = [
+    "mcp>=2.3,<3",       # 2.x: MCPServer (u 1.x se zvao FastMCP)
+    "openai>=1.40",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["mcp_server*", "agents*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
