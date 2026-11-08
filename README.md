@@ -60,11 +60,13 @@ pa restartuj Claude Desktop:
 
 | Podešavanje | Vrednost |
 |---|---|
-| Runtime | Ollama, samo CPU |
-| Model | `qwen3:4b` (`ollama pull qwen3:4b`) |
-| Endpoint | `http://localhost:11434/v1` (OpenAI-kompatibilan) |
-| Kontekst (`num_ctx`) | TBD posle benchmarka (cilj ~8192) |
-| Temperatura | TBD |
+| Provajder | DeepSeek API (plaćeno; ključ u `.env`, `OPENAI_API_KEY`) |
+| Model | `deepseek-flash` (DeepSeek V4.1 Flash) |
+| Endpoint | `https://api.deepseek.com` (OpenAI-kompatibilan) |
+| Temperatura | 0 (ima efekat samo kad je razmišljanje isključeno) |
+| Izlaz po koraku | Najviše 8192 tokena; agent `finish_reason=length` tretira kao grešku |
+| Thinking | `THINKING=disabled` u `.env`; ako je `enabled`, `reasoning_content` se vraća u sledećim zahtevima, jer DeepSeek inače daje grešku 400 |
+| Istovremeni zahtevi | Do 2500 po nalogu; preko toga HTTP 429 |
 
 Eval se pokreće na engleskom (`question_en`), istim modelom za jednog agenta i za multi-agent sistem.
 

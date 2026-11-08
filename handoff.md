@@ -11,11 +11,11 @@ Ovaj fajl dopunjuje `hakaton.md`: gde smo stali, kako podići okruženje i šta 
 ## Gde smo stali
 
 - **Faza 0**: gotova (domen, 18 kompanija, eval set od 12 proverenih pitanja).
-- **Faza 1 (MCP server)**: kod gotov, **55 testova prolazi**. Ostalo:
-  1. Ručni test preko **MCP Inspector**-a i **Claude Desktop**-a (komande u `README.md`).
-  2. Teach-back faze 1 (neko ko nije vozio objašnjava `financials.py`, `search.py` i `server.py`).
+- **Faza 1 (MCP server)**: gotova, uključujući ručni test i teach-back.
 - **Sledeće — Faza 2**: jedan agent, ručna petlja `model → tool_call → MCP alat → rezultat → model`
-  sa Qwen3 4B preko Ollama. Pre toga: benchmark brzine i izbor `num_ctx` (vidi dole).
+  sa DeepSeek V4.1 Flash preko API-ja. Kod je u `agents/single_agent.py`, ali **još nije probao pravi model**.
+  Prvi korak: upisati `OPENAI_API_KEY` u `.env`, pa probati F1, C2 i E3 (`python -m agents.single_agent --id F1`).
+  Uspeh: sva tri stižu do odgovora, a bar dva su tačna. Zvaničnu cenu proveriti pre uplate.
 
 ## Podešavanje na novom računaru (Windows, PowerShell)
 
@@ -27,14 +27,13 @@ python -m venv .venv            # Python 3.11+ (razvijano na 3.13)
 pip install -e ".[dev]"
 copy .env.example .env          # popuni SEC_USER_AGENT: "Ime Prezime email@domen.com" (SEC to traži)
 python scripts/download_data.py # ~100 MB, par minuta; data/raw/ NIJE u gitu
-pytest -q                       # očekivano: 55 passed
+pytest -q                       # očekivano: 68 passed
 ```
 
 Podaci se skidaju ponovo jer nisu u gitu: 18 `companyfacts` JSON-a (~70 MB) i 82 teksta 10-K izveštaja (~30 MB).
-Bez njih testovi koji traže podatke budu preskočeni (skip), a ne oboreni. Proveri da piše **55 passed**, a ne "skipped".
+Bez njih testovi koji traže podatke budu preskočeni (skip), a ne oboreni. Proveri da piše **68 passed**, a ne "skipped".
 
-**Ollama** (za fazu 2): instalirati sa ollama.com (OllamaSetup.exe), pa `ollama pull qwen3:4b`.
-Na starom računaru `ollama` nije bio na PATH-u u Git Bash-u (nalazi se u `%LOCALAPPDATA%\Programs\Ollama`).
+**Model**: DeepSeek API; ključ upisati u `.env` kao `OPENAI_API_KEY` (nikad u git). Ollama više nije potrebna.
 
 ## Struktura i šta je gde
 
@@ -47,8 +46,8 @@ Na starom računaru `ollama` nije bio na PATH-u u Git Bash-u (nalazi se u `%LOCA
 | `scripts/download_data.py` | Skida companyfacts + 10-K tekstove, pravi `data/raw/filings/manifest.json` |
 | `scripts/exploration/` | Skripte iz faze 0, samo referenca (`values.py` ima poznat bag sa min, vidi README tamo) |
 | `eval/questions.json` | 12 pitanja (F1–F3 činjenična, C1–C4 uporedna, E1–E3 objašnjenja, U1–U2 bez odgovora) sa proverenim odgovorima |
-| `tests/` | `test_financials.py`, `test_search.py`, `test_server.py` (uključuje stdio podproces) |
-| `agents/` | Prazno: ovde ide faza 2 i 3 |
+| `tests/` | `test_financials.py`, `test_search.py`, `test_server.py` (uključuje stdio podproces), `test_single_agent.py` (lažni model) |
+| `agents/single_agent.py` | Ručna agent petlja (faza 2); ovde ide i faza 3 |
 
 ## Stvari koje nisu očigledne (naučeno na teži način)
 
@@ -59,8 +58,9 @@ Na starom računaru `ollama` nije bio na PATH-u u Git Bash-u (nalazi se u `%LOCA
 - Docstring postaje opis alata; `Literal[...]` u tipu postaje `enum` u šemi. Pogrešan enum daje `is_error` sa spiskom dozvoljenih vrednosti.
 - `pyproject.toml` zato traži `mcp>=2.3,<3`.
 
-**`openai` SDK** (3.46.0) se koristi samo kao klijent za Ollama OpenAI-kompatibilan endpoint
-(`OPENAI_BASE_URL=http://localhost:11434/v1`, `OPENAI_API_KEY=ollama`, `MODEL=qwen3:4b`).
+**`openai` SDK** (3.46.0) se koristi kao klijent za DeepSeek OpenAI-kompatibilan endpoint
+(`OPENAI_BASE_URL=https://api.deepseek.com`, `MODEL=deepseek-flash`). Uz alate, DeepSeek traži da se
+`reasoning_content` vrati u narednim zahtevima, inače daje grešku 400; agent to radi.
 
 **Zamke u EDGAR podacima** (rešava server, model ih ne vidi)
 - Isti period se ponavlja kroz više 10-K prijava. Uzima se **najranija** prijava (originalni 10-K).
@@ -79,7 +79,8 @@ loš za neodređena pitanja ("reasons for loss"). Zato opis alata `search_filing
 ## Odluke koje ne treba ponovo otvarati
 
 - Domen SEC EDGAR, Python, 18 kompanija, FY2022+.
-- Qwen3 4B lokalno preko Ollama (samo CPU, nema budžeta za API tokene). LM Studio je razmatran i odbačen.
+- DeepSeek V4.1 Flash preko plaćenog API-ja (2026-11-08, umesto lokalnog Qwen3 4B preko Ollame).
+- Plan je zaključan 2026-11-08 (`hakaton.md`): bez web pretrage u eval sistemu, eval sa 13 pitanja.
 - Bez frameworka za agent petlju i MCP alate: mehanika mora da se vidi u kodu.
 - Samo `get_financials`, **bez `compare_companies`**, da poređenje rade agenti (prednost multi-agenta na uporednim pitanjima).
 - Brojevi u milijardama USD sa decimalama. Izvedene metrike računa server.
@@ -87,8 +88,8 @@ loš za neodređena pitanja ("reasons for loss"). Zato opis alata `search_filing
 
 ## Plan za fazu 2 (predlog, nije počet)
 
-1. **Benchmark Ollama**: tokena/s za qwen3:4b na CPU-u, vreme prvog tokena za prompt od ~3k tokena. Iz toga izabrati `num_ctx` (cilj ~8192) i temperaturu i upisati u tabelu u `README.md`.
+1. **Model**: DeepSeek API, parametri u `README.md`.
 2. **MCP klijent u agentu**: pokreće `mcp_server.server` preko stdio-a, `list_tools()`, pa prevodi MCP šeme u OpenAI `tools` format.
 3. **Agent petlja** (`agents/single_agent.py`): poruke → `chat.completions.create(tools=...)` → ako ima `tool_calls`, pozovi MCP alat, dodaj `role: tool` poruku i ponovi; inače kraj. Ograničenje broja koraka.
-4. **System prompt**: citiraj `source_id`/`passage_id`, ne izmišljaj, konkretni termini za pretragu. Qwen3 ima "thinking" mod, pa treba odlučiti da li se uključuje (`/no_think`).
+4. **System prompt**: citiraj `source_id`/`passage_id`, ne izmišljaj, konkretni termini za pretragu. `finish_reason=length` je greška.
 5. Ručno probati na 2–3 eval pitanja (npr. F1, C2, E3) i ispraviti prompt/opise alata.
