@@ -100,7 +100,7 @@ Evaluacija je dokaz za CV: konkretan rezultat tipa „multi-agent tačan u 8/10 
   - [x] Ručni test: MCP Inspector i Claude Desktop (2026-11-08, tim)
   - [x] Teach-back faze 1
 - Handoff na drugi računar (2026-11-08): vidi `handoff.md`
-- [ ] Faza 2 — u toku
+- [x] Faza 2 — završena 2026-11-08 (teach-back preskočen, tim je prošao kod)
   - [x] `agents/single_agent.py` (ručna petlja) + `tests/test_single_agent.py` (lažni model)
   - [x] Teach-back petlje (2026-11-08)
   - [x] Prelazak na OpenRouter/Alibaba: `provider_options()` gradi parametre po provajderu, petlja vraća `reasoning_details` ili `reasoning_content` (ukupno 71 test, prolaze)
@@ -115,8 +115,17 @@ Evaluacija je dokaz za CV: konkretan rezultat tipa „multi-agent tačan u 8/10 
     - Prompt NE podešavamo prema ovim pitanjima (to bi bilo „učenje na ispitu"); greške ostaju da ih eval izmeri
     - Za fazu 3: jak model rešava ova pitanja u 2 koraka, pa će razliku multi-agenta pokazati teža pitanja (C4 sa zamkom, 13. pitanje sa 18 kompanija)
   - Zašto nije Ollama: `qwen3:4b` je na CPU-u potrošio ceo limit na razmišljanje (F1 i C2 bez poziva alata, E3 pogrešan odgovor; razmišljanje nismo mogli pouzdano da ugasimo)
-- [ ] Faza 3
+- [ ] Faza 3 — u toku
   - Dizajn: `asyncio`, jedna MCP veza za sve agente
+  - [x] `agents/multi_agent.py`: planer (bez alata, spisak kompanija u promptu, JSON plan, 2 pokušaja pa rezervni plan) → istraživači (`run_agent` sa svojim promptom, `asyncio.gather` + `Semaphore(6)`, pad jednog ne obara ostale) → sintetizator (bez alata, samo iz nalaza); `run_agent` dobio parametar `system_prompt`
+  - [x] `tests/test_multi_agent.py` (lažni model po ulozi; dokazano da istraživači rade istovremeno nad jednom MCP vezom i da limit paralelizma radi; ukupno 85 testova, prolaze)
+  - [x] Pravi model (2026-11-08, jedno pokretanje po pitanju):
+    | | Jedan agent | Multi-agent |
+    |---|---|---|
+    | C2 | ✅ 3 poziva modela, 3,3k/0,5k tokena, 4,5 s | ✅ 8 poziva, 10,8k/1,0k tokena, 6,7 s |
+    | C4 | ⚠️ tačni brojevi, pogrešan zaključak (LOW) | ✅ tačan zaključak (HD, raspon 1,6 naspram 2,3 p.p.), 6 poziva, 8,9k/2,0k tokena, 10,9 s |
+    - Jedno pokretanje nije dokaz; eval (faza 4) meri na svim pitanjima
+    - Primećeno: planer u podzadacima traži da istraživač „izračuna" maržu, iako je pravilo da se koriste izvedene metrike; istraživači su ipak uzeli maržu iz alata
 - [ ] Faza 4
 - [ ] Faza 5
 - [ ] Faza 6

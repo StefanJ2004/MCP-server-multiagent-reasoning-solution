@@ -100,14 +100,15 @@ def _print_event(event: str, **data) -> None:
 
 
 async def run_agent(question: str, llm, mcp, model: str, extra_body: dict | None = None,
-                    max_steps: int = MAX_STEPS, on_event: Callable = _print_event) -> AgentResult:
+                    max_steps: int = MAX_STEPS, on_event: Callable = _print_event,
+                    system_prompt: str = SYSTEM_PROMPT) -> AgentResult:
     """Glavna petlja. `llm` i `mcp` se prosledjuju spolja, pa testovi mogu da podmetnu lazni model,
-    a faza 3 moze da pusti vise agenata nad istim MCP klijentom.
+    a faza 3 pusta vise agenata (istrazivaca) nad istim MCP klijentom, svakog sa svojim system_prompt-om.
     `extra_body` su parametri specificni za provajdera (vidi provider_options)."""
     started = time.perf_counter()
     tools = mcp_tools_to_openai((await mcp.list_tools()).tools)
     messages: list[dict] = [
-        {"role": "system", "content": SYSTEM_PROMPT},
+        {"role": "system", "content": system_prompt},
         {"role": "user", "content": question},
     ]
     result = AgentResult(answer=None, stop_reason="max_steps")
