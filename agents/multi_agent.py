@@ -85,6 +85,8 @@ class MultiAgentResult:
     tool_calls: int = 0
     input_tokens: int = 0
     output_tokens: int = 0
+    max_input_tokens: int = 0                          # najduzi pojedinacni prompt bilo kog agenta
+    research_seconds: float = 0.0                      # trajanje faze istrazivaca (paralelno)
     seconds: float = 0.0
 
 
@@ -123,12 +125,13 @@ def parse_plan(text: str | None) -> list[dict]:
 class _Usage:
     """Sabira pozive i tokene svih agenata: toliko kosta jedno pitanje."""
     def __init__(self):
-        self.llm_calls = self.input_tokens = self.output_tokens = 0
+        self.llm_calls = self.input_tokens = self.output_tokens = self.max_input_tokens = 0
 
     def add(self, usage):
         self.llm_calls += 1
         self.input_tokens += usage.prompt_tokens
         self.output_tokens += usage.completion_tokens
+        self.max_input_tokens = max(self.max_input_tokens, usage.prompt_tokens)
 
 
 async def _complete(llm, model, messages, extra_body, usage: _Usage, on_event, agent: str, **kwargs):
@@ -201,12 +204,15 @@ async def run_multi_agent(question: str, llm, mcp, model: str, extra_body: dict 
 
     # 2. istrazivaci, paralelno. gather vraca rezultate istim redom kao plan.
     semaphore = asyncio.Semaphore(max_parallel)
+    research_started = time.perf_counter()
     results = await asyncio.gather(*(
         research(s, question, llm, mcp, model, extra_body, semaphore, on_event) for s in plan))
+    research_seconds = round(time.perf_counter() - research_started, 1)
     for r in results:
         usage.llm_calls += r.steps
         usage.input_tokens += r.input_tokens
         usage.output_tokens += r.output_tokens
+        usage.max_input_tokens = max(usage.max_input_tokens, r.max_input_tokens)
 
     # 3. sintetizator
     messages = [{"role": "system", "content": SYNTHESIZER_PROMPT},
@@ -222,10 +228,11 @@ async def run_multi_agent(question: str, llm, mcp, model: str, extra_body: dict 
 
     return MultiAgentResult(
         answer=answer, stop_reason=reason, plan=plan, plan_fallback=fallback,
-        findings=[{**s, "stop_reason": r.stop_reason, "steps": r.steps, "tool_calls": r.tool_calls,
-                   "answer": r.answer} for s, r in zip(plan, results)],
+        findings=[{**s, "stop_reason": r.stop_reason, "steps": r.steps, "seconds": r.seconds,
+                   "tool_calls": r.tool_calls, "answer": r.answer} for s, r in zip(plan, results)],
         llm_calls=usage.llm_calls, tool_calls=sum(len(r.tool_calls) for r in results),
         input_tokens=usage.input_tokens, output_tokens=usage.output_tokens,
+        max_input_tokens=usage.max_input_tokens, research_seconds=research_seconds,
         seconds=round(time.perf_counter() - started, 1))
 
 

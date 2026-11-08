@@ -54,6 +54,7 @@ class AgentResult:
     tool_calls: list[dict] = field(default_factory=list)
     input_tokens: int = 0             # zbir po koracima: ovo se placa
     output_tokens: int = 0
+    max_input_tokens: int = 0         # najduzi pojedinacni prompt: koliko je kontekst narastao
     seconds: float = 0.0
 
 
@@ -95,6 +96,22 @@ def _is_error(output: str) -> bool:
     return output.startswith(("Error:", '{"error"'))
 
 
+def returned_ids(output: str) -> list[str]:
+    """source_id i passage_id iz rezultata alata. Samo njih model sme da citira:
+    eval proverava da li citat u odgovoru zaista postoji medju njima."""
+    try:
+        data = json.loads(output)
+    except json.JSONDecodeError:
+        return []
+    if not isinstance(data, dict):
+        return []
+    ids = [data["source_id"]] if "source_id" in data else []          # search_filing
+    for row in data.get("results") or []:
+        if isinstance(row, dict):
+            ids += [row[k] for k in ("source_id", "passage_id") if k in row]   # get_financials / pasusi
+    return list(dict.fromkeys(ids))
+
+
 def _print_event(event: str, **data) -> None:
     print(f"[{event}] " + " ".join(f"{k}={v}" for k, v in data.items()), flush=True)
 
@@ -129,6 +146,7 @@ async def run_agent(question: str, llm, mcp, model: str, extra_body: dict | None
         reply = choice.message
         result.input_tokens += usage.prompt_tokens
         result.output_tokens += usage.completion_tokens
+        result.max_input_tokens = max(result.max_input_tokens, usage.prompt_tokens)
         # model i provider: ko je STVARNO odgovorio (alias moze da promeni model, OpenRouter provajdera)
         on_event("model", step=step, seconds=round(time.perf_counter() - t0, 1),
                  input_tokens=usage.prompt_tokens, output_tokens=usage.completion_tokens,
@@ -163,9 +181,10 @@ async def run_agent(question: str, llm, mcp, model: str, extra_body: dict | None
         for call in reply.tool_calls:
             name, arguments = call.function.name, call.function.arguments
             output = await execute_tool(mcp, name, arguments)
-            result.tool_calls.append({"name": name, "arguments": arguments})
-            on_event("tool", name=name, arguments=arguments, result_chars=len(output),
-                     error=_is_error(output))
+            ids, error = returned_ids(output), _is_error(output)
+            result.tool_calls.append({"name": name, "arguments": arguments, "error": error, "returned_ids": ids})
+            on_event("tool", name=name, arguments=arguments, result_chars=len(output), error=error,
+                     returned_ids=len(ids))
             # tool_call_id povezuje rezultat sa pozivom; bez njega model ne zna cemu rezultat pripada
             messages.append({"role": "tool", "tool_call_id": call.id, "content": output})
 

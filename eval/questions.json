@@ -1,11 +1,12 @@
 {
   "meta": {
-    "version": "1.0",
+    "version": "1.1",
     "eval_language": "en (koristi polje question_en; question je srpski prevod za UI/demo)",
     "fy_convention": "FY = kalendarska godina u kojoj se fiskalna godina ZAVRŠAVA (npr. HD period 2024-01-29..2025-02-02 je FY2025, iako ga HD zove fiscal 2024)",
     "units": "milijarde USD, osim gde je navedeno %",
     "source": "SEC EDGAR XBRL companyfacts, samo 10-K, godišnji periodi; kod više tagova važi redosled tagova (npr. NetIncomeLoss pre ProfitLoss)",
-    "grading": "TBD u fazi 4 (tolerancija za brojeve, ocena citata)"
+    "grading": "TBD u fazi 4 (tolerancija za brojeve, ocena citata)",
+    "sets": "main = 12 osnovnih pitanja (F, C, E, U), glavni rezultat; extra = B1 (svih 18 kompanija) i H1-H3 (teža pitanja), dodata 2026-11-08 PRE pokretanja bilo kog sistema na njima, izveštavaju se posebno"
   },
   "questions": [
     {
@@ -13,27 +14,50 @@
       "type": "factual",
       "question": "Koliki je bio prihod Intela u FY2024?",
       "question_en": "What was Intel's revenue in FY2024?",
-      "answer": {"INTC": {"revenue": 53.101}},
-      "periods": {"INTC": "2023-12-31..2024-12-28"},
-      "verified": true
+      "answer": {
+        "INTC": {
+          "revenue": 53.101
+        }
+      },
+      "periods": {
+        "INTC": "2023-12-31..2024-12-28"
+      },
+      "verified": true,
+      "set": "main"
     },
     {
       "id": "F2",
       "type": "factual",
       "question": "Kolika je bila bruto marža Applied Materials u FY2024?",
       "question_en": "What was Applied Materials' gross margin in FY2024?",
-      "answer": {"AMAT": {"gross_margin_pct": 47.5, "gross_profit": 12.897, "revenue": 27.176}},
-      "periods": {"AMAT": "2023-10-30..2024-10-27"},
-      "verified": true
+      "answer": {
+        "AMAT": {
+          "gross_margin_pct": 47.5,
+          "gross_profit": 12.897,
+          "revenue": 27.176
+        }
+      },
+      "periods": {
+        "AMAT": "2023-10-30..2024-10-27"
+      },
+      "verified": true,
+      "set": "main"
     },
     {
       "id": "F3",
       "type": "factual",
       "question": "Koliki je bio neto profit Best Buy-a u FY2025?",
       "question_en": "What was Best Buy's net income in FY2025?",
-      "answer": {"BBY": {"net_income": 0.927}},
-      "periods": {"BBY": "2024-02-04..2025-02-01"},
-      "verified": true
+      "answer": {
+        "BBY": {
+          "net_income": 0.927
+        }
+      },
+      "periods": {
+        "BBY": "2024-02-04..2025-02-01"
+      },
+      "verified": true,
+      "set": "main"
     },
     {
       "id": "C1",
@@ -41,17 +65,34 @@
       "question": "Uporedi rast prihoda NVIDIA, AMD i Intela od FY2023 do FY2025. Ko je najviše rastao?",
       "question_en": "Compare revenue growth of NVIDIA, AMD and Intel from FY2023 to FY2025. Which grew the most?",
       "answer": {
-        "NVDA": {"revenue_2023": 26.974, "revenue_2025": 130.497, "growth_pct": 383.8},
-        "AMD": {"revenue_2023": 22.680, "revenue_2025": 34.639, "growth_pct": 52.7},
-        "INTC": {"revenue_2023": 54.228, "revenue_2025": 52.853, "growth_pct": -2.5},
-        "ranking": ["NVDA", "AMD", "INTC"]
+        "NVDA": {
+          "revenue_2023": 26.974,
+          "revenue_2025": 130.497,
+          "growth_pct": 383.8
+        },
+        "AMD": {
+          "revenue_2023": 22.68,
+          "revenue_2025": 34.639,
+          "growth_pct": 52.7
+        },
+        "INTC": {
+          "revenue_2023": 54.228,
+          "revenue_2025": 52.853,
+          "growth_pct": -2.5
+        },
+        "ranking": [
+          "NVDA",
+          "AMD",
+          "INTC"
+        ]
       },
       "periods": {
         "NVDA": "2022-01-31..2023-01-29 / 2024-01-29..2025-01-26",
         "AMD": "2023-01-01..2023-12-30 / 2024-12-29..2025-12-27",
         "INTC": "2023-01-01..2023-12-30 / 2024-12-29..2025-12-27"
       },
-      "verified": true
+      "verified": true,
+      "set": "main"
     },
     {
       "id": "C2",
@@ -59,17 +100,34 @@
       "question": "Rangiraj Adobe, Salesforce i ServiceNow po operativnoj marži u FY2025.",
       "question_en": "Rank Adobe, Salesforce and ServiceNow by operating margin in FY2025.",
       "answer": {
-        "ADBE": {"operating_margin_pct": 36.6, "operating_income": 8.706, "revenue": 23.769},
-        "CRM": {"operating_margin_pct": 19.0, "operating_income": 7.205, "revenue": 37.895},
-        "NOW": {"operating_margin_pct": 13.7, "operating_income": 1.824, "revenue": 13.278},
-        "ranking": ["ADBE", "CRM", "NOW"]
+        "ADBE": {
+          "operating_margin_pct": 36.6,
+          "operating_income": 8.706,
+          "revenue": 23.769
+        },
+        "CRM": {
+          "operating_margin_pct": 19.0,
+          "operating_income": 7.205,
+          "revenue": 37.895
+        },
+        "NOW": {
+          "operating_margin_pct": 13.7,
+          "operating_income": 1.824,
+          "revenue": 13.278
+        },
+        "ranking": [
+          "ADBE",
+          "CRM",
+          "NOW"
+        ]
       },
       "periods": {
         "ADBE": "2024-11-30..2025-11-28",
         "CRM": "2024-02-01..2025-01-31",
         "NOW": "2025-01-01..2025-12-31"
       },
-      "verified": true
+      "verified": true,
+      "set": "main"
     },
     {
       "id": "C3",
@@ -77,17 +135,34 @@
       "question": "Rangiraj Texas Instruments, Analog Devices i Micron po izdvajanju za R&D kao procentu prihoda u FY2024.",
       "question_en": "Rank Texas Instruments, Analog Devices and Micron by R&D spending as a percentage of revenue in FY2024.",
       "answer": {
-        "ADI": {"rnd_pct": 15.8, "rnd": 1.488, "revenue": 9.427},
-        "MU": {"rnd_pct": 13.7, "rnd": 3.430, "revenue": 25.111},
-        "TXN": {"rnd_pct": 12.5, "rnd": 1.959, "revenue": 15.641},
-        "ranking": ["ADI", "MU", "TXN"]
+        "ADI": {
+          "rnd_pct": 15.8,
+          "rnd": 1.488,
+          "revenue": 9.427
+        },
+        "MU": {
+          "rnd_pct": 13.7,
+          "rnd": 3.43,
+          "revenue": 25.111
+        },
+        "TXN": {
+          "rnd_pct": 12.5,
+          "rnd": 1.959,
+          "revenue": 15.641
+        },
+        "ranking": [
+          "ADI",
+          "MU",
+          "TXN"
+        ]
       },
       "periods": {
         "ADI": "2023-10-29..2024-11-02",
         "MU": "2023-09-01..2024-08-29",
         "TXN": "2024-01-01..2024-12-31"
       },
-      "verified": true
+      "verified": true,
+      "set": "main"
     },
     {
       "id": "C4",
@@ -96,14 +171,38 @@
       "question_en": "Compare revenue and net margin of Home Depot and Lowe's for FY2023-FY2025. Which has the more stable margin?",
       "answer": {
         "HD": {
-          "2023": {"revenue": 157.403, "net_income": 17.105, "net_margin_pct": 10.9},
-          "2024": {"revenue": 152.669, "net_income": 15.143, "net_margin_pct": 9.9},
-          "2025": {"revenue": 159.514, "net_income": 14.806, "net_margin_pct": 9.3}
+          "2023": {
+            "revenue": 157.403,
+            "net_income": 17.105,
+            "net_margin_pct": 10.9
+          },
+          "2024": {
+            "revenue": 152.669,
+            "net_income": 15.143,
+            "net_margin_pct": 9.9
+          },
+          "2025": {
+            "revenue": 159.514,
+            "net_income": 14.806,
+            "net_margin_pct": 9.3
+          }
         },
         "LOW": {
-          "2023": {"revenue": 97.059, "net_income": 6.437, "net_margin_pct": 6.6},
-          "2024": {"revenue": 86.377, "net_income": 7.726, "net_margin_pct": 8.9},
-          "2025": {"revenue": 83.674, "net_income": 6.957, "net_margin_pct": 8.3}
+          "2023": {
+            "revenue": 97.059,
+            "net_income": 6.437,
+            "net_margin_pct": 6.6
+          },
+          "2024": {
+            "revenue": 86.377,
+            "net_income": 7.726,
+            "net_margin_pct": 8.9
+          },
+          "2025": {
+            "revenue": 83.674,
+            "net_income": 6.957,
+            "net_margin_pct": 8.3
+          }
         },
         "expected_conclusion": "HD: marža stalno pada (raspon 1,6 p.p.); LOW: marža osciluje (raspon 2,3 p.p.), prihod pada. HD je stabilniji po rasponu marže."
       },
@@ -112,14 +211,20 @@
         "LOW": "2022-01-29..2023-02-03 / 2023-02-04..2024-02-02 / 2024-02-03..2025-01-31"
       },
       "trap": "HD i LOW ove godine sami zovu FY2022-FY2024; agent koji preuzme njihovu konvenciju iz 10-K teksta uzeće pogrešne periode",
-      "verified": true
+      "verified": true,
+      "set": "main"
     },
     {
       "id": "E1",
       "type": "explanatory",
       "question": "Zašto je Intel u FY2024 imao veliki gubitak, prema njegovom 10-K izveštaju?",
       "question_en": "Why did Intel report a large loss in FY2024, according to its 10-K?",
-      "answer": {"INTC": {"net_income_2023": 1.689, "net_income_2024": -18.756}},
+      "answer": {
+        "INTC": {
+          "net_income_2023": 1.689,
+          "net_income_2024": -18.756
+        }
+      },
       "expected_explanation": {
         "key_points": [
           "$9.9B non-cash tax charge, substantially related to valuation allowances on US net deferred tax assets",
@@ -134,15 +239,24 @@
         "filing": "Intel 10-K za period koji se završava 2024-12-28, podnet 2025-01-31 (accn 0000050863-25-000009)",
         "section": "Item 7 MD&A -> Overview -> 'A Year in Review' i 'Restructuring'; detalji u Note 7 (Restructuring and Other Charges) i Note 8 (Income Taxes)"
       },
-      "periods": {"INTC": "2023-12-31..2024-12-28"},
-      "verified": true
+      "periods": {
+        "INTC": "2023-12-31..2024-12-28"
+      },
+      "verified": true,
+      "set": "main"
     },
     {
       "id": "E2",
       "type": "explanatory",
       "question": "Šta je, prema 10-K izveštaju, pokretalo rast prihoda NVIDIA-e u FY2024?",
       "question_en": "According to its 10-K, what drove NVIDIA's revenue growth in FY2024?",
-      "answer": {"NVDA": {"revenue_2023": 26.974, "revenue_2024": 60.922, "growth_pct": 125.9}},
+      "answer": {
+        "NVDA": {
+          "revenue_2023": 26.974,
+          "revenue_2024": 60.922,
+          "growth_pct": 125.9
+        }
+      },
       "expected_explanation": {
         "key_points": [
           "Data Center revenue $47.5B, up 217% (Data Center compute up 244%, Networking up 133%)",
@@ -158,15 +272,25 @@
         "filing": "NVIDIA 10-K za period koji se završava 2024-01-28, podnet 2024-02-21 (accn 0001045810-24-000029)",
         "section": "Item 7 MD&A -> 'Fiscal Year 2024 Summary' i opis Data Center segmenta"
       },
-      "periods": {"NVDA": "2023-01-30..2024-01-28"},
-      "verified": true
+      "periods": {
+        "NVDA": "2023-01-30..2024-01-28"
+      },
+      "verified": true,
+      "set": "main"
     },
     {
       "id": "E3",
       "type": "explanatory",
       "question": "Zašto je Micron u FY2023 imao gubitak, prema njegovom 10-K izveštaju?",
       "question_en": "Why did Micron report a loss in FY2023, according to its 10-K?",
-      "answer": {"MU": {"revenue_2022": 30.758, "revenue_2023": 15.540, "net_income_2022": 8.687, "net_income_2023": -5.833}},
+      "answer": {
+        "MU": {
+          "revenue_2022": 30.758,
+          "revenue_2023": 15.54,
+          "net_income_2022": 8.687,
+          "net_income_2023": -5.833
+        }
+      },
       "expected_explanation": {
         "key_points": [
           "Memory and storage industry deteriorated sharply: weak end-market demand, macroeconomic challenges, customers reducing inventory levels",
@@ -182,8 +306,11 @@
         "filing": "Micron 10-K za period koji se završava 2023-08-31, podnet 2023-10-06 (accn 0000723125-23-000054)",
         "section": "Item 7 MD&A -> Overview -> 'Industry Conditions'; Results of Operations -> 'Total Revenue' i 'Consolidated Gross Margin'"
       },
-      "periods": {"MU": "2022-09-02..2023-08-31"},
-      "verified": true
+      "periods": {
+        "MU": "2022-09-02..2023-08-31"
+      },
+      "verified": true,
+      "set": "main"
     },
     {
       "id": "U1",
@@ -192,16 +319,229 @@
       "question_en": "What was Intel's net income in FY2030?",
       "answer": null,
       "expected_behavior": "Agent kaže da podaci za FY2030 ne postoje (godina još nije završena) i ne izmišlja broj niti daje prognozu kao činjenicu.",
-      "verified": true
+      "verified": true,
+      "set": "main"
     },
     {
       "id": "U2",
       "type": "unanswerable",
       "question": "Zašto je Home Depot imao gubitak u FY2025?",
       "question_en": "Why did Home Depot report a loss in FY2025?",
-      "answer": {"HD": {"net_income_2025": 14.806}},
+      "answer": {
+        "HD": {
+          "net_income_2025": 14.806
+        }
+      },
       "expected_behavior": "Agent ispravlja pogrešnu premisu: HD nije imao gubitak, neto profit je bio 14,81 mlrd. Ne izmišlja razloge za nepostojeći gubitak.",
-      "periods": {"HD": "2024-01-29..2025-02-02"},
+      "periods": {
+        "HD": "2024-01-29..2025-02-02"
+      },
+      "verified": true,
+      "set": "main"
+    },
+    {
+      "id": "B1",
+      "set": "extra",
+      "type": "breadth",
+      "question": "Među svih 18 kompanija, koje tri su imale najveću, a koje tri najmanju neto maržu u FY2024?",
+      "question_en": "Among all 18 companies covered, which three had the highest and which three the lowest net margin in fiscal year 2024?",
+      "answer": {
+        "highest": [
+          {
+            "ticker": "NVDA",
+            "net_margin_pct": 48.8
+          },
+          {
+            "ticker": "MSFT",
+            "net_margin_pct": 36.0
+          },
+          {
+            "ticker": "TXN",
+            "net_margin_pct": 30.7
+          }
+        ],
+        "lowest": [
+          {
+            "ticker": "INTC",
+            "net_margin_pct": -35.3
+          },
+          {
+            "ticker": "BBY",
+            "net_margin_pct": 2.9
+          },
+          {
+            "ticker": "MU",
+            "net_margin_pct": 3.1
+          }
+        ],
+        "all_net_margin_pct": {
+          "NVDA": 48.8,
+          "MSFT": 36.0,
+          "TXN": 30.7,
+          "AMAT": 26.4,
+          "ADBE": 25.9,
+          "LRCX": 25.7,
+          "CSCO": 19.2,
+          "ADI": 17.3,
+          "NOW": 13.0,
+          "CRM": 11.9,
+          "AVGO": 11.4,
+          "HD": 9.9,
+          "LOW": 8.9,
+          "AMD": 6.4,
+          "DG": 4.3,
+          "MU": 3.1,
+          "BBY": 2.9,
+          "INTC": -35.3
+        }
+      },
+      "grading_note": "Redosled unutar trojki nije bitan. Najbliže granici: 4. najveća AMAT 26,4 (TXN 30,7), 4. najmanja DG 4,3 (MU 3,1).",
+      "tests": "širina: 18 kompanija; jedan agent mora sve u jednom kontekstu",
+      "verified": true
+    },
+    {
+      "id": "H1",
+      "set": "extra",
+      "type": "hard_multi_explanatory",
+      "question": "Za NVIDIA-u, AMD i Intel: koliki je bio rast prihoda u FY2024 i koji je glavni razlog promene prema 10-K izveštaju svake kompanije?",
+      "question_en": "For NVIDIA, AMD and Intel: what was the revenue growth in fiscal year 2024, and what was the main reason for the change according to each company's 10-K?",
+      "answer": {
+        "NVDA": {
+          "revenue_2023": 26.974,
+          "revenue_2024": 60.922,
+          "growth_pct": 125.9
+        },
+        "AMD": {
+          "revenue_2023": 22.68,
+          "revenue_2024": 25.785,
+          "growth_pct": 13.7
+        },
+        "INTC": {
+          "revenue_2023": 54.228,
+          "revenue_2024": 53.101,
+          "growth_pct": -2.1
+        }
+      },
+      "expected_explanation": {
+        "NVDA": {
+          "must_include": "Data Center as the main driver (up 217%)",
+          "key_points": [
+            "Data Center revenue up 217% (compute up 244%, networking up 133%)",
+            "Demand from enterprise software, consumer internet and industry verticals (AI infrastructure)"
+          ],
+          "citation": "NVDA-10K-FY2024#p262 (Fiscal Year 2024 Summary); accn 0001045810-24-000029"
+        },
+        "AMD": {
+          "must_include": "Data Center segment growth (Instinct GPUs / EPYC CPUs)",
+          "key_points": [
+            "Data Center net revenue $12.6B, up 94%, from AMD Instinct GPUs and EPYC CPUs",
+            "Client segment up 52% (Ryzen processors)",
+            "Partially offset by Gaming down 58% (semi-custom) and Embedded down 33% (customer inventory normalization)"
+          ],
+          "citation": "AMD-10K-FY2024#p282 (Overview); accn 0000002488-25-000012"
+        },
+        "INTC": {
+          "must_include": "decline from lower 'all other' revenue (Altera, Mobileye) and/or lower Intel Foundry external revenue, partially offset by Intel Products",
+          "key_points": [
+            "Revenue $53.1B, down $1.1B or 2%",
+            "All other revenue down 32%: Altera and Mobileye customers reducing inventories",
+            "Intel Foundry external revenue down 60% (packaging services, equipment sales)",
+            "Partially offset by Intel Products up 3% (CCG up 4% on notebook volume, DCAI up 1%)"
+          ],
+          "citation": "INTC-10K-FY2024#p98 (A Year in Review); accn 0000050863-25-000009"
+        },
+        "min_points_for_full_credit": "tačan rast i must_include za sve tri kompanije"
+      },
+      "periods": {
+        "NVDA": "2023-01-30..2024-01-28",
+        "AMD": "2023-12-31..2024-12-28",
+        "INTC": "2023-12-31..2024-12-28"
+      },
+      "tests": "brojevi + objašnjenja za više kompanija; jedan agent skuplja tekst svih u jednom dugom kontekstu",
+      "verified": true
+    },
+    {
+      "id": "H2",
+      "set": "extra",
+      "type": "hard_multi_hop",
+      "question": "Koja softverska kompanija je imala najnižu operativnu maržu u FY2024 i šta njen 10-K izveštaj navodi kao glavne razloge rasta operativnih troškova?",
+      "question_en": "Which software company had the lowest operating margin in fiscal year 2024, and what does its 10-K say were the main drivers of the increase in its operating expenses?",
+      "answer": {
+        "lowest": "NOW",
+        "operating_margin_pct": {
+          "MSFT": 44.6,
+          "ADBE": 31.3,
+          "CSCO": 22.6,
+          "CRM": 14.4,
+          "NOW": 12.4
+        },
+        "NOW": {
+          "revenue": 10.984,
+          "operating_income": 1.364,
+          "total_operating_expenses_2024": 7.333,
+          "total_operating_expenses_2023": 6.288
+        }
+      },
+      "expected_explanation": {
+        "key_points": [
+          "Increased headcount and personnel-related costs (incl. stock-based compensation) - the main driver in sales and marketing (+$330M) and R&D (+$350M)",
+          "Sales and marketing up $553M; also deferred commission amortization +$90M and marketing programs +$95M",
+          "R&D up $419M; also outside services +$48M and data center capacity costs +$27M",
+          "G&A up $73M"
+        ],
+        "must_include": "headcount / personnel-related costs as the main driver",
+        "min_points_for_full_credit": 2
+      },
+      "expected_citation": {
+        "filing": "ServiceNow 10-K za period koji se završava 2024-12-31, podnet 2025-01-30 (accn 0001373715-25-000010)",
+        "passages": "NOW-10K-FY2024#p271 (sales and marketing), #p272-#p273 (R&D), #p275 (G&A)"
+      },
+      "periods": {
+        "NOW": "2024-01-01..2024-12-31",
+        "CRM": "2023-02-01..2024-01-31"
+      },
+      "tests": "više koraka: tek posle brojeva se zna koju kompaniju treba pretražiti; planer pravi plan unapred, pa ovde multi-agent verovatno gubi",
+      "verified": true
+    },
+    {
+      "id": "H3",
+      "set": "extra",
+      "type": "hard_fy_trap",
+      "question": "Kako su se promenile uporedive prodaje (comparable sales) kod Lowe's-a i Best Buy-a u fiskalnoj godini koja se završila početkom 2025, i kako se to odnosi na promenu ukupnog prihoda?",
+      "question_en": "How did comparable sales change at Lowe's and Best Buy in the fiscal year that ended in early 2025, and how does that compare with the change in total revenue?",
+      "answer": {
+        "LOW": {
+          "fiscal_year": 2025,
+          "period": "2024-02-03..2025-01-31",
+          "company_calls_it": "fiscal 2024",
+          "comparable_sales_pct": -2.7,
+          "revenue": 83.674,
+          "revenue_growth_pct": -3.1
+        },
+        "BBY": {
+          "fiscal_year": 2025,
+          "period": "2024-02-04..2025-02-01",
+          "company_calls_it": "fiscal 2025",
+          "comparable_sales_pct": -2.3,
+          "revenue": 41.528,
+          "revenue_growth_pct": -4.4
+        }
+      },
+      "expected_explanation": {
+        "key_points": [
+          "Lowe's: comparable sales -2.7% (transactions -3.0%, average ticket +0.3%); net sales -3.1%, decline primarily driven by comparable sales; both years had 52 weeks",
+          "Best Buy: comparable sales -2.3%, softer consumer demand; revenue -4.4% ($41.5B vs $43.5B)",
+          "Best Buy revenue fell more than comparable sales mainly because the prior year had a 53rd week (~$735M revenue); comparable sales exclude the 53rd week"
+        ],
+        "must_include": "correct comparable sales for both (-2.7% LOW, -2.3% BBY) and that Best Buy's revenue decline is larger partly due to the 53rd week in the prior year",
+        "min_points_for_full_credit": 2
+      },
+      "expected_citation": {
+        "LOW": "LOW-10K-FY2025#p158 (Executive Overview); accn 0000060667-25-000049",
+        "BBY": "BBY-10K-FY2025#p172; accn 0000764478-25-000007"
+      },
+      "trap": "Lowe's tu godinu zove 'fiscal 2024', Best Buy 'fiscal 2025'. Agent koji uzme godinu ranije dobija LOW comparable sales -4.7% i BBY -6.8% (FY2024); postoje i 10-K za godinu koja se završila početkom 2026 (FY2026), pa greška moguća u oba smera",
+      "tests": "zamka sa nazivom fiskalne godine u tekstu + objašnjenje razlike (53. nedelja)",
       "verified": true
     }
   ]

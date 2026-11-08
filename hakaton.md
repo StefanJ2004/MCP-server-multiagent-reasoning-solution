@@ -19,7 +19,7 @@ Kombinacija dva sistema:
    - **Istraživači** (paralelno) rešavaju podzadatke koristeći MCP alate. Broj agenata ograničavaju cena i limit API-ja (2500 istovremenih zahteva), a ne lokalni hardver.
    - **Sintetizator** spaja rezultate u izveštaj sa citatima/izvorima.
 3. **UI** koji u realnom vremenu prikazuje tok agenata (ko radi šta, koji alat zove, šta je vraćeno).
-4. **Evaluacija**: 12 pitanja + posebno označeno 13. pitanje sa svih 18 kompanija; poređenje multi-agent sistema sa jednim agentom (tačnost, kvalitet citata).
+4. **Evaluacija**: 12 pitanja + posebno označeno 13. pitanje sa svih 18 kompanija + 3 teža pitanja (H1–H3, posebna kategorija); poređenje multi-agent sistema sa jednim agentom (tačnost, kvalitet citata).
 
 ```
 Korisnik → UI (Next.js) → Orkestrator
@@ -41,13 +41,13 @@ MCP server i podaci su lokalni, na računaru sa orkestratorom.
 | 1. MCP server | 6 | 3–5 alata nad podacima; testiranje iz Claude Desktopa | MCP protokol, dizajn alata |
 | 2. Jedan agent | 5 | Agent petlja ručno: model → poziv alata → rezultat → ponovo | Kako agenti rade |
 | 3. Multi-agent | 7 | Planer, paralelni istraživači, sintetizator, deljeno stanje | Orkestracija, paralelizam |
-| 4. Evaluacija | 4 | Pokretanje eval seta (12 + pitanje sa 18 kompanija), ocena tačnosti i citata, poređenje sa jednim agentom | Eval, metrike |
+| 4. Evaluacija | 4 | Pokretanje eval seta (12 + pitanje sa 18 kompanija + H1–H3), ocena tačnosti i citata, poređenje sa jednim agentom | Eval, metrike |
 | 5. UI i trace | 4 | Prikaz toka agenata u realnom vremenu | Streaming, observability |
 | 6. Demo | 2 | README, dijagram arhitekture, video od 2 min, objava na GitHub-u | Prezentacija |
 
 Evaluacija je dokaz za CV: konkretan rezultat tipa „multi-agent tačan u 8/10 naspram 5/10 za jednog agenta“.
 
-**Obavezno:** paralelni agenti, eval sa 13 pitanja, UI.
+**Obavezno:** paralelni agenti, eval sa 13 pitanja + H1–H3, UI.
 
 **Samo ako ostane vremena:**
 - proveravač brojeva i citata
@@ -126,6 +126,34 @@ Evaluacija je dokaz za CV: konkretan rezultat tipa „multi-agent tačan u 8/10 
     | C4 | ⚠️ tačni brojevi, pogrešan zaključak (LOW) | ✅ tačan zaključak (HD, raspon 1,6 naspram 2,3 p.p.), 6 poziva, 8,9k/2,0k tokena, 10,9 s |
     - Jedno pokretanje nije dokaz; eval (faza 4) meri na svim pitanjima
     - Primećeno: planer u podzadacima traži da istraživač „izračuna" maržu, iako je pravilo da se koriste izvedene metrike; istraživači su ipak uzeli maržu iz alata
-- [ ] Faza 4
+- [ ] Faza 4 — u toku
+  - **Izmena plana 2026-11-08: dodata teža pitanja H1–H3** (posebna kategorija, glavni rezultat na 12 pitanja ostaje kako je definisan). Razlog je izmeren: jak model rešava postojeća pitanja u 2 koraka, pa razlika između sistema ne može da se vidi. Pravila da eval ostane pošten:
+    - pitanja se biraju po principu (širina, brojevi + objašnjenja za više kompanija, više koraka zaključivanja), ne po rezultatu
+    - pitanja i provereni odgovori se pišu PRE pokretanja bilo kog sistema; nijedno se ne izbacuje posle gledanja rezultata
+    - bar jedno pitanje gde multi-agent verovatno gubi (H2: planer pravi plan unapred i ne zna koga treba pretražiti)
+    - u izveštaju idu svi rezultati, i za 12 pitanja i za H; svako pitanje ~3 pokretanja
+  - [x] Napisana i proverena iz podataka 4 nova pitanja (`eval/questions.json` v1.1, `"set": "extra"`; stara su `"set": "main"`, sadržaj nepromenjen), nijedan sistem još nije pokrenut na njima:
+    - B1: najveće i najmanje neto marže FY2024 među svih 18 (NVDA, MSFT, TXN / INTC, BBY, MU)
+    - H1: rast prihoda FY2024 i razlog iz 10-K za NVDA (+125,9%, Data Center), AMD (+13,7%, Data Center i Client), INTC (−2,1%, Altera/Mobileye i Foundry)
+    - H2: najniža operativna marža u softveru FY2024 = NOW 12,4% (CRM 14,4%); rast troškova pre svega zbog zapošljavanja i troškova zaposlenih
+    - H3: comparable sales LOW −2,7% / BBY −2,3%, prihod −3,1% / −4,4% (BBY prethodna godina imala 53. nedelju, ~$735M); zamka: Lowe's tu godinu zove „fiscal 2024", Best Buy „fiscal 2025"
+  - [x] Način ocenjivanja: Claude ocenjuje naslepo (`to_grade.json` izmešan i anoniman, `key.json` otvoren tek posle ocena), po pravilima iz pitanja, 1 / 0,5 / 0, sa obrazloženjem; automatski: citati (važi samo ID koji je alat vratio u tom pokretanju), tokeni, vreme, cena, kontekst
+  - [x] `eval/run_eval.py`, `eval/report.py`, `eval/metrics.py` (+ testovi, ukupno 96)
+  - [x] **Eval 2026-11-08_1903** (16 pitanja × 2 sistema × 3 pokretanja, DeepSeek V4.1 Flash / Alibaba, thinking isključen), `eval/results/2026-11-08_1903/report.md`:
+    | | Jedan agent | Multi-agent |
+    |---|---|---|
+    | Tačnost main (12) / extra (4) | 100% / 91,7% | 100% / 91,7% |
+    | Stabilnost (ista ocena u 3 pokretanja) | 87,5% | 93,8% |
+    | Vreme (prosek) | 5,8 s | 11,1 s |
+    | Ulazni tokeni (prosek) | 6,5k | 18,8k |
+    | Cena po tačnom odgovoru | $0,0007 | $0,0020 |
+    | Najveći kontekst u 1 pozivu (max) | 6,9k | 9,5k |
+    | Važeći citati | 99,5% | 97,5% (interni `[t1]` kod U1) |
+    - **Zaključak: sa jakim modelom multi-agent NE donosi veću tačnost na ovom skupu, a košta ~3× više i traje ~2× duže.** Paralelizam radi (ubrzanje 1,98×), ali ne nadoknađuje dodatne pozive (planer + sintetizator)
+    - Hipoteza „istraživači imaju kratak kontekst" nije potvrđena: najveći pojedinačni prompt je veći kod multi-agenta (sintetizator dobija sve nalaze)
+    - Greške: jedan agent H1 jednom (pogrešan razlog za Intel) i H3 jednom (bez ukupnog comparable sales za BBY); multi-agent H3 dvaput (jednom upao u FY zamku za Lowe's, jednom istraživač stao na max_steps)
+    - C4 je jedan agent u evalu rešio 3/3, iako je u ranijem pojedinačnom pokretanju pogrešio → pouka: jedno pokretanje nije dokaz
+    - Ograničenja: plafon (skoro sve tačno, pitanja su laka za ovaj model); slepoća nije savršena (multi-agent odgovori ponekad pominju „researcher"/„findings"/`[t1]`); ocenjivač je isti asistent koji je napravio sistem → potrebna ljudska provera uzorka
+  - [ ] Ljudska provera uzorka ocena (~15) i upis slaganja u izveštaj
 - [ ] Faza 5
 - [ ] Faza 6
