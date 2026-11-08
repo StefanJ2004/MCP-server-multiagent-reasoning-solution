@@ -1,0 +1,482 @@
+{
+ "g001": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "B1: tačne trojke i marže."
+ },
+ "g002": {
+  "score": 0.5,
+  "numbers_ok": true,
+  "reason": "C1: tačan zaključak (NVIDIA), ali daje samo godišnje stope, ne rast FY2023->FY2025 (+383.8/+52.7/-2.5%)."
+ },
+ "g003": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "C3: ADI > MU > TXN, tačni rnd_pct."
+ },
+ "g004": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "C3: ADI > MU > TXN, tačni rnd_pct."
+ },
+ "g005": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "F2: 47.5%."
+ },
+ "g006": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "E2: Data Center (217%) / Hopper kao glavni pokretač."
+ },
+ "g007": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "U2: ispravlja premisu, neto +14.806."
+ },
+ "g008": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "E2: Data Center (217%) / Hopper kao glavni pokretač."
+ },
+ "g009": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "C2: ADBE > CRM > NOW, tačne marže."
+ },
+ "g010": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "C3: ADI > MU > TXN, tačni rnd_pct."
+ },
+ "g011": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "B1: tačne trojke i marže."
+ },
+ "g012": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "C4: tačni brojevi; zaključak HD stabilniji."
+ },
+ "g013": {
+  "score": 1,
+  "numbers_ok": null,
+  "reason": "U1: kaže da FY2030 nema; citira interni [t1]."
+ },
+ "g014": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "E1: sve četiri stavke sa iznosima i citatom #p103."
+ },
+ "g015": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "U2: ispravlja premisu, neto +14.806."
+ },
+ "g016": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "H2: NOW 12.4%; zapošljavanje/troškovi zaposlenih (S&M +$330M) i amortizacija provizija."
+ },
+ "g017": {
+  "score": 0,
+  "numbers_ok": null,
+  "reason": "B1: nema odgovora (max_steps)."
+ },
+ "g018": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "H1: tačan rast za sve tri i razlozi iz 10-K (NVDA Data Center; AMD Data Center/Client; INTC all other + Foundry)."
+ },
+ "g019": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "F2: 47.5%."
+ },
+ "g020": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "H1: tačan rast za sve tri i razlozi iz 10-K (NVDA Data Center; AMD Data Center/Client; INTC all other + Foundry)."
+ },
+ "g021": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "H2: NOW 12.4%; zapošljavanje/troškovi zaposlenih (S&M +$330M) i amortizacija provizija."
+ },
+ "g022": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "F3: $0.927B."
+ },
+ "g023": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "E3: slaba tražnja / smanjenje zaliha kupaca -> pad ASP DRAM/NAND, $1.83B, $382M."
+ },
+ "g024": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "U2: ispravlja premisu, neto +14.806."
+ },
+ "g025": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "E1: sve četiri stavke sa iznosima i citatom #p103."
+ },
+ "g026": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "F1: $53.101B."
+ },
+ "g027": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "F3: $0.927B."
+ },
+ "g028": {
+  "score": 0.5,
+  "numbers_ok": false,
+  "reason": "C1: tačan zaključak (NVIDIA), ali bez rasta FY2023->FY2025; rast NVDA za FY2023 pogrešno 20% (tačno 0.2%)."
+ },
+ "g029": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "H3: LOW -2.7% / BBY -2.3% comparable sales i uticaj 53. nedelje kod BBY."
+ },
+ "g030": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "F2: 47.5%."
+ },
+ "g031": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "E2: Data Center (217%) / Hopper kao glavni pokretač."
+ },
+ "g032": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "F3: $0.927B."
+ },
+ "g033": {
+  "score": 1,
+  "numbers_ok": false,
+  "reason": "E2: Data Center kao glavni pokretač; pogrešno mu pripisuje 266% (to je Compute; Data Center 217%)."
+ },
+ "g034": {
+  "score": 1,
+  "numbers_ok": null,
+  "reason": "U1: kaže da nema podataka za FY2030, ne izmišlja."
+ },
+ "g035": {
+  "score": 0.5,
+  "numbers_ok": true,
+  "reason": "C1: tačan zaključak (NVIDIA), ali daje samo godišnje stope, ne rast FY2023->FY2025 (+383.8/+52.7/-2.5%)."
+ },
+ "g036": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "F2: 47.5%."
+ },
+ "g037": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "C3: ADI > MU > TXN, tačni rnd_pct."
+ },
+ "g038": {
+  "score": 0.5,
+  "numbers_ok": true,
+  "reason": "C1: tačan zaključak (NVIDIA), ali daje samo godišnje stope, ne rast FY2023->FY2025 (+383.8/+52.7/-2.5%)."
+ },
+ "g039": {
+  "score": 0.5,
+  "numbers_ok": true,
+  "reason": "H3: comparable sales tačni za oba, ali nema promene prihoda ni poređenja, nema 53. nedelje."
+ },
+ "g040": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "H1: tačan rast za sve tri i razlozi iz 10-K (NVDA Data Center; AMD Data Center/Client; INTC all other + Foundry)."
+ },
+ "g041": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "F3: $0.927B."
+ },
+ "g042": {
+  "score": 0,
+  "numbers_ok": null,
+  "reason": "B1: nema odgovora (max_steps)."
+ },
+ "g043": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "H2: NOW 12.4%; zapošljavanje/troškovi zaposlenih (S&M +$330M) i amortizacija provizija."
+ },
+ "g044": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "H1: tačan rast za sve tri i razlozi iz 10-K (NVDA Data Center; AMD Data Center/Client; INTC all other + Foundry)."
+ },
+ "g045": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "U2: ispravlja premisu, neto +14.806."
+ },
+ "g046": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "U2: ispravlja premisu, neto +14.806."
+ },
+ "g047": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "U2: ispravlja premisu, neto +14.806."
+ },
+ "g048": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "E3: slaba tražnja / smanjenje zaliha kupaca -> pad ASP DRAM/NAND, $1.83B, $382M."
+ },
+ "g049": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "C2: ADBE > CRM > NOW, tačne marže."
+ },
+ "g050": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "E3: slaba tražnja / smanjenje zaliha kupaca -> pad ASP DRAM/NAND, $1.83B, $382M."
+ },
+ "g051": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "E2: Data Center (217%) / Hopper kao glavni pokretač."
+ },
+ "g052": {
+  "score": 1,
+  "numbers_ok": null,
+  "reason": "U1: kaže da nema podataka za FY2030, ne izmišlja."
+ },
+ "g053": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "H2: NOW 12.4%; zapošljavanje/troškovi zaposlenih (S&M +$330M) i amortizacija provizija."
+ },
+ "g054": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "C2: ADBE > CRM > NOW, tačne marže."
+ },
+ "g055": {
+  "score": 0.5,
+  "numbers_ok": true,
+  "reason": "H3: brojevi tačni (uklj. 53. nedelju), ali uvodni zaključak netačan: tvrdi da su comparable sales pale više od prihoda, a obrnuto je."
+ },
+ "g056": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "H2: NOW 12.4%; zapošljavanje/troškovi zaposlenih (S&M +$330M) i amortizacija provizija."
+ },
+ "g057": {
+  "score": 1,
+  "numbers_ok": null,
+  "reason": "U1: kaže da FY2030 nema; citira interni [t1]."
+ },
+ "g058": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "E3: slaba tražnja / smanjenje zaliha kupaca -> pad ASP DRAM/NAND, $1.83B, $382M."
+ },
+ "g059": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "F2: 47.5%."
+ },
+ "g060": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "F2: 47.5%."
+ },
+ "g061": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "F3: $0.927B."
+ },
+ "g062": {
+  "score": 1,
+  "numbers_ok": null,
+  "reason": "U1: kaže da nema podataka za FY2030, ne izmišlja."
+ },
+ "g063": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "E1: sve četiri stavke sa iznosima i citatom #p103."
+ },
+ "g064": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "C2: ADBE > CRM > NOW, tačne marže."
+ },
+ "g065": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "E2: Data Center (217%) / Hopper kao glavni pokretač."
+ },
+ "g066": {
+  "score": 0.5,
+  "numbers_ok": true,
+  "reason": "C4: HD tačan; za Lowe's nema podataka ([t2]), pa nema poređenja - pošteno navedeno."
+ },
+ "g067": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "C4: tačni brojevi; zaključak HD stabilniji."
+ },
+ "g068": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "F1: $53.101B."
+ },
+ "g069": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "E3: slaba tražnja / smanjenje zaliha kupaca -> pad ASP DRAM/NAND, $1.83B, $382M."
+ },
+ "g070": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "H1: tačan rast za sve tri i razlozi iz 10-K (NVDA Data Center; AMD Data Center/Client; INTC all other + Foundry)."
+ },
+ "g071": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "H3: LOW -2.7% / BBY -2.3% comparable sales i uticaj 53. nedelje kod BBY."
+ },
+ "g072": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "H1: tačan rast za sve tri i razlozi iz 10-K (NVDA Data Center; AMD Data Center/Client; INTC all other + Foundry)."
+ },
+ "g073": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "F1: $53.101B."
+ },
+ "g074": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "B1: tačne trojke i marže."
+ },
+ "g075": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "C4: tačni brojevi; zaključak HD stabilniji."
+ },
+ "g076": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "F3: $0.927B."
+ },
+ "g077": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "E1: sve četiri stavke sa iznosima i citatom #p103."
+ },
+ "g078": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "C3: ADI > MU > TXN, tačni rnd_pct."
+ },
+ "g079": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "F1: $53.101B."
+ },
+ "g080": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "H3: LOW -2.7% / BBY -2.3% comparable sales i uticaj 53. nedelje kod BBY."
+ },
+ "g081": {
+  "score": 0,
+  "numbers_ok": null,
+  "reason": "B1: nema odgovora (max_steps)."
+ },
+ "g082": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "C3: ADI > MU > TXN, tačni rnd_pct."
+ },
+ "g083": {
+  "score": 0.5,
+  "numbers_ok": true,
+  "reason": "H3: Lowe's tačan; za Best Buy pogrešno tvrdi da ukupni comparable sales nije naveden."
+ },
+ "g084": {
+  "score": 0.5,
+  "numbers_ok": false,
+  "reason": "C1: tačan zaključak (NVIDIA), ali bez rasta FY2023->FY2025; rast NVDA za FY2023 pogrešno 20% (tačno 0.2%)."
+ },
+ "g085": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "C2: ADBE > CRM > NOW, tačne marže."
+ },
+ "g086": {
+  "score": 1,
+  "numbers_ok": null,
+  "reason": "U1: nema podataka jer godina još nije nastupila; citat [INTC-get_financials] nije u formatu."
+ },
+ "g087": {
+  "score": 0.5,
+  "numbers_ok": false,
+  "reason": "C1: tačan zaključak (NVIDIA), ali bez rasta FY2023->FY2025; rast NVDA za FY2023 pogrešno 20% (tačno 0.2%)."
+ },
+ "g088": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "E1: sve četiri stavke sa iznosima i citatom #p103."
+ },
+ "g089": {
+  "score": 0,
+  "numbers_ok": true,
+  "reason": "C4: tačni brojevi, ali pogrešan zaključak (Lowe's stabilniji, uprkos većem rasponu)."
+ },
+ "g090": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "H2: NOW 12.4%; zapošljavanje/troškovi zaposlenih (S&M +$330M) i amortizacija provizija."
+ },
+ "g091": {
+  "score": 1,
+  "numbers_ok": false,
+  "reason": "C4: tačan zaključak HD; pogrešno navodi pad HD marže 2023->2024 kao 1.6 p.p. (tačno 1.0)."
+ },
+ "g092": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "E3: slaba tražnja / smanjenje zaliha kupaca -> pad ASP DRAM/NAND, $1.83B, $382M."
+ },
+ "g093": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "F1: $53.101B."
+ },
+ "g094": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "F1: $53.101B."
+ },
+ "g095": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "C2: ADBE > CRM > NOW, tačne marže."
+ },
+ "g096": {
+  "score": 1,
+  "numbers_ok": true,
+  "reason": "E1: sve četiri stavke sa iznosima i citatom #p103."
+ }
+}

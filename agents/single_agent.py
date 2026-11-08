@@ -96,6 +96,17 @@ def _is_error(output: str) -> bool:
     return output.startswith(("Error:", '{"error"'))
 
 
+def _history_arguments(raw_arguments: str) -> str:
+    """Argumenti poziva kakvi se vracaju u istoriji. Neki provajderi (npr. Google Vertex) odbiju CEO
+    zahtev (greska 400) ako u istoriji stoji neispravan JSON, pa ga menjamo sa {}. Model i dalje
+    dobija poruku o gresci kao rezultat alata i moze da pozove alat ponovo."""
+    try:
+        json.loads(raw_arguments or "{}")
+        return raw_arguments or "{}"
+    except json.JSONDecodeError:
+        return "{}"
+
+
 def returned_ids(output: str) -> list[str]:
     """source_id i passage_id iz rezultata alata. Samo njih model sme da citira:
     eval proverava da li citat u odgovoru zaista postoji medju njima."""
@@ -166,7 +177,8 @@ async def run_agent(question: str, llm, mcp, model: str, extra_body: dict | None
             "role": "assistant",
             "content": reply.content or "",
             "tool_calls": [{"id": c.id, "type": "function",
-                            "function": {"name": c.function.name, "arguments": c.function.arguments}}
+                            "function": {"name": c.function.name,
+                                         "arguments": _history_arguments(c.function.arguments)}}
                            for c in reply.tool_calls],
         }
         # Uz alate se razmisljanje vraca u sledecem zahtevu, da model nastavi istu misao

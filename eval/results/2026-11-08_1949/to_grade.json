@@ -1,0 +1,3500 @@
+[
+ {
+  "grade_id": "g001",
+  "question_id": "B1",
+  "type": "breadth",
+  "question_en": "Among all 18 companies covered, which three had the highest and which three the lowest net margin in fiscal year 2024?",
+  "rubric": {
+   "type": "breadth",
+   "answer": {
+    "highest": [
+     {
+      "ticker": "NVDA",
+      "net_margin_pct": 48.8
+     },
+     {
+      "ticker": "MSFT",
+      "net_margin_pct": 36.0
+     },
+     {
+      "ticker": "TXN",
+      "net_margin_pct": 30.7
+     }
+    ],
+    "lowest": [
+     {
+      "ticker": "INTC",
+      "net_margin_pct": -35.3
+     },
+     {
+      "ticker": "BBY",
+      "net_margin_pct": 2.9
+     },
+     {
+      "ticker": "MU",
+      "net_margin_pct": 3.1
+     }
+    ],
+    "all_net_margin_pct": {
+     "NVDA": 48.8,
+     "MSFT": 36.0,
+     "TXN": 30.7,
+     "AMAT": 26.4,
+     "ADBE": 25.9,
+     "LRCX": 25.7,
+     "CSCO": 19.2,
+     "ADI": 17.3,
+     "NOW": 13.0,
+     "CRM": 11.9,
+     "AVGO": 11.4,
+     "HD": 9.9,
+     "LOW": 8.9,
+     "AMD": 6.4,
+     "DG": 4.3,
+     "MU": 3.1,
+     "BBY": 2.9,
+     "INTC": -35.3
+    }
+   },
+   "grading_note": "Redosled unutar trojki nije bitan. Najbliže granici: 4. najveća AMAT 26,4 (TXN 30,7), 4. najmanja DG 4,3 (MU 3,1).",
+   "tests": "širina: 18 kompanija; jedan agent mora sve u jednom kontekstu"
+  },
+  "status": "answer",
+  "answer": "Based on the findings provided for the 18 companies, the three highest net margins in fiscal year 2024 were:\n1. NVIDIA (NVDA): 48.8% [NVDA-10K-FY2024]\n2. Microsoft (MSFT): 36.0% [MSFT-10K-FY2024]\n3. Texas Instruments (TXN): 30.7% [TXN-10K-FY2024]\n\nThe three lowest net margins in fiscal year 2024 were:\n1. Intel Corporation (INTC): -35.3% [INTC-10K-FY2024]\n2. Best Buy Co., Inc. (BBY): 2.9% [BBY-10K-FY2024]\n3. Micron Technology, Inc. (MU): 3.1% [MU-10K-FY2024]"
+ },
+ {
+  "grade_id": "g002",
+  "question_id": "C1",
+  "type": "comparative",
+  "question_en": "Compare revenue growth of NVIDIA, AMD and Intel from FY2023 to FY2025. Which grew the most?",
+  "rubric": {
+   "type": "comparative",
+   "answer": {
+    "NVDA": {
+     "revenue_2023": 26.974,
+     "revenue_2025": 130.497,
+     "growth_pct": 383.8
+    },
+    "AMD": {
+     "revenue_2023": 22.68,
+     "revenue_2025": 34.639,
+     "growth_pct": 52.7
+    },
+    "INTC": {
+     "revenue_2023": 54.228,
+     "revenue_2025": 52.853,
+     "growth_pct": -2.5
+    },
+    "ranking": [
+     "NVDA",
+     "AMD",
+     "INTC"
+    ]
+   },
+   "periods": {
+    "NVDA": "2022-01-31..2023-01-29 / 2024-01-29..2025-01-26",
+    "AMD": "2023-01-01..2023-12-30 / 2024-12-29..2025-12-27",
+    "INTC": "2023-01-01..2023-12-30 / 2024-12-29..2025-12-27"
+   }
+  },
+  "status": "answer",
+  "answer": "NVIDIA grew the most significantly in terms of revenue growth from FY2023 to FY2025.\n\n**Revenue Growth Comparison (%)**\n\n| Company | FY2023 | FY2024 | FY2025 |\n| :--- | :--- | :--- | :--- |\n| **NVIDIA (NVDA)** | 0.2% [NVDA-10K-FY2023] | 125.9% [NVDA-10K-FY2024] | 114.2% [NVDA-10K-FY2025] |\n| **AMD (AMD)** | -3.9% [AMD-10K-FY2023] | 13.7% [AMD-10K-FY2024] | 34.3% [AMD-10K-FY2025] |\n| **Intel (INTC)** | -14.0% [INTC-10K-FY2023] | -2.1% [INTC-10K-FY2024] | -0.5% [INTC-10K-FY2025] |"
+ },
+ {
+  "grade_id": "g003",
+  "question_id": "C3",
+  "type": "comparative",
+  "question_en": "Rank Texas Instruments, Analog Devices and Micron by R&D spending as a percentage of revenue in FY2024.",
+  "rubric": {
+   "type": "comparative",
+   "answer": {
+    "ADI": {
+     "rnd_pct": 15.8,
+     "rnd": 1.488,
+     "revenue": 9.427
+    },
+    "MU": {
+     "rnd_pct": 13.7,
+     "rnd": 3.43,
+     "revenue": 25.111
+    },
+    "TXN": {
+     "rnd_pct": 12.5,
+     "rnd": 1.959,
+     "revenue": 15.641
+    },
+    "ranking": [
+     "ADI",
+     "MU",
+     "TXN"
+    ]
+   },
+   "periods": {
+    "ADI": "2023-10-29..2024-11-02",
+    "MU": "2023-09-01..2024-08-29",
+    "TXN": "2024-01-01..2024-12-31"
+   }
+  },
+  "status": "answer",
+  "answer": "Based on the FY2024 R&D spending as a percentage of revenue, the ranking is as follows:\n\n1. **Analog Devices (ADI)**: 15.8% [ADI-10K-FY2024]\n2. **Micron Technology (MU)**: 13.7% [MU-10K-FY2024]\n3. **Texas Instruments (TXN)**: 12.5% [TXN-10K-FY2024]"
+ },
+ {
+  "grade_id": "g004",
+  "question_id": "C3",
+  "type": "comparative",
+  "question_en": "Rank Texas Instruments, Analog Devices and Micron by R&D spending as a percentage of revenue in FY2024.",
+  "rubric": {
+   "type": "comparative",
+   "answer": {
+    "ADI": {
+     "rnd_pct": 15.8,
+     "rnd": 1.488,
+     "revenue": 9.427
+    },
+    "MU": {
+     "rnd_pct": 13.7,
+     "rnd": 3.43,
+     "revenue": 25.111
+    },
+    "TXN": {
+     "rnd_pct": 12.5,
+     "rnd": 1.959,
+     "revenue": 15.641
+    },
+    "ranking": [
+     "ADI",
+     "MU",
+     "TXN"
+    ]
+   },
+   "periods": {
+    "ADI": "2023-10-29..2024-11-02",
+    "MU": "2023-09-01..2024-08-29",
+    "TXN": "2024-01-01..2024-12-31"
+   }
+  },
+  "status": "answer",
+  "answer": "The ranking of the companies by R&D spending as a percentage of revenue in FY2024 is:\n\n1. Analog Devices: 15.8% [ADI-10K-FY2024]\n2. Micron Technology: 13.7% [MU-10K-FY2024]\n3. Texas Instruments: 12.5% [TXN-10K-FY2024]"
+ },
+ {
+  "grade_id": "g005",
+  "question_id": "F2",
+  "type": "factual",
+  "question_en": "What was Applied Materials' gross margin in FY2024?",
+  "rubric": {
+   "type": "factual",
+   "answer": {
+    "AMAT": {
+     "gross_margin_pct": 47.5,
+     "gross_profit": 12.897,
+     "revenue": 27.176
+    }
+   },
+   "periods": {
+    "AMAT": "2023-10-30..2024-10-27"
+   }
+  },
+  "status": "answer",
+  "answer": "Applied Materials' gross margin in FY2024 was 47.5% [AMAT-10K-FY2024]."
+ },
+ {
+  "grade_id": "g006",
+  "question_id": "E2",
+  "type": "explanatory",
+  "question_en": "According to its 10-K, what drove NVIDIA's revenue growth in FY2024?",
+  "rubric": {
+   "type": "explanatory",
+   "answer": {
+    "NVDA": {
+     "revenue_2023": 26.974,
+     "revenue_2024": 60.922,
+     "growth_pct": 125.9
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "Data Center revenue $47.5B, up 217% (Data Center compute up 244%, Networking up 133%)",
+     "Strong demand from enterprise software and consumer internet applications and multiple industry verticals (automotive, financial services, healthcare)",
+     "AI platforms built on Hopper / Grace Hopper / Ada for generative AI and LLM workloads; ~40% of Data Center revenue estimated to be AI inference",
+     "Large cloud providers were more than half of Data Center revenue in Q4 FY2024",
+     "Gaming up 15% (channel inventory normalization) - minor contributor"
+    ],
+    "min_points_for_full_credit": 2,
+    "must_include": "Data Center segment as the main driver"
+   },
+   "expected_citation": {
+    "filing": "NVIDIA 10-K za period koji se završava 2024-01-28, podnet 2024-02-21 (accn 0001045810-24-000029)",
+    "section": "Item 7 MD&A -> 'Fiscal Year 2024 Summary' i opis Data Center segmenta"
+   },
+   "periods": {
+    "NVDA": "2023-01-30..2024-01-28"
+   }
+  },
+  "status": "answer",
+  "answer": "NVIDIA's revenue growth in fiscal year 2024 was primarily driven by significant increases in several key segments:\n\n*   **Data Center:** This was a major driver, with Data Center revenue growing by 217% [NVDA-10K-FY2024#p286, NVDA-10K-FY2024#p285].\n*   **Networking:** Networking revenue increased by 133% during the fiscal year [NVDA-10K-FY2024#p263].\n*   **Automotive:** Revenue in this segment grew by 21%, primarily due to growth in self-driving platforms [NVDA-10K-FY2024#p263].\n*   **Gaming:** Gaming revenue increased by 15%, reflecting growing demand and higher sell-in to partners following the normalization of channel inventory levels [NVDA-10K-FY2024#p263].\n\nOverall, NVIDIA reported a revenue growth of 125.9% for fiscal year 2024 [NVDA-10K-FY2024]."
+ },
+ {
+  "grade_id": "g007",
+  "question_id": "U2",
+  "type": "unanswerable",
+  "question_en": "Why did Home Depot report a loss in FY2025?",
+  "rubric": {
+   "type": "unanswerable",
+   "answer": {
+    "HD": {
+     "net_income_2025": 14.806
+    }
+   },
+   "expected_behavior": "Agent ispravlja pogrešnu premisu: HD nije imao gubitak, neto profit je bio 14,81 mlrd. Ne izmišlja razloge za nepostojeći gubitak.",
+   "periods": {
+    "HD": "2024-01-29..2025-02-02"
+   }
+  },
+  "status": "answer",
+  "answer": "The premise that Home Depot reported a loss in FY2025 is incorrect; the company reported a net income of $14.806 billion for the fiscal year 2025 period ending 2025-02-02 [HD-10K-FY2025]."
+ },
+ {
+  "grade_id": "g008",
+  "question_id": "E2",
+  "type": "explanatory",
+  "question_en": "According to its 10-K, what drove NVIDIA's revenue growth in FY2024?",
+  "rubric": {
+   "type": "explanatory",
+   "answer": {
+    "NVDA": {
+     "revenue_2023": 26.974,
+     "revenue_2024": 60.922,
+     "growth_pct": 125.9
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "Data Center revenue $47.5B, up 217% (Data Center compute up 244%, Networking up 133%)",
+     "Strong demand from enterprise software and consumer internet applications and multiple industry verticals (automotive, financial services, healthcare)",
+     "AI platforms built on Hopper / Grace Hopper / Ada for generative AI and LLM workloads; ~40% of Data Center revenue estimated to be AI inference",
+     "Large cloud providers were more than half of Data Center revenue in Q4 FY2024",
+     "Gaming up 15% (channel inventory normalization) - minor contributor"
+    ],
+    "min_points_for_full_credit": 2,
+    "must_include": "Data Center segment as the main driver"
+   },
+   "expected_citation": {
+    "filing": "NVIDIA 10-K za period koji se završava 2024-01-28, podnet 2024-02-21 (accn 0001045810-24-000029)",
+    "section": "Item 7 MD&A -> 'Fiscal Year 2024 Summary' i opis Data Center segmenta"
+   },
+   "periods": {
+    "NVDA": "2023-01-30..2024-01-28"
+   }
+  },
+  "status": "answer",
+  "answer": "NVIDIA's revenue growth in FY2024 was driven by the following:\n\n*   **Compute & Networking Segment**: Growth was primarily driven by higher **Data Center** revenue [NVDA-10K-FY2024#p282].\n    *   **Compute**: Grew 266% due to increased shipments of the **NVIDIA Hopper GPU computing platform**, used for generative AI applications, recommendation engines, and training and inference of Large Language Models (LLMs) [NVDA-10K-FY2024#p282].\n    *   **Networking**: Increased 133% due to higher shipments of **InfiniBand** [NVDA-10K-FY2024#p282].\n*   **Graphics Segment**: Revenue increased, led by a 15% growth in **Gaming** resulting from higher sell-in to partners after channel inventory levels normalized [NVDA-10K-FY2024#p282].\n*   **Geographic Driver**: Revenue increases in the United States were primarily due to higher demand within the **U.S.-based Compute & Networking segment** [NVDA-10K-FY2024#p452]."
+ },
+ {
+  "grade_id": "g009",
+  "question_id": "C2",
+  "type": "comparative",
+  "question_en": "Rank Adobe, Salesforce and ServiceNow by operating margin in FY2025.",
+  "rubric": {
+   "type": "comparative",
+   "answer": {
+    "ADBE": {
+     "operating_margin_pct": 36.6,
+     "operating_income": 8.706,
+     "revenue": 23.769
+    },
+    "CRM": {
+     "operating_margin_pct": 19.0,
+     "operating_income": 7.205,
+     "revenue": 37.895
+    },
+    "NOW": {
+     "operating_margin_pct": 13.7,
+     "operating_income": 1.824,
+     "revenue": 13.278
+    },
+    "ranking": [
+     "ADBE",
+     "CRM",
+     "NOW"
+    ]
+   },
+   "periods": {
+    "ADBE": "2024-11-30..2025-11-28",
+    "CRM": "2024-02-01..2025-01-31",
+    "NOW": "2025-01-01..2025-12-31"
+   }
+  },
+  "status": "answer",
+  "answer": "The ranking by operating margin in FY2025 is:\n1. Adobe: 36.6% [ADBE-10K-FY2025]\n2. Salesforce: 19.0% [CRM-10K-FY2025]\n3. ServiceNow: 13.7% [NOW-10K-FY2025]"
+ },
+ {
+  "grade_id": "g010",
+  "question_id": "C3",
+  "type": "comparative",
+  "question_en": "Rank Texas Instruments, Analog Devices and Micron by R&D spending as a percentage of revenue in FY2024.",
+  "rubric": {
+   "type": "comparative",
+   "answer": {
+    "ADI": {
+     "rnd_pct": 15.8,
+     "rnd": 1.488,
+     "revenue": 9.427
+    },
+    "MU": {
+     "rnd_pct": 13.7,
+     "rnd": 3.43,
+     "revenue": 25.111
+    },
+    "TXN": {
+     "rnd_pct": 12.5,
+     "rnd": 1.959,
+     "revenue": 15.641
+    },
+    "ranking": [
+     "ADI",
+     "MU",
+     "TXN"
+    ]
+   },
+   "periods": {
+    "ADI": "2023-10-29..2024-11-02",
+    "MU": "2023-09-01..2024-08-29",
+    "TXN": "2024-01-01..2024-12-31"
+   }
+  },
+  "status": "answer",
+  "answer": "The ranking of the companies by R&D spending as a percentage of revenue in FY2024 is as follows:\n\n1. Analog Devices: 15.8% [ADI-10K-FY2024]\n2. Micron Technology: 13.7% [MU-10K-FY2024]\n3. Texas Instruments: 12.5% [TXN-10K-FY2024]"
+ },
+ {
+  "grade_id": "g011",
+  "question_id": "B1",
+  "type": "breadth",
+  "question_en": "Among all 18 companies covered, which three had the highest and which three the lowest net margin in fiscal year 2024?",
+  "rubric": {
+   "type": "breadth",
+   "answer": {
+    "highest": [
+     {
+      "ticker": "NVDA",
+      "net_margin_pct": 48.8
+     },
+     {
+      "ticker": "MSFT",
+      "net_margin_pct": 36.0
+     },
+     {
+      "ticker": "TXN",
+      "net_margin_pct": 30.7
+     }
+    ],
+    "lowest": [
+     {
+      "ticker": "INTC",
+      "net_margin_pct": -35.3
+     },
+     {
+      "ticker": "BBY",
+      "net_margin_pct": 2.9
+     },
+     {
+      "ticker": "MU",
+      "net_margin_pct": 3.1
+     }
+    ],
+    "all_net_margin_pct": {
+     "NVDA": 48.8,
+     "MSFT": 36.0,
+     "TXN": 30.7,
+     "AMAT": 26.4,
+     "ADBE": 25.9,
+     "LRCX": 25.7,
+     "CSCO": 19.2,
+     "ADI": 17.3,
+     "NOW": 13.0,
+     "CRM": 11.9,
+     "AVGO": 11.4,
+     "HD": 9.9,
+     "LOW": 8.9,
+     "AMD": 6.4,
+     "DG": 4.3,
+     "MU": 3.1,
+     "BBY": 2.9,
+     "INTC": -35.3
+    }
+   },
+   "grading_note": "Redosled unutar trojki nije bitan. Najbliže granici: 4. najveća AMAT 26,4 (TXN 30,7), 4. najmanja DG 4,3 (MU 3,1).",
+   "tests": "širina: 18 kompanija; jedan agent mora sve u jednom kontekstu"
+  },
+  "status": "answer",
+  "answer": "Based on the findings provided for the 18 companies, the three highest net margins in fiscal year 2024 were:\n1. NVIDIA (NVDA): 48.8% [NVDA-10K-FY2024]\n2. Microsoft (MSFT): 36.0% [MSFT-10K-FY2024]\n3. Texas Instruments (TXN): 30.7% [TXN-10K-FY2024]\n\nThe three lowest net margins in fiscal year 2024 were:\n1. Intel Corporation (INTC): -35.3% [INTC-10K-FY2024]\n2. Best Buy Co., Inc. (BBY): 2.9% [BBY-10K-FY2024]\n3. Micron Technology, Inc. (MU): 3.1% [MU-10K-FY2024]"
+ },
+ {
+  "grade_id": "g012",
+  "question_id": "C4",
+  "type": "comparative",
+  "question_en": "Compare revenue and net margin of Home Depot and Lowe's for FY2023-FY2025. Which has the more stable margin?",
+  "rubric": {
+   "type": "comparative",
+   "answer": {
+    "HD": {
+     "2023": {
+      "revenue": 157.403,
+      "net_income": 17.105,
+      "net_margin_pct": 10.9
+     },
+     "2024": {
+      "revenue": 152.669,
+      "net_income": 15.143,
+      "net_margin_pct": 9.9
+     },
+     "2025": {
+      "revenue": 159.514,
+      "net_income": 14.806,
+      "net_margin_pct": 9.3
+     }
+    },
+    "LOW": {
+     "2023": {
+      "revenue": 97.059,
+      "net_income": 6.437,
+      "net_margin_pct": 6.6
+     },
+     "2024": {
+      "revenue": 86.377,
+      "net_income": 7.726,
+      "net_margin_pct": 8.9
+     },
+     "2025": {
+      "revenue": 83.674,
+      "net_income": 6.957,
+      "net_margin_pct": 8.3
+     }
+    },
+    "expected_conclusion": "HD: marža stalno pada (raspon 1,6 p.p.); LOW: marža osciluje (raspon 2,3 p.p.), prihod pada. HD je stabilniji po rasponu marže."
+   },
+   "periods": {
+    "HD": "2022-01-31..2023-01-29 / 2023-01-30..2024-01-28 / 2024-01-29..2025-02-02",
+    "LOW": "2022-01-29..2023-02-03 / 2023-02-04..2024-02-02 / 2024-02-03..2025-01-31"
+   },
+   "trap": "HD i LOW ove godine sami zovu FY2022-FY2024; agent koji preuzme njihovu konvenciju iz 10-K teksta uzeće pogrešne periode"
+  },
+  "status": "answer",
+  "answer": "Between FY2023 and FY2025, the revenue and net margin comparison for Home Depot (HD) and Lowe's (LOW) is as follows:\n\n### **Revenue Comparison (USD Billions)**\n| Fiscal Year | Home Depot (HD) | Lowe's (LOW) |\n| :--- | :--- | :--- |\n| **2023** | $157.40 [HD-10K-FY2023] | $97.06 [LOW-10K-FY2023] |\n| **2024** | $152.67 [HD-10K-FY2024] | $86.38 [LOW-10K-FY2024] |\n| **2025** | $159.51 [HD-10K-FY2025] | $83.67 [LOW-10K-FY2025] |\n\n### **Net Margin Comparison (%)**\n| Fiscal Year | Home Depot (HD) | Lowe's (LOW) |\n| :--- | :--- | :--- |\n| **2023** | 10.9% [HD-10K-FY2023] | 6.6% [LOW-10K-FY2023] |\n| **2024** | 9.9% [HD-10K-FY2024] | 8.9% [LOW-10K-FY2024] |\n| **2025** | 9.3% [HD-10K-FY2025] | 8.3% [LOW-10K-FY2025] |\n\n### **Stability Analysis**\n*   **Home Depot** saw its net margin decline steadily from 10.9% to 9.3% (a total decrease of 1.6 percentage points).\n*   **Lowe's** saw its net margin increase from 6.6% to 8.9% before settling at 8.3% (a total fluctuation of 2.3 percentage points).\n\nWhile Home Depot maintains higher absolute net margins, **Home Depot** demonstrated more stable margins over this period, as its margin trend was a consistent, gradual decline compared to the more significant fluctuation seen in Lowe's margins."
+ },
+ {
+  "grade_id": "g013",
+  "question_id": "U1",
+  "type": "unanswerable",
+  "question_en": "What was Intel's net income in FY2030?",
+  "rubric": {
+   "type": "unanswerable",
+   "answer": null,
+   "expected_behavior": "Agent kaže da podaci za FY2030 ne postoje (godina još nije završena) i ne izmišlja broj niti daje prognozu kao činjenicu."
+  },
+  "status": "answer",
+  "answer": "Data for Intel Corporation's (INTC) net income for the fiscal year 2030 is unavailable [t1]."
+ },
+ {
+  "grade_id": "g014",
+  "question_id": "E1",
+  "type": "explanatory",
+  "question_en": "Why did Intel report a large loss in FY2024, according to its 10-K?",
+  "rubric": {
+   "type": "explanatory",
+   "answer": {
+    "INTC": {
+     "net_income_2023": 1.689,
+     "net_income_2024": -18.756
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "$9.9B non-cash tax charge, substantially related to valuation allowances on US net deferred tax assets",
+     "$2.8B restructuring charges from the 2024 Restructuring Plan (~15% core workforce reduction)",
+     "$3.3B non-cash impairments and accelerated depreciation of manufacturing assets (mostly Intel 7 node)",
+     "$3.1B non-cash impairment of goodwill and certain acquired intangible assets"
+    ],
+    "min_points_for_full_credit": 2,
+    "must_include": "valuation allowance on deferred tax assets (najveća pojedinačna stavka)"
+   },
+   "expected_citation": {
+    "filing": "Intel 10-K za period koji se završava 2024-12-28, podnet 2025-01-31 (accn 0000050863-25-000009)",
+    "section": "Item 7 MD&A -> Overview -> 'A Year in Review' i 'Restructuring'; detalji u Note 7 (Restructuring and Other Charges) i Note 8 (Income Taxes)"
+   },
+   "periods": {
+    "INTC": "2023-12-31..2024-12-28"
+   }
+  },
+  "status": "answer",
+  "answer": "Intel reported a net loss of $18.756 billion for fiscal year 2024 [INTC-10K-FY2024]. According to its 10-K filing, the consolidated results of operations were materially impacted by several large non-cash charges:\n\n*   **Income Tax Charges:** $9.9 billion in non-cash charges related to the provision for income taxes, which primarily involved valuation allowances recorded against net deferred tax assets [INTC-10K-FY2024#p103].\n*   **Asset Impairments and Depreciation:** $3.3 billion in charges, mostly recorded to cost of sales, related to non-cash impairments and the acceleration of depreciation for certain manufacturing assets (primarily related to the Intel 7 process node) [INTC-10K-FY2024#p103].\n*   **Goodwill and Intangible Assets:** $3.1 billion in non-cash charges associated with the impairment of goodwill for certain reporting units and certain acquired intangible assets [INTC-10K-FY2024#p103].\n*   **Restructuring Charges:** $2.8 billion in restructuring charges resulting from the company's 2024 Restructuring Plan, which included plans for an approximate 15% decrease in its core workforce [INTC-10K-FY2024#p103]."
+ },
+ {
+  "grade_id": "g015",
+  "question_id": "U2",
+  "type": "unanswerable",
+  "question_en": "Why did Home Depot report a loss in FY2025?",
+  "rubric": {
+   "type": "unanswerable",
+   "answer": {
+    "HD": {
+     "net_income_2025": 14.806
+    }
+   },
+   "expected_behavior": "Agent ispravlja pogrešnu premisu: HD nije imao gubitak, neto profit je bio 14,81 mlrd. Ne izmišlja razloge za nepostojeći gubitak.",
+   "periods": {
+    "HD": "2024-01-29..2025-02-02"
+   }
+  },
+  "status": "answer",
+  "answer": "Home Depot did not report a loss in fiscal year 2025. For the fiscal year ending February 2, 2025, the company reported a net income of $14.806 billion [HD-10K-FY2025]."
+ },
+ {
+  "grade_id": "g016",
+  "question_id": "H2",
+  "type": "hard_multi_hop",
+  "question_en": "Which software company had the lowest operating margin in fiscal year 2024, and what does its 10-K say were the main drivers of the increase in its operating expenses?",
+  "rubric": {
+   "type": "hard_multi_hop",
+   "answer": {
+    "lowest": "NOW",
+    "operating_margin_pct": {
+     "MSFT": 44.6,
+     "ADBE": 31.3,
+     "CSCO": 22.6,
+     "CRM": 14.4,
+     "NOW": 12.4
+    },
+    "NOW": {
+     "revenue": 10.984,
+     "operating_income": 1.364,
+     "total_operating_expenses_2024": 7.333,
+     "total_operating_expenses_2023": 6.288
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "Increased headcount and personnel-related costs (incl. stock-based compensation) - the main driver in sales and marketing (+$330M) and R&D (+$350M)",
+     "Sales and marketing up $553M; also deferred commission amortization +$90M and marketing programs +$95M",
+     "R&D up $419M; also outside services +$48M and data center capacity costs +$27M",
+     "G&A up $73M"
+    ],
+    "must_include": "headcount / personnel-related costs as the main driver",
+    "min_points_for_full_credit": 2
+   },
+   "expected_citation": {
+    "filing": "ServiceNow 10-K za period koji se završava 2024-12-31, podnet 2025-01-30 (accn 0001373715-25-000010)",
+    "passages": "NOW-10K-FY2024#p271 (sales and marketing), #p272-#p273 (R&D), #p275 (G&A)"
+   },
+   "periods": {
+    "NOW": "2024-01-01..2024-12-31",
+    "CRM": "2023-02-01..2024-01-31"
+   },
+   "tests": "više koraka: tek posle brojeva se zna koju kompaniju treba pretražiti; planer pravi plan unapred, pa ovde multi-agent verovatno gubi"
+  },
+  "status": "answer",
+  "answer": "ServiceNow, Inc. (NOW) had the lowest operating margin in fiscal year 2024 at 12.4% [NOW-10K-FY2024].\n\nThe main drivers of the increase in its operating expenses (specifically within sales and marketing) were:\n* **Increased Headcount:** Sales and marketing expenses increased by $553 million, primarily due to increased headcount, which led to higher personnel-related costs (including stock-based compensation) and overhead expenses of $330 million [NOW-10K-FY2024#p271].\n* **Amortization of Deferred Commissions:** Amortization expenses increased by $90 million due to an increase in contracts with new customers, expansions, and renewal contracts [NOW-10K-FY2024#p271]."
+ },
+ {
+  "grade_id": "g017",
+  "question_id": "B1",
+  "type": "breadth",
+  "question_en": "Among all 18 companies covered, which three had the highest and which three the lowest net margin in fiscal year 2024?",
+  "rubric": {
+   "type": "breadth",
+   "answer": {
+    "highest": [
+     {
+      "ticker": "NVDA",
+      "net_margin_pct": 48.8
+     },
+     {
+      "ticker": "MSFT",
+      "net_margin_pct": 36.0
+     },
+     {
+      "ticker": "TXN",
+      "net_margin_pct": 30.7
+     }
+    ],
+    "lowest": [
+     {
+      "ticker": "INTC",
+      "net_margin_pct": -35.3
+     },
+     {
+      "ticker": "BBY",
+      "net_margin_pct": 2.9
+     },
+     {
+      "ticker": "MU",
+      "net_margin_pct": 3.1
+     }
+    ],
+    "all_net_margin_pct": {
+     "NVDA": 48.8,
+     "MSFT": 36.0,
+     "TXN": 30.7,
+     "AMAT": 26.4,
+     "ADBE": 25.9,
+     "LRCX": 25.7,
+     "CSCO": 19.2,
+     "ADI": 17.3,
+     "NOW": 13.0,
+     "CRM": 11.9,
+     "AVGO": 11.4,
+     "HD": 9.9,
+     "LOW": 8.9,
+     "AMD": 6.4,
+     "DG": 4.3,
+     "MU": 3.1,
+     "BBY": 2.9,
+     "INTC": -35.3
+    }
+   },
+   "grading_note": "Redosled unutar trojki nije bitan. Najbliže granici: 4. najveća AMAT 26,4 (TXN 30,7), 4. najmanja DG 4,3 (MU 3,1).",
+   "tests": "širina: 18 kompanija; jedan agent mora sve u jednom kontekstu"
+  },
+  "status": "NO VALID ANSWER (max_steps) - score 0",
+  "answer": null
+ },
+ {
+  "grade_id": "g018",
+  "question_id": "H1",
+  "type": "hard_multi_explanatory",
+  "question_en": "For NVIDIA, AMD and Intel: what was the revenue growth in fiscal year 2024, and what was the main reason for the change according to each company's 10-K?",
+  "rubric": {
+   "type": "hard_multi_explanatory",
+   "answer": {
+    "NVDA": {
+     "revenue_2023": 26.974,
+     "revenue_2024": 60.922,
+     "growth_pct": 125.9
+    },
+    "AMD": {
+     "revenue_2023": 22.68,
+     "revenue_2024": 25.785,
+     "growth_pct": 13.7
+    },
+    "INTC": {
+     "revenue_2023": 54.228,
+     "revenue_2024": 53.101,
+     "growth_pct": -2.1
+    }
+   },
+   "expected_explanation": {
+    "NVDA": {
+     "must_include": "Data Center as the main driver (up 217%)",
+     "key_points": [
+      "Data Center revenue up 217% (compute up 244%, networking up 133%)",
+      "Demand from enterprise software, consumer internet and industry verticals (AI infrastructure)"
+     ],
+     "citation": "NVDA-10K-FY2024#p262 (Fiscal Year 2024 Summary); accn 0001045810-24-000029"
+    },
+    "AMD": {
+     "must_include": "Data Center segment growth (Instinct GPUs / EPYC CPUs)",
+     "key_points": [
+      "Data Center net revenue $12.6B, up 94%, from AMD Instinct GPUs and EPYC CPUs",
+      "Client segment up 52% (Ryzen processors)",
+      "Partially offset by Gaming down 58% (semi-custom) and Embedded down 33% (customer inventory normalization)"
+     ],
+     "citation": "AMD-10K-FY2024#p282 (Overview); accn 0000002488-25-000012"
+    },
+    "INTC": {
+     "must_include": "decline from lower 'all other' revenue (Altera, Mobileye) and/or lower Intel Foundry external revenue, partially offset by Intel Products",
+     "key_points": [
+      "Revenue $53.1B, down $1.1B or 2%",
+      "All other revenue down 32%: Altera and Mobileye customers reducing inventories",
+      "Intel Foundry external revenue down 60% (packaging services, equipment sales)",
+      "Partially offset by Intel Products up 3% (CCG up 4% on notebook volume, DCAI up 1%)"
+     ],
+     "citation": "INTC-10K-FY2024#p98 (A Year in Review); accn 0000050863-25-000009"
+    },
+    "min_points_for_full_credit": "tačan rast i must_include za sve tri kompanije"
+   },
+   "periods": {
+    "NVDA": "2023-01-30..2024-01-28",
+    "AMD": "2023-12-31..2024-12-28",
+    "INTC": "2023-12-31..2024-12-28"
+   },
+   "tests": "brojevi + objašnjenja za više kompanija; jedan agent skuplja tekst svih u jednom dugom kontekstu"
+  },
+  "status": "answer",
+  "answer": "In fiscal year 2024, the revenue growth and primary drivers for NVIDIA, AMD, and Intel were as follows:\n\n*   **NVIDIA**: Revenue grew by **125.9%** [NVDA-10K-FY2024]. The growth was primarily driven by strong **Data Center** revenue, which increased by 217% [NVDA-10K-FY2024#p263, NVDA-10K-FY2024#p285].\n*   **AMD**: Revenue grew by **13.7%** [AMD-10K-FY2024]. This growth was driven by the performance of the **Data Center** segment (up 94%, led by AMD Instinct™ GPUs and EPYC™ CPUs) and the **Client** segment (up 52%, led by Ryzen™ processors) [AMD-10K-FY2024#p282]. These gains were partially offset by declines in the Gaming and Embedded segments.\n*   **Intel**: Revenue decreased by **2.1%** [INTC-10K-FY2024]. The decline was due to lower **\"all other revenue\"** (specifically Altera and Mobileye, as customers tempered purchases to reduce existing inventories) and lower **Intel Foundry** revenue, which was only partially offset by a 3% increase in Intel Products revenue [INTC-10K-FY2024#p157, INTC-10K-FY2024#p98]."
+ },
+ {
+  "grade_id": "g019",
+  "question_id": "F2",
+  "type": "factual",
+  "question_en": "What was Applied Materials' gross margin in FY2024?",
+  "rubric": {
+   "type": "factual",
+   "answer": {
+    "AMAT": {
+     "gross_margin_pct": 47.5,
+     "gross_profit": 12.897,
+     "revenue": 27.176
+    }
+   },
+   "periods": {
+    "AMAT": "2023-10-30..2024-10-27"
+   }
+  },
+  "status": "answer",
+  "answer": "Applied Materials (AMAT) had a gross margin of 47.5% for the fiscal year 2024 [AMAT-10K-FY2024]."
+ },
+ {
+  "grade_id": "g020",
+  "question_id": "H1",
+  "type": "hard_multi_explanatory",
+  "question_en": "For NVIDIA, AMD and Intel: what was the revenue growth in fiscal year 2024, and what was the main reason for the change according to each company's 10-K?",
+  "rubric": {
+   "type": "hard_multi_explanatory",
+   "answer": {
+    "NVDA": {
+     "revenue_2023": 26.974,
+     "revenue_2024": 60.922,
+     "growth_pct": 125.9
+    },
+    "AMD": {
+     "revenue_2023": 22.68,
+     "revenue_2024": 25.785,
+     "growth_pct": 13.7
+    },
+    "INTC": {
+     "revenue_2023": 54.228,
+     "revenue_2024": 53.101,
+     "growth_pct": -2.1
+    }
+   },
+   "expected_explanation": {
+    "NVDA": {
+     "must_include": "Data Center as the main driver (up 217%)",
+     "key_points": [
+      "Data Center revenue up 217% (compute up 244%, networking up 133%)",
+      "Demand from enterprise software, consumer internet and industry verticals (AI infrastructure)"
+     ],
+     "citation": "NVDA-10K-FY2024#p262 (Fiscal Year 2024 Summary); accn 0001045810-24-000029"
+    },
+    "AMD": {
+     "must_include": "Data Center segment growth (Instinct GPUs / EPYC CPUs)",
+     "key_points": [
+      "Data Center net revenue $12.6B, up 94%, from AMD Instinct GPUs and EPYC CPUs",
+      "Client segment up 52% (Ryzen processors)",
+      "Partially offset by Gaming down 58% (semi-custom) and Embedded down 33% (customer inventory normalization)"
+     ],
+     "citation": "AMD-10K-FY2024#p282 (Overview); accn 0000002488-25-000012"
+    },
+    "INTC": {
+     "must_include": "decline from lower 'all other' revenue (Altera, Mobileye) and/or lower Intel Foundry external revenue, partially offset by Intel Products",
+     "key_points": [
+      "Revenue $53.1B, down $1.1B or 2%",
+      "All other revenue down 32%: Altera and Mobileye customers reducing inventories",
+      "Intel Foundry external revenue down 60% (packaging services, equipment sales)",
+      "Partially offset by Intel Products up 3% (CCG up 4% on notebook volume, DCAI up 1%)"
+     ],
+     "citation": "INTC-10K-FY2024#p98 (A Year in Review); accn 0000050863-25-000009"
+    },
+    "min_points_for_full_credit": "tačan rast i must_include za sve tri kompanije"
+   },
+   "periods": {
+    "NVDA": "2023-01-30..2024-01-28",
+    "AMD": "2023-12-31..2024-12-28",
+    "INTC": "2023-12-31..2024-12-28"
+   },
+   "tests": "brojevi + objašnjenja za više kompanija; jedan agent skuplja tekst svih u jednom dugom kontekstu"
+  },
+  "status": "answer",
+  "answer": "The revenue growth and main reasons for change for each company in fiscal year 2024 are as follows:\n\n* **NVIDIA:** Revenue grew by 125.9% [NVDA-10K-FY2024]. The main drivers included a 217% increase in Data Center revenue [NVDA-10K-FY2024#p263, NVDA-10K-FY2024#p286], a 133% increase in Networking revenue [NVDA-10K-FY2024#p263], a 15% increase in Gaming revenue due to growing demand and higher sell-in following inventory normalization [NVDA-10K-FY2024#p263], and a 21% increase in Automotive revenue driven by self-driving platforms [NVDA-10K-FY2024#p263].\n* **AMD:** Revenue grew by 13.7% [AMD-10K-FY2024]. Growth was driven by the Data Center segment (up 94% due to higher sales of AMD Instinct™ GPUs and AMD EPYC™ CPUs) and the Client segment (up 52% due to higher sales of AMD Ryzen™ mobile and desktop processors) [AMD-10K-FY2024#p282, AMD-10K-FY2024#p283]. These were offset by decreases in the Gaming segment (down 58% due to lower semi-custom product revenue) and the Embedded segment (down 33% due to customers normalizing inventory levels) [AMD-10K-FY2024#p282, AMD-10K-FY2024#p283].\n* **Intel:** Revenue grew by -2.1% [INTC-10K-FY2024]. The decrease was driven by lower \"All Other\" revenue (down 32% due to lower Altera and Mobileye revenue from customers tempering purchases to reduce inventories) and lower Intel Foundry revenue (down 60% due to lower traditional packaging services and equipment sales) [INTC-10K-FY2024#p157]. These declines were partially offset by a 3% increase in Intel Products revenue, driven by higher Client Computing Group (CCG) and Data Center and AI (DCAI) revenue [INTC-10K-FY2024#p157]."
+ },
+ {
+  "grade_id": "g021",
+  "question_id": "H2",
+  "type": "hard_multi_hop",
+  "question_en": "Which software company had the lowest operating margin in fiscal year 2024, and what does its 10-K say were the main drivers of the increase in its operating expenses?",
+  "rubric": {
+   "type": "hard_multi_hop",
+   "answer": {
+    "lowest": "NOW",
+    "operating_margin_pct": {
+     "MSFT": 44.6,
+     "ADBE": 31.3,
+     "CSCO": 22.6,
+     "CRM": 14.4,
+     "NOW": 12.4
+    },
+    "NOW": {
+     "revenue": 10.984,
+     "operating_income": 1.364,
+     "total_operating_expenses_2024": 7.333,
+     "total_operating_expenses_2023": 6.288
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "Increased headcount and personnel-related costs (incl. stock-based compensation) - the main driver in sales and marketing (+$330M) and R&D (+$350M)",
+     "Sales and marketing up $553M; also deferred commission amortization +$90M and marketing programs +$95M",
+     "R&D up $419M; also outside services +$48M and data center capacity costs +$27M",
+     "G&A up $73M"
+    ],
+    "must_include": "headcount / personnel-related costs as the main driver",
+    "min_points_for_full_credit": 2
+   },
+   "expected_citation": {
+    "filing": "ServiceNow 10-K za period koji se završava 2024-12-31, podnet 2025-01-30 (accn 0001373715-25-000010)",
+    "passages": "NOW-10K-FY2024#p271 (sales and marketing), #p272-#p273 (R&D), #p275 (G&A)"
+   },
+   "periods": {
+    "NOW": "2024-01-01..2024-12-31",
+    "CRM": "2023-02-01..2024-01-31"
+   },
+   "tests": "više koraka: tek posle brojeva se zna koju kompaniju treba pretražiti; planer pravi plan unapred, pa ovde multi-agent verovatno gubi"
+  },
+  "status": "answer",
+  "answer": "Among the software companies listed, **ServiceNow, Inc. (NOW)** had the lowest operating margin in fiscal year 2024 at **12.4%** [NOW-10K-FY2024].\n\nAccording to its 10-K filing, the main drivers for the increase in operating expenses (specifically within sales and marketing) were:\n* **Increased headcount:** This led to higher personnel-related costs, including stock-based compensation and overhead expenses, which increased by $330 million [NOW-10K-FY2024#p271].\n* **Amortization of deferred commissions:** These expenses increased by $90 million due to an increase in new customer contracts, as well as expansion and renewal contracts [NOW-10K-FY2024#p271]."
+ },
+ {
+  "grade_id": "g022",
+  "question_id": "F3",
+  "type": "factual",
+  "question_en": "What was Best Buy's net income in FY2025?",
+  "rubric": {
+   "type": "factual",
+   "answer": {
+    "BBY": {
+     "net_income": 0.927
+    }
+   },
+   "periods": {
+    "BBY": "2024-02-04..2025-02-01"
+   }
+  },
+  "status": "answer",
+  "answer": "Best Buy's net income for the fiscal year 2025 (period ending 2025-02-01) was $0.927 billion [BBY-10K-FY2025]."
+ },
+ {
+  "grade_id": "g023",
+  "question_id": "E3",
+  "type": "explanatory",
+  "question_en": "Why did Micron report a loss in FY2023, according to its 10-K?",
+  "rubric": {
+   "type": "explanatory",
+   "answer": {
+    "MU": {
+     "revenue_2022": 30.758,
+     "revenue_2023": 15.54,
+     "net_income_2022": 8.687,
+     "net_income_2023": -5.833
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "Memory and storage industry deteriorated sharply: weak end-market demand, macroeconomic challenges, customers reducing inventory levels",
+     "Significant declines in average selling prices: DRAM high-40s %, NAND low-50s %; total revenue down 49%",
+     "$1.83B inventory write-downs to net realizable value",
+     "$382M facility underutilization costs from reduced wafer starts",
+     "Gross margin fell from 45% to -9%"
+    ],
+    "min_points_for_full_credit": 2,
+    "must_include": "ASP (price) declines for DRAM/NAND driven by weak demand / customer inventory reduction"
+   },
+   "expected_citation": {
+    "filing": "Micron 10-K za period koji se završava 2023-08-31, podnet 2023-10-06 (accn 0000723125-23-000054)",
+    "section": "Item 7 MD&A -> Overview -> 'Industry Conditions'; Results of Operations -> 'Total Revenue' i 'Consolidated Gross Margin'"
+   },
+   "periods": {
+    "MU": "2022-09-02..2023-08-31"
+   }
+  },
+  "status": "answer",
+  "answer": "Micron reported a net loss in FY2023 due to the following factors:\n\n*   **Market and Industry Conditions:** The memory and storage industry environment \"deteriorated sharply\" because of weak demand across many end markets, global macroeconomic challenges, and customer efforts to reduce inventory levels [MU-10K-FY2023#p221]. This led to significant reductions in average selling prices (ASPs) for DRAM and NAND products [MU-10K-FY2023#p221].\n*   **Inventory Write-downs:** Micron recognized $1.83 billion in charges to write down inventories to their estimated net realizable value (NRV) due to the challenging pricing environment [MU-10K-FY2023#p221].\n*   **Facility Underutilization:** The company incurred $382 million in facility underutilization costs [MU-10K-FY2023#p232, MU-10K-FY2023#p231].\n\nThese factors caused the consolidated gross margin percentage to decrease from 45% in 2022 to negative 9% in 2023 [MU-10K-FY2023#p231]."
+ },
+ {
+  "grade_id": "g024",
+  "question_id": "U2",
+  "type": "unanswerable",
+  "question_en": "Why did Home Depot report a loss in FY2025?",
+  "rubric": {
+   "type": "unanswerable",
+   "answer": {
+    "HD": {
+     "net_income_2025": 14.806
+    }
+   },
+   "expected_behavior": "Agent ispravlja pogrešnu premisu: HD nije imao gubitak, neto profit je bio 14,81 mlrd. Ne izmišlja razloge za nepostojeći gubitak.",
+   "periods": {
+    "HD": "2024-01-29..2025-02-02"
+   }
+  },
+  "status": "answer",
+  "answer": "Home Depot did not report a net loss for fiscal year 2025 (period ending 2025-02-02); instead, it reported a net income of $14.806 billion [HD-10K-FY2025]."
+ },
+ {
+  "grade_id": "g025",
+  "question_id": "E1",
+  "type": "explanatory",
+  "question_en": "Why did Intel report a large loss in FY2024, according to its 10-K?",
+  "rubric": {
+   "type": "explanatory",
+   "answer": {
+    "INTC": {
+     "net_income_2023": 1.689,
+     "net_income_2024": -18.756
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "$9.9B non-cash tax charge, substantially related to valuation allowances on US net deferred tax assets",
+     "$2.8B restructuring charges from the 2024 Restructuring Plan (~15% core workforce reduction)",
+     "$3.3B non-cash impairments and accelerated depreciation of manufacturing assets (mostly Intel 7 node)",
+     "$3.1B non-cash impairment of goodwill and certain acquired intangible assets"
+    ],
+    "min_points_for_full_credit": 2,
+    "must_include": "valuation allowance on deferred tax assets (najveća pojedinačna stavka)"
+   },
+   "expected_citation": {
+    "filing": "Intel 10-K za period koji se završava 2024-12-28, podnet 2025-01-31 (accn 0000050863-25-000009)",
+    "section": "Item 7 MD&A -> Overview -> 'A Year in Review' i 'Restructuring'; detalji u Note 7 (Restructuring and Other Charges) i Note 8 (Income Taxes)"
+   },
+   "periods": {
+    "INTC": "2023-12-31..2024-12-28"
+   }
+  },
+  "status": "answer",
+  "answer": "Intel reported a net loss of $18.756 billion for fiscal year 2024 [INTC-10K-FY2024]. According to its 10-K filing, the consolidated results of operations were materially impacted by several large non-cash charges:\n\n*   **Income Tax Charges:** $9.9 billion in non-cash charges related to the provision for income taxes, which substantially related to valuation allowances recorded against net deferred tax assets [INTC-10K-FY2024#p103].\n*   **Impairments and Depreciation:** $3.3 billion in charges, primarily recorded to cost of sales, related to non-cash impairments and the acceleration of depreciation for certain manufacturing assets (largely related to the Intel 7 process node) [INTC-10K-FY2024#p103].\n*   **Goodwill and Intangible Assets:** $3.1 billion in non-cash charges associated with the impairment of goodwill for certain reporting units and certain acquired intangible assets [INTC-10K-FY2024#p103].\n*   **Restructuring:** $2.8 billion in restructuring charges resulting from the company's 2024 Restructuring Plan, which included an approximate 15% decrease in its core Intel workforce [INTC-10K-FY2024#p103]."
+ },
+ {
+  "grade_id": "g026",
+  "question_id": "F1",
+  "type": "factual",
+  "question_en": "What was Intel's revenue in FY2024?",
+  "rubric": {
+   "type": "factual",
+   "answer": {
+    "INTC": {
+     "revenue": 53.101
+    }
+   },
+   "periods": {
+    "INTC": "2023-12-31..2024-12-28"
+   }
+  },
+  "status": "answer",
+  "answer": "Intel Corporation's total revenue for the fiscal year 2024 was $53.101 billion [INTC-10K-FY2024]."
+ },
+ {
+  "grade_id": "g027",
+  "question_id": "F3",
+  "type": "factual",
+  "question_en": "What was Best Buy's net income in FY2025?",
+  "rubric": {
+   "type": "factual",
+   "answer": {
+    "BBY": {
+     "net_income": 0.927
+    }
+   },
+   "periods": {
+    "BBY": "2024-02-04..2025-02-01"
+   }
+  },
+  "status": "answer",
+  "answer": "Best Buy's net income for the fiscal year 2025 (period ending 2025-02-01) was $0.927 billion [BBY-10K-FY2025]."
+ },
+ {
+  "grade_id": "g028",
+  "question_id": "C1",
+  "type": "comparative",
+  "question_en": "Compare revenue growth of NVIDIA, AMD and Intel from FY2023 to FY2025. Which grew the most?",
+  "rubric": {
+   "type": "comparative",
+   "answer": {
+    "NVDA": {
+     "revenue_2023": 26.974,
+     "revenue_2025": 130.497,
+     "growth_pct": 383.8
+    },
+    "AMD": {
+     "revenue_2023": 22.68,
+     "revenue_2025": 34.639,
+     "growth_pct": 52.7
+    },
+    "INTC": {
+     "revenue_2023": 54.228,
+     "revenue_2025": 52.853,
+     "growth_pct": -2.5
+    },
+    "ranking": [
+     "NVDA",
+     "AMD",
+     "INTC"
+    ]
+   },
+   "periods": {
+    "NVDA": "2022-01-31..2023-01-29 / 2024-01-29..2025-01-26",
+    "AMD": "2023-01-01..2023-12-30 / 2024-12-29..2025-12-27",
+    "INTC": "2023-01-01..2023-12-30 / 2024-12-29..2025-12-27"
+   }
+  },
+  "status": "answer",
+  "answer": "The revenue growth comparison for NVIDIA, AMD, and Intel from FY2023 to FY2025 is as follows:\n\n| Company | FY2023 Growth | FY2024 Growth | FY2025 Growth |\n| :--- | :--- | :--- | :--- |\n| **NVIDIA (NVDA)** | 20.0% [NVDA-10K-FY2023] | 125.9% [NVDA-10K-FY2024] | 114.2% [NVDA-10K-FY2025] |\n| **AMD (AMD)** | -3.9% [AMD-10K-FY2023] | 13.7% [AMD-10K-FY2024] | 34.3% [AMD-10K-FY2025] |\n| **Intel (INTC)** | -14.0% [INTC-10K-FY2023] | -2.1% [INTC-10K-FY2024] | -0.5% [INTC-10K-FY2025] |\n\n**Conclusion:**\n**NVIDIA** grew the most by a significant margin, with massive revenue growth of 125.9% in FY2024 and 114.2% in FY2025. In contrast, AMD showed moderate growth recovery, while Intel experienced negative revenue growth throughout this period."
+ },
+ {
+  "grade_id": "g029",
+  "question_id": "H3",
+  "type": "hard_fy_trap",
+  "question_en": "How did comparable sales change at Lowe's and Best Buy in the fiscal year that ended in early 2025, and how does that compare with the change in total revenue?",
+  "rubric": {
+   "type": "hard_fy_trap",
+   "answer": {
+    "LOW": {
+     "fiscal_year": 2025,
+     "period": "2024-02-03..2025-01-31",
+     "company_calls_it": "fiscal 2024",
+     "comparable_sales_pct": -2.7,
+     "revenue": 83.674,
+     "revenue_growth_pct": -3.1
+    },
+    "BBY": {
+     "fiscal_year": 2025,
+     "period": "2024-02-04..2025-02-01",
+     "company_calls_it": "fiscal 2025",
+     "comparable_sales_pct": -2.3,
+     "revenue": 41.528,
+     "revenue_growth_pct": -4.4
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "Lowe's: comparable sales -2.7% (transactions -3.0%, average ticket +0.3%); net sales -3.1%, decline primarily driven by comparable sales; both years had 52 weeks",
+     "Best Buy: comparable sales -2.3%, softer consumer demand; revenue -4.4% ($41.5B vs $43.5B)",
+     "Best Buy revenue fell more than comparable sales mainly because the prior year had a 53rd week (~$735M revenue); comparable sales exclude the 53rd week"
+    ],
+    "must_include": "correct comparable sales for both (-2.7% LOW, -2.3% BBY) and that Best Buy's revenue decline is larger partly due to the 53rd week in the prior year",
+    "min_points_for_full_credit": 2
+   },
+   "expected_citation": {
+    "LOW": "LOW-10K-FY2025#p158 (Executive Overview); accn 0000060667-25-000049",
+    "BBY": "BBY-10K-FY2025#p172; accn 0000764478-25-000007"
+   },
+   "trap": "Lowe's tu godinu zove 'fiscal 2024', Best Buy 'fiscal 2025'. Agent koji uzme godinu ranije dobija LOW comparable sales -4.7% i BBY -6.8% (FY2024); postoje i 10-K za godinu koja se završila početkom 2026 (FY2026), pa greška moguća u oba smera",
+   "tests": "zamka sa nazivom fiskalne godine u tekstu + objašnjenje razlike (53. nedelja)"
+  },
+  "status": "answer",
+  "answer": "For the fiscal year ending in early 2025, the changes for Lowe's and Best Buy were as follows:\n\n*   **Lowe's:** Comparable sales decreased by 2.7% [LOW-10K-FY2025#p166]. This decline in comparable sales was the primary driver for the decline in total net sales, which were $83.674 billion [LOW-10K-FY2025#p166, LOW-10K-FY2025].\n*   **Best Buy:** Comparable sales declined by 2.3% [BBY-10K-FY2025#p172]. The decline in total revenue, which was $41.5 billion, was driven by comparable sales declines in categories such as gaming, home theater, and appliances, as well as the impact of an \"extra week\" of revenue that occurred in fiscal 2024 [BBY-10K-FY2025#p172, BBY-10K-FY2025#p181]."
+ },
+ {
+  "grade_id": "g030",
+  "question_id": "F2",
+  "type": "factual",
+  "question_en": "What was Applied Materials' gross margin in FY2024?",
+  "rubric": {
+   "type": "factual",
+   "answer": {
+    "AMAT": {
+     "gross_margin_pct": 47.5,
+     "gross_profit": 12.897,
+     "revenue": 27.176
+    }
+   },
+   "periods": {
+    "AMAT": "2023-10-30..2024-10-27"
+   }
+  },
+  "status": "answer",
+  "answer": "Applied Materials' gross margin in FY2024 was 47.5% [AMAT-10K-FY2024]."
+ },
+ {
+  "grade_id": "g031",
+  "question_id": "E2",
+  "type": "explanatory",
+  "question_en": "According to its 10-K, what drove NVIDIA's revenue growth in FY2024?",
+  "rubric": {
+   "type": "explanatory",
+   "answer": {
+    "NVDA": {
+     "revenue_2023": 26.974,
+     "revenue_2024": 60.922,
+     "growth_pct": 125.9
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "Data Center revenue $47.5B, up 217% (Data Center compute up 244%, Networking up 133%)",
+     "Strong demand from enterprise software and consumer internet applications and multiple industry verticals (automotive, financial services, healthcare)",
+     "AI platforms built on Hopper / Grace Hopper / Ada for generative AI and LLM workloads; ~40% of Data Center revenue estimated to be AI inference",
+     "Large cloud providers were more than half of Data Center revenue in Q4 FY2024",
+     "Gaming up 15% (channel inventory normalization) - minor contributor"
+    ],
+    "min_points_for_full_credit": 2,
+    "must_include": "Data Center segment as the main driver"
+   },
+   "expected_citation": {
+    "filing": "NVIDIA 10-K za period koji se završava 2024-01-28, podnet 2024-02-21 (accn 0001045810-24-000029)",
+    "section": "Item 7 MD&A -> 'Fiscal Year 2024 Summary' i opis Data Center segmenta"
+   },
+   "periods": {
+    "NVDA": "2023-01-30..2024-01-28"
+   }
+  },
+  "status": "answer",
+  "answer": "NVIDIA's revenue growth in fiscal year 2024 was primarily driven by the following:\n\n*   **Compute & Networking Segment**: \n    *   **Data Center Revenue**: Driven by higher shipments of the NVIDIA Hopper GPU computing platform used for generative AI applications, recommendation engines, and training and inference of Large Language Models (LLMs) [NVDA-10K-FY2024#p282].\n    *   **Compute**: Grew 266% [NVDA-10K-FY2024#p282].\n    *   **Networking**: Increased 133% due to higher shipments of InfiniBand [NVDA-10K-FY2024#p282].\n*   **Graphics Segment**:\n    *   **Gaming**: Revenue grew 15% due to higher sell-in to partners following the normalization of channel inventory levels [NVDA-10K-FY2024#p282].\n\nAdditionally, revenue increases in the United States were primarily due to higher demand within the U.S.-based Compute & Networking segment [NVDA-10K-FY2024#p452]."
+ },
+ {
+  "grade_id": "g032",
+  "question_id": "F3",
+  "type": "factual",
+  "question_en": "What was Best Buy's net income in FY2025?",
+  "rubric": {
+   "type": "factual",
+   "answer": {
+    "BBY": {
+     "net_income": 0.927
+    }
+   },
+   "periods": {
+    "BBY": "2024-02-04..2025-02-01"
+   }
+  },
+  "status": "answer",
+  "answer": "Best Buy's net income in fiscal year 2025 was $0.927 billion [BBY-10K-FY2025]."
+ },
+ {
+  "grade_id": "g033",
+  "question_id": "E2",
+  "type": "explanatory",
+  "question_en": "According to its 10-K, what drove NVIDIA's revenue growth in FY2024?",
+  "rubric": {
+   "type": "explanatory",
+   "answer": {
+    "NVDA": {
+     "revenue_2023": 26.974,
+     "revenue_2024": 60.922,
+     "growth_pct": 125.9
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "Data Center revenue $47.5B, up 217% (Data Center compute up 244%, Networking up 133%)",
+     "Strong demand from enterprise software and consumer internet applications and multiple industry verticals (automotive, financial services, healthcare)",
+     "AI platforms built on Hopper / Grace Hopper / Ada for generative AI and LLM workloads; ~40% of Data Center revenue estimated to be AI inference",
+     "Large cloud providers were more than half of Data Center revenue in Q4 FY2024",
+     "Gaming up 15% (channel inventory normalization) - minor contributor"
+    ],
+    "min_points_for_full_credit": 2,
+    "must_include": "Data Center segment as the main driver"
+   },
+   "expected_citation": {
+    "filing": "NVIDIA 10-K za period koji se završava 2024-01-28, podnet 2024-02-21 (accn 0001045810-24-000029)",
+    "section": "Item 7 MD&A -> 'Fiscal Year 2024 Summary' i opis Data Center segmenta"
+   },
+   "periods": {
+    "NVDA": "2023-01-30..2024-01-28"
+   }
+  },
+  "status": "answer",
+  "answer": "NVIDIA's revenue growth in fiscal year 2024 was primarily driven by the following factors and segments:\n\n*   **Compute & Networking Segment**: \n    *   **Data Center Revenue**: This major driver grew 266% due to increased shipments of the NVIDIA Hopper GPU computing platform, which is used for generative AI applications, recommendation engines, and the training and inference of Large Language Models (LLMs) [NVDA-10K-FY2024#p282].\n    *   **Networking Revenue**: This grew by 133% due to higher shipments of InfiniBand [NVDA-10K-FY2024#p282].\n*   **Graphics Segment**: This segment grew by 15%, led by the Gaming market, which saw higher sell-in to partners following the normalization of channel inventory levels [NVDA-10K-FY2024#p282].\n*   **Geographic Drivers**: Revenue increases in the United States were primarily attributed to higher demand within the Compute & Networking segment [NVDA-10K-FY2024#p452]."
+ },
+ {
+  "grade_id": "g034",
+  "question_id": "U1",
+  "type": "unanswerable",
+  "question_en": "What was Intel's net income in FY2030?",
+  "rubric": {
+   "type": "unanswerable",
+   "answer": null,
+   "expected_behavior": "Agent kaže da podaci za FY2030 ne postoje (godina još nije završena) i ne izmišlja broj niti daje prognozu kao činjenicu."
+  },
+  "status": "answer",
+  "answer": "I do not have any data for fiscal year 2030. My available financial data is limited to historical filings."
+ },
+ {
+  "grade_id": "g035",
+  "question_id": "C1",
+  "type": "comparative",
+  "question_en": "Compare revenue growth of NVIDIA, AMD and Intel from FY2023 to FY2025. Which grew the most?",
+  "rubric": {
+   "type": "comparative",
+   "answer": {
+    "NVDA": {
+     "revenue_2023": 26.974,
+     "revenue_2025": 130.497,
+     "growth_pct": 383.8
+    },
+    "AMD": {
+     "revenue_2023": 22.68,
+     "revenue_2025": 34.639,
+     "growth_pct": 52.7
+    },
+    "INTC": {
+     "revenue_2023": 54.228,
+     "revenue_2025": 52.853,
+     "growth_pct": -2.5
+    },
+    "ranking": [
+     "NVDA",
+     "AMD",
+     "INTC"
+    ]
+   },
+   "periods": {
+    "NVDA": "2022-01-31..2023-01-29 / 2024-01-29..2025-01-26",
+    "AMD": "2023-01-01..2023-12-30 / 2024-12-29..2025-12-27",
+    "INTC": "2023-01-01..2023-12-30 / 2024-12-29..2025-12-27"
+   }
+  },
+  "status": "answer",
+  "answer": "Comparing the revenue growth rates from FY2023 to FY2025:\n\n*   **NVIDIA (NVDA):** Experienced high growth with a rate of 0.2% in FY2023 [NVDA-10K-FY2023], 125.9% in FY2024 [NVDA-10K-FY2024], and 114.2% in FY2025 [NVDA-10K-FY2025].\n*   **AMD (AMD):** Had a revenue growth rate of -3.9% in FY2023 [AMD-10K-FY2023], 13.7% in FY2024 [AMD-10K-FY2024], and 34.3% in FY2025 [AMD-10K-FY2025].\n*   **Intel (INTC):** Saw declining growth rates of -14.0% in FY2023 [INTC-10K-FY2023], -2.1% in FY2024 [INTC-10K-FY2024], and -0.5% in FY2025 [INTC-10K-FY2025].\n\nNVIDIA grew the most."
+ },
+ {
+  "grade_id": "g036",
+  "question_id": "F2",
+  "type": "factual",
+  "question_en": "What was Applied Materials' gross margin in FY2024?",
+  "rubric": {
+   "type": "factual",
+   "answer": {
+    "AMAT": {
+     "gross_margin_pct": 47.5,
+     "gross_profit": 12.897,
+     "revenue": 27.176
+    }
+   },
+   "periods": {
+    "AMAT": "2023-10-30..2024-10-27"
+   }
+  },
+  "status": "answer",
+  "answer": "Applied Materials' gross margin for the fiscal year 2024 was 47.5% [AMAT-10K-FY2024]."
+ },
+ {
+  "grade_id": "g037",
+  "question_id": "C3",
+  "type": "comparative",
+  "question_en": "Rank Texas Instruments, Analog Devices and Micron by R&D spending as a percentage of revenue in FY2024.",
+  "rubric": {
+   "type": "comparative",
+   "answer": {
+    "ADI": {
+     "rnd_pct": 15.8,
+     "rnd": 1.488,
+     "revenue": 9.427
+    },
+    "MU": {
+     "rnd_pct": 13.7,
+     "rnd": 3.43,
+     "revenue": 25.111
+    },
+    "TXN": {
+     "rnd_pct": 12.5,
+     "rnd": 1.959,
+     "revenue": 15.641
+    },
+    "ranking": [
+     "ADI",
+     "MU",
+     "TXN"
+    ]
+   },
+   "periods": {
+    "ADI": "2023-10-29..2024-11-02",
+    "MU": "2023-09-01..2024-08-29",
+    "TXN": "2024-01-01..2024-12-31"
+   }
+  },
+  "status": "answer",
+  "answer": "Based on their FY2024 R&D spending as a percentage of revenue, the ranking is as follows:\n\n1. **Analog Devices (ADI)**: 15.8% [ADI-10K-FY2024]\n2. **Micron Technology (MU)**: 13.7% [MU-10K-FY2024]\n3. **Texas Instruments (TXN)**: 12.5% [TXN-10K-FY2024]"
+ },
+ {
+  "grade_id": "g038",
+  "question_id": "C1",
+  "type": "comparative",
+  "question_en": "Compare revenue growth of NVIDIA, AMD and Intel from FY2023 to FY2025. Which grew the most?",
+  "rubric": {
+   "type": "comparative",
+   "answer": {
+    "NVDA": {
+     "revenue_2023": 26.974,
+     "revenue_2025": 130.497,
+     "growth_pct": 383.8
+    },
+    "AMD": {
+     "revenue_2023": 22.68,
+     "revenue_2025": 34.639,
+     "growth_pct": 52.7
+    },
+    "INTC": {
+     "revenue_2023": 54.228,
+     "revenue_2025": 52.853,
+     "growth_pct": -2.5
+    },
+    "ranking": [
+     "NVDA",
+     "AMD",
+     "INTC"
+    ]
+   },
+   "periods": {
+    "NVDA": "2022-01-31..2023-01-29 / 2024-01-29..2025-01-26",
+    "AMD": "2023-01-01..2023-12-30 / 2024-12-29..2025-12-27",
+    "INTC": "2023-01-01..2023-12-30 / 2024-12-29..2025-12-27"
+   }
+  },
+  "status": "answer",
+  "answer": "NVIDIA grew the most from FY2023 to FY2025. The revenue growth rates for each company are as follows:\n\n*   **NVIDIA (NVDA):** Growth rates were 0.2% in FY2023 [NVDA-10K-FY2023], 125.9% in FY2024 [NVDA-10K-FY2024], and 114.2% in FY2025 [NVDA-10K-FY2025].\n*   **AMD (AMD):** Growth rates were -3.9% in FY2023 [AMD-10K-FY2023], 13.7% in FY2024 [AMD-10K-FY2024], and 34.3% in FY2025 [AMD-10K-FY2025].\n*   **Intel (INTC):** Growth rates were -14.0% in FY2023 [INTC-10K-FY2023], -2.1% in FY2024 [INTC-10K-FY2024], and -0.5% in FY2025 [INTC-10K-FY2025]."
+ },
+ {
+  "grade_id": "g039",
+  "question_id": "H3",
+  "type": "hard_fy_trap",
+  "question_en": "How did comparable sales change at Lowe's and Best Buy in the fiscal year that ended in early 2025, and how does that compare with the change in total revenue?",
+  "rubric": {
+   "type": "hard_fy_trap",
+   "answer": {
+    "LOW": {
+     "fiscal_year": 2025,
+     "period": "2024-02-03..2025-01-31",
+     "company_calls_it": "fiscal 2024",
+     "comparable_sales_pct": -2.7,
+     "revenue": 83.674,
+     "revenue_growth_pct": -3.1
+    },
+    "BBY": {
+     "fiscal_year": 2025,
+     "period": "2024-02-04..2025-02-01",
+     "company_calls_it": "fiscal 2025",
+     "comparable_sales_pct": -2.3,
+     "revenue": 41.528,
+     "revenue_growth_pct": -4.4
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "Lowe's: comparable sales -2.7% (transactions -3.0%, average ticket +0.3%); net sales -3.1%, decline primarily driven by comparable sales; both years had 52 weeks",
+     "Best Buy: comparable sales -2.3%, softer consumer demand; revenue -4.4% ($41.5B vs $43.5B)",
+     "Best Buy revenue fell more than comparable sales mainly because the prior year had a 53rd week (~$735M revenue); comparable sales exclude the 53rd week"
+    ],
+    "must_include": "correct comparable sales for both (-2.7% LOW, -2.3% BBY) and that Best Buy's revenue decline is larger partly due to the 53rd week in the prior year",
+    "min_points_for_full_credit": 2
+   },
+   "expected_citation": {
+    "LOW": "LOW-10K-FY2025#p158 (Executive Overview); accn 0000060667-25-000049",
+    "BBY": "BBY-10K-FY2025#p172; accn 0000764478-25-000007"
+   },
+   "trap": "Lowe's tu godinu zove 'fiscal 2024', Best Buy 'fiscal 2025'. Agent koji uzme godinu ranije dobija LOW comparable sales -4.7% i BBY -6.8% (FY2024); postoje i 10-K za godinu koja se završila početkom 2026 (FY2026), pa greška moguća u oba smera",
+   "tests": "zamka sa nazivom fiskalne godine u tekstu + objašnjenje razlike (53. nedelja)"
+  },
+  "status": "answer",
+  "answer": "For the fiscal year ending in early 2025, the changes were as follows:\n\n*   **Lowe's (LOW):** Comparable sales decreased by 2.7% [LOW-10K-FY2025#p166], while total revenue was $83.674 billion [LOW-10K-FY2025].\n*   **Best Buy (BBY):** Comparable sales declined 2.3% [BBY-10K-FY2025#p172], while total revenue was $41.528 billion [BBY-10K-FY2025]."
+ },
+ {
+  "grade_id": "g040",
+  "question_id": "H1",
+  "type": "hard_multi_explanatory",
+  "question_en": "For NVIDIA, AMD and Intel: what was the revenue growth in fiscal year 2024, and what was the main reason for the change according to each company's 10-K?",
+  "rubric": {
+   "type": "hard_multi_explanatory",
+   "answer": {
+    "NVDA": {
+     "revenue_2023": 26.974,
+     "revenue_2024": 60.922,
+     "growth_pct": 125.9
+    },
+    "AMD": {
+     "revenue_2023": 22.68,
+     "revenue_2024": 25.785,
+     "growth_pct": 13.7
+    },
+    "INTC": {
+     "revenue_2023": 54.228,
+     "revenue_2024": 53.101,
+     "growth_pct": -2.1
+    }
+   },
+   "expected_explanation": {
+    "NVDA": {
+     "must_include": "Data Center as the main driver (up 217%)",
+     "key_points": [
+      "Data Center revenue up 217% (compute up 244%, networking up 133%)",
+      "Demand from enterprise software, consumer internet and industry verticals (AI infrastructure)"
+     ],
+     "citation": "NVDA-10K-FY2024#p262 (Fiscal Year 2024 Summary); accn 0001045810-24-000029"
+    },
+    "AMD": {
+     "must_include": "Data Center segment growth (Instinct GPUs / EPYC CPUs)",
+     "key_points": [
+      "Data Center net revenue $12.6B, up 94%, from AMD Instinct GPUs and EPYC CPUs",
+      "Client segment up 52% (Ryzen processors)",
+      "Partially offset by Gaming down 58% (semi-custom) and Embedded down 33% (customer inventory normalization)"
+     ],
+     "citation": "AMD-10K-FY2024#p282 (Overview); accn 0000002488-25-000012"
+    },
+    "INTC": {
+     "must_include": "decline from lower 'all other' revenue (Altera, Mobileye) and/or lower Intel Foundry external revenue, partially offset by Intel Products",
+     "key_points": [
+      "Revenue $53.1B, down $1.1B or 2%",
+      "All other revenue down 32%: Altera and Mobileye customers reducing inventories",
+      "Intel Foundry external revenue down 60% (packaging services, equipment sales)",
+      "Partially offset by Intel Products up 3% (CCG up 4% on notebook volume, DCAI up 1%)"
+     ],
+     "citation": "INTC-10K-FY2024#p98 (A Year in Review); accn 0000050863-25-000009"
+    },
+    "min_points_for_full_credit": "tačan rast i must_include za sve tri kompanije"
+   },
+   "periods": {
+    "NVDA": "2023-01-30..2024-01-28",
+    "AMD": "2023-12-31..2024-12-28",
+    "INTC": "2023-12-31..2024-12-28"
+   },
+   "tests": "brojevi + objašnjenja za više kompanija; jedan agent skuplja tekst svih u jednom dugom kontekstu"
+  },
+  "status": "answer",
+  "answer": "For fiscal year 2024, the revenue growth and primary drivers for NVIDIA, AMD, and Intel were as follows:\n\n*   **NVIDIA**: Revenue grew by **125.9%** [NVDA-10K-FY2024]. The growth was primarily driven by strong **Data Center** revenue, which increased by 217% [NVDA-10K-FY2024#p263, p285, p286].\n*   **AMD**: Revenue grew by **13.7%** [AMD-10K-FY2024]. This growth was driven by the performance of the **Data Center** segment (up 94%, led by AMD Instinct™ GPUs and EPYC™ CPUs) and the **Client** segment (up 52%, led by Ryzen™ processors) [AMD-10K-FY2024#p282].\n*   **Intel**: Revenue decreased by **2.1%** [INTC-10K-FY2024]. The decline was due to lower **\"all other revenue\"** (specifically lower Altera and Mobileye revenue as customers reduced inventories) and lower **Intel Foundry** revenue, which was only partially offset by a 3% increase in Intel Products revenue [INTC-10K-FY2024#p157, p98]."
+ },
+ {
+  "grade_id": "g041",
+  "question_id": "F3",
+  "type": "factual",
+  "question_en": "What was Best Buy's net income in FY2025?",
+  "rubric": {
+   "type": "factual",
+   "answer": {
+    "BBY": {
+     "net_income": 0.927
+    }
+   },
+   "periods": {
+    "BBY": "2024-02-04..2025-02-01"
+   }
+  },
+  "status": "answer",
+  "answer": "Best Buy's net income for the fiscal year 2025 (period ending 2025-02-01) was $0.927 billion [BBY-10K-FY2025]."
+ },
+ {
+  "grade_id": "g042",
+  "question_id": "B1",
+  "type": "breadth",
+  "question_en": "Among all 18 companies covered, which three had the highest and which three the lowest net margin in fiscal year 2024?",
+  "rubric": {
+   "type": "breadth",
+   "answer": {
+    "highest": [
+     {
+      "ticker": "NVDA",
+      "net_margin_pct": 48.8
+     },
+     {
+      "ticker": "MSFT",
+      "net_margin_pct": 36.0
+     },
+     {
+      "ticker": "TXN",
+      "net_margin_pct": 30.7
+     }
+    ],
+    "lowest": [
+     {
+      "ticker": "INTC",
+      "net_margin_pct": -35.3
+     },
+     {
+      "ticker": "BBY",
+      "net_margin_pct": 2.9
+     },
+     {
+      "ticker": "MU",
+      "net_margin_pct": 3.1
+     }
+    ],
+    "all_net_margin_pct": {
+     "NVDA": 48.8,
+     "MSFT": 36.0,
+     "TXN": 30.7,
+     "AMAT": 26.4,
+     "ADBE": 25.9,
+     "LRCX": 25.7,
+     "CSCO": 19.2,
+     "ADI": 17.3,
+     "NOW": 13.0,
+     "CRM": 11.9,
+     "AVGO": 11.4,
+     "HD": 9.9,
+     "LOW": 8.9,
+     "AMD": 6.4,
+     "DG": 4.3,
+     "MU": 3.1,
+     "BBY": 2.9,
+     "INTC": -35.3
+    }
+   },
+   "grading_note": "Redosled unutar trojki nije bitan. Najbliže granici: 4. najveća AMAT 26,4 (TXN 30,7), 4. najmanja DG 4,3 (MU 3,1).",
+   "tests": "širina: 18 kompanija; jedan agent mora sve u jednom kontekstu"
+  },
+  "status": "NO VALID ANSWER (max_steps) - score 0",
+  "answer": null
+ },
+ {
+  "grade_id": "g043",
+  "question_id": "H2",
+  "type": "hard_multi_hop",
+  "question_en": "Which software company had the lowest operating margin in fiscal year 2024, and what does its 10-K say were the main drivers of the increase in its operating expenses?",
+  "rubric": {
+   "type": "hard_multi_hop",
+   "answer": {
+    "lowest": "NOW",
+    "operating_margin_pct": {
+     "MSFT": 44.6,
+     "ADBE": 31.3,
+     "CSCO": 22.6,
+     "CRM": 14.4,
+     "NOW": 12.4
+    },
+    "NOW": {
+     "revenue": 10.984,
+     "operating_income": 1.364,
+     "total_operating_expenses_2024": 7.333,
+     "total_operating_expenses_2023": 6.288
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "Increased headcount and personnel-related costs (incl. stock-based compensation) - the main driver in sales and marketing (+$330M) and R&D (+$350M)",
+     "Sales and marketing up $553M; also deferred commission amortization +$90M and marketing programs +$95M",
+     "R&D up $419M; also outside services +$48M and data center capacity costs +$27M",
+     "G&A up $73M"
+    ],
+    "must_include": "headcount / personnel-related costs as the main driver",
+    "min_points_for_full_credit": 2
+   },
+   "expected_citation": {
+    "filing": "ServiceNow 10-K za period koji se završava 2024-12-31, podnet 2025-01-30 (accn 0001373715-25-000010)",
+    "passages": "NOW-10K-FY2024#p271 (sales and marketing), #p272-#p273 (R&D), #p275 (G&A)"
+   },
+   "periods": {
+    "NOW": "2024-01-01..2024-12-31",
+    "CRM": "2023-02-01..2024-01-31"
+   },
+   "tests": "više koraka: tek posle brojeva se zna koju kompaniju treba pretražiti; planer pravi plan unapred, pa ovde multi-agent verovatno gubi"
+  },
+  "status": "answer",
+  "answer": "Among the software companies listed, **ServiceNow, Inc. (NOW)** had the lowest operating margin in fiscal year 2024 at **12.4%** [NOW-10K-FY2024].\n\nAccording to its 10-K filing, the main drivers for the increase in operating expenses (specifically within sales and marketing) were:\n* **Increased headcount:** This led to higher personnel-related costs, including stock-based compensation and overhead expenses, which increased by $330 million [NOW-10K-FY2024#p271].\n* **Amortization of deferred commissions:** These expenses increased by $90 million due to an increase in contracts with new customers, as well as expansion and renewal contracts [NOW-10K-FY2024#p271]."
+ },
+ {
+  "grade_id": "g044",
+  "question_id": "H1",
+  "type": "hard_multi_explanatory",
+  "question_en": "For NVIDIA, AMD and Intel: what was the revenue growth in fiscal year 2024, and what was the main reason for the change according to each company's 10-K?",
+  "rubric": {
+   "type": "hard_multi_explanatory",
+   "answer": {
+    "NVDA": {
+     "revenue_2023": 26.974,
+     "revenue_2024": 60.922,
+     "growth_pct": 125.9
+    },
+    "AMD": {
+     "revenue_2023": 22.68,
+     "revenue_2024": 25.785,
+     "growth_pct": 13.7
+    },
+    "INTC": {
+     "revenue_2023": 54.228,
+     "revenue_2024": 53.101,
+     "growth_pct": -2.1
+    }
+   },
+   "expected_explanation": {
+    "NVDA": {
+     "must_include": "Data Center as the main driver (up 217%)",
+     "key_points": [
+      "Data Center revenue up 217% (compute up 244%, networking up 133%)",
+      "Demand from enterprise software, consumer internet and industry verticals (AI infrastructure)"
+     ],
+     "citation": "NVDA-10K-FY2024#p262 (Fiscal Year 2024 Summary); accn 0001045810-24-000029"
+    },
+    "AMD": {
+     "must_include": "Data Center segment growth (Instinct GPUs / EPYC CPUs)",
+     "key_points": [
+      "Data Center net revenue $12.6B, up 94%, from AMD Instinct GPUs and EPYC CPUs",
+      "Client segment up 52% (Ryzen processors)",
+      "Partially offset by Gaming down 58% (semi-custom) and Embedded down 33% (customer inventory normalization)"
+     ],
+     "citation": "AMD-10K-FY2024#p282 (Overview); accn 0000002488-25-000012"
+    },
+    "INTC": {
+     "must_include": "decline from lower 'all other' revenue (Altera, Mobileye) and/or lower Intel Foundry external revenue, partially offset by Intel Products",
+     "key_points": [
+      "Revenue $53.1B, down $1.1B or 2%",
+      "All other revenue down 32%: Altera and Mobileye customers reducing inventories",
+      "Intel Foundry external revenue down 60% (packaging services, equipment sales)",
+      "Partially offset by Intel Products up 3% (CCG up 4% on notebook volume, DCAI up 1%)"
+     ],
+     "citation": "INTC-10K-FY2024#p98 (A Year in Review); accn 0000050863-25-000009"
+    },
+    "min_points_for_full_credit": "tačan rast i must_include za sve tri kompanije"
+   },
+   "periods": {
+    "NVDA": "2023-01-30..2024-01-28",
+    "AMD": "2023-12-31..2024-12-28",
+    "INTC": "2023-12-31..2024-12-28"
+   },
+   "tests": "brojevi + objašnjenja za više kompanija; jedan agent skuplja tekst svih u jednom dugom kontekstu"
+  },
+  "status": "answer",
+  "answer": "The revenue growth and main reasons for change for each company in fiscal year 2024 are as follows:\n\n* **NVIDIA:** Revenue grew by 125.9% [NVDA-10K-FY2024]. The increase was primarily driven by strong Data Center revenue growth, which grew 217% during the fiscal year [NVDA-10K-FY2024#p286, NVDA-10K-FY2024#p285].\n* **AMD:** Revenue grew by 13.7% [AMD-10K-FY2024]. The main drivers were a 94% increase in the Data Center segment (driven by higher sales of AMD Instinct™ GPUs and AMD EPYC™ CPUs due to strong demand for AI accelerator products from large hyperscale cloud customers) and a 52% increase in the Client segment (driven by higher sales of AMD Ryzen™ mobile and desktop processors) [AMD-10K-FY2024#p282, AMD-10K-FY2024#p283]. These were partially offset by decreases in the Gaming and Embedded segments [AMD-10K-FY2024#p282, AMD-10K-FY2024#p283].\n* **Intel:** Revenue grew by -2.1% [INTC-10K-FY2024]. The decrease was primarily due to lower \"All Other\" revenue (decreased 32% due to lower Altera and Mobileye revenue as customers tempered purchases to reduce inventories) and lower Intel Foundry revenue (decreased 60% due to lower traditional packaging services and lower equipment sales) [INTC-10K-FY2024#p157]. These declines were partially offset by a 3% increase in Intel Products revenue [INTC-10K-FY2024#p157]."
+ },
+ {
+  "grade_id": "g045",
+  "question_id": "U2",
+  "type": "unanswerable",
+  "question_en": "Why did Home Depot report a loss in FY2025?",
+  "rubric": {
+   "type": "unanswerable",
+   "answer": {
+    "HD": {
+     "net_income_2025": 14.806
+    }
+   },
+   "expected_behavior": "Agent ispravlja pogrešnu premisu: HD nije imao gubitak, neto profit je bio 14,81 mlrd. Ne izmišlja razloge za nepostojeći gubitak.",
+   "periods": {
+    "HD": "2024-01-29..2025-02-02"
+   }
+  },
+  "status": "answer",
+  "answer": "Home Depot did not report a loss in fiscal year 2025. For the fiscal year ending February 2, 2025, the company reported a net income of $14.806 billion [HD-10K-FY2025]."
+ },
+ {
+  "grade_id": "g046",
+  "question_id": "U2",
+  "type": "unanswerable",
+  "question_en": "Why did Home Depot report a loss in FY2025?",
+  "rubric": {
+   "type": "unanswerable",
+   "answer": {
+    "HD": {
+     "net_income_2025": 14.806
+    }
+   },
+   "expected_behavior": "Agent ispravlja pogrešnu premisu: HD nije imao gubitak, neto profit je bio 14,81 mlrd. Ne izmišlja razloge za nepostojeći gubitak.",
+   "periods": {
+    "HD": "2024-01-29..2025-02-02"
+   }
+  },
+  "status": "answer",
+  "answer": "Home Depot did not report a loss in fiscal year 2025. For the fiscal year ending February 2, 2025, the company reported a net income of $14.806 billion [HD-10K-FY2025]."
+ },
+ {
+  "grade_id": "g047",
+  "question_id": "U2",
+  "type": "unanswerable",
+  "question_en": "Why did Home Depot report a loss in FY2025?",
+  "rubric": {
+   "type": "unanswerable",
+   "answer": {
+    "HD": {
+     "net_income_2025": 14.806
+    }
+   },
+   "expected_behavior": "Agent ispravlja pogrešnu premisu: HD nije imao gubitak, neto profit je bio 14,81 mlrd. Ne izmišlja razloge za nepostojeći gubitak.",
+   "periods": {
+    "HD": "2024-01-29..2025-02-02"
+   }
+  },
+  "status": "answer",
+  "answer": "The premise that Home Depot reported a loss in FY2025 is incorrect; for the fiscal year 2025 (period ending 2025-02-02), the company reported a net income of $14.806 billion [HD-10K-FY2025]."
+ },
+ {
+  "grade_id": "g048",
+  "question_id": "E3",
+  "type": "explanatory",
+  "question_en": "Why did Micron report a loss in FY2023, according to its 10-K?",
+  "rubric": {
+   "type": "explanatory",
+   "answer": {
+    "MU": {
+     "revenue_2022": 30.758,
+     "revenue_2023": 15.54,
+     "net_income_2022": 8.687,
+     "net_income_2023": -5.833
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "Memory and storage industry deteriorated sharply: weak end-market demand, macroeconomic challenges, customers reducing inventory levels",
+     "Significant declines in average selling prices: DRAM high-40s %, NAND low-50s %; total revenue down 49%",
+     "$1.83B inventory write-downs to net realizable value",
+     "$382M facility underutilization costs from reduced wafer starts",
+     "Gross margin fell from 45% to -9%"
+    ],
+    "min_points_for_full_credit": 2,
+    "must_include": "ASP (price) declines for DRAM/NAND driven by weak demand / customer inventory reduction"
+   },
+   "expected_citation": {
+    "filing": "Micron 10-K za period koji se završava 2023-08-31, podnet 2023-10-06 (accn 0000723125-23-000054)",
+    "section": "Item 7 MD&A -> Overview -> 'Industry Conditions'; Results of Operations -> 'Total Revenue' i 'Consolidated Gross Margin'"
+   },
+   "periods": {
+    "MU": "2022-09-02..2023-08-31"
+   }
+  },
+  "status": "answer",
+  "answer": "Micron reported a net loss of $5.833 billion for fiscal year 2023 [MU-10K-FY2023]. According to its 10-K, this loss was primarily driven by the following factors:\n\n*   **Deteriorating Industry Conditions:** The memory and storage industry environment experienced a sharp deterioration throughout 2023 due to weak demand in many end markets, global and macroeconomic challenges, and customer actions to reduce inventory levels [MU-10K-FY2023#p221].\n*   **Declining Average Selling Prices (ASPs):** These industry conditions led to significant reductions in average selling prices for both DRAM and NAND products [MU-10K-FY2023#p221].\n*   **Inventory Write-downs:** Due to the challenging pricing environment, Micron recognized $1.83 billion in charges to write down inventories to their estimated net realizable value (NRV) in 2023 [MU-10K-FY2023#p221].\n*   **Facility Underutilization:** The company also incurred $382 million in facility underutilization costs during fiscal 2023 [MU-10K-FY2023#p231].\n\nThese factors combined to cause a significant decrease in consolidated gross margin, which fell to negative 9% in 2023 from 45% in 2022 [MU-10K-FY2023#p231]."
+ },
+ {
+  "grade_id": "g049",
+  "question_id": "C2",
+  "type": "comparative",
+  "question_en": "Rank Adobe, Salesforce and ServiceNow by operating margin in FY2025.",
+  "rubric": {
+   "type": "comparative",
+   "answer": {
+    "ADBE": {
+     "operating_margin_pct": 36.6,
+     "operating_income": 8.706,
+     "revenue": 23.769
+    },
+    "CRM": {
+     "operating_margin_pct": 19.0,
+     "operating_income": 7.205,
+     "revenue": 37.895
+    },
+    "NOW": {
+     "operating_margin_pct": 13.7,
+     "operating_income": 1.824,
+     "revenue": 13.278
+    },
+    "ranking": [
+     "ADBE",
+     "CRM",
+     "NOW"
+    ]
+   },
+   "periods": {
+    "ADBE": "2024-11-30..2025-11-28",
+    "CRM": "2024-02-01..2025-01-31",
+    "NOW": "2025-01-01..2025-12-31"
+   }
+  },
+  "status": "answer",
+  "answer": "The ranking by operating margin in FY2025 is:\n1. Adobe: 36.6% [ADBE-10K-FY2025]\n2. Salesforce: 19.0% [CRM-10K-FY2025]\n3. ServiceNow: 13.7% [NOW-10K-FY2025]"
+ },
+ {
+  "grade_id": "g050",
+  "question_id": "E3",
+  "type": "explanatory",
+  "question_en": "Why did Micron report a loss in FY2023, according to its 10-K?",
+  "rubric": {
+   "type": "explanatory",
+   "answer": {
+    "MU": {
+     "revenue_2022": 30.758,
+     "revenue_2023": 15.54,
+     "net_income_2022": 8.687,
+     "net_income_2023": -5.833
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "Memory and storage industry deteriorated sharply: weak end-market demand, macroeconomic challenges, customers reducing inventory levels",
+     "Significant declines in average selling prices: DRAM high-40s %, NAND low-50s %; total revenue down 49%",
+     "$1.83B inventory write-downs to net realizable value",
+     "$382M facility underutilization costs from reduced wafer starts",
+     "Gross margin fell from 45% to -9%"
+    ],
+    "min_points_for_full_credit": 2,
+    "must_include": "ASP (price) declines for DRAM/NAND driven by weak demand / customer inventory reduction"
+   },
+   "expected_citation": {
+    "filing": "Micron 10-K za period koji se završava 2023-08-31, podnet 2023-10-06 (accn 0000723125-23-000054)",
+    "section": "Item 7 MD&A -> Overview -> 'Industry Conditions'; Results of Operations -> 'Total Revenue' i 'Consolidated Gross Margin'"
+   },
+   "periods": {
+    "MU": "2022-09-02..2023-08-31"
+   }
+  },
+  "status": "answer",
+  "answer": "Micron reported a net loss in FY2023 due to the following factors:\n\n*   **Market Conditions:** The memory and storage industry environment \"deteriorated sharply\" because of weak demand in many end markets, global macroeconomic challenges, and customer efforts to reduce inventory levels [MU-10K-FY2023#p221]. This led to significant reductions in average selling prices (ASPs) for DRAM and NAND products [MU-10K-FY2023#p221].\n*   **Inventory Write-downs:** Micron recognized $1.83 billion in charges to write down inventories to their estimated net realizable value (NRV) due to the challenging pricing environment [MU-10K-FY2023#p221].\n*   **Facility Underutilization:** The company incurred $382 million in facility underutilization costs [MU-10K-FY2023#p231].\n*   **Gross Margin Impact:** These factors caused the consolidated gross margin percentage to decrease to negative 9% in 2023, down from 45% in 2022 [MU-10K-FY2023#p231]."
+ },
+ {
+  "grade_id": "g051",
+  "question_id": "E2",
+  "type": "explanatory",
+  "question_en": "According to its 10-K, what drove NVIDIA's revenue growth in FY2024?",
+  "rubric": {
+   "type": "explanatory",
+   "answer": {
+    "NVDA": {
+     "revenue_2023": 26.974,
+     "revenue_2024": 60.922,
+     "growth_pct": 125.9
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "Data Center revenue $47.5B, up 217% (Data Center compute up 244%, Networking up 133%)",
+     "Strong demand from enterprise software and consumer internet applications and multiple industry verticals (automotive, financial services, healthcare)",
+     "AI platforms built on Hopper / Grace Hopper / Ada for generative AI and LLM workloads; ~40% of Data Center revenue estimated to be AI inference",
+     "Large cloud providers were more than half of Data Center revenue in Q4 FY2024",
+     "Gaming up 15% (channel inventory normalization) - minor contributor"
+    ],
+    "min_points_for_full_credit": 2,
+    "must_include": "Data Center segment as the main driver"
+   },
+   "expected_citation": {
+    "filing": "NVIDIA 10-K za period koji se završava 2024-01-28, podnet 2024-02-21 (accn 0001045810-24-000029)",
+    "section": "Item 7 MD&A -> 'Fiscal Year 2024 Summary' i opis Data Center segmenta"
+   },
+   "periods": {
+    "NVDA": "2023-01-30..2024-01-28"
+   }
+  },
+  "status": "answer",
+  "answer": "NVIDIA's revenue growth in fiscal year 2024 (which ended January 28, 2024) was primarily driven by the following factors:\n\n*   **Data Center Growth:** The most significant driver was the massive growth in the Data Center segment, which saw revenue increase by 217% [NVDA-10K-FY2024#p286]. Specifically, the Compute segment grew 266% due to higher shipments of the **NVIDIA Hopper GPU computing platform**, which is used for training and inference of Large Language Models (LLMs), recommendation engines, and generative AI applications [NVDA-10K-FY2024#p282].\n*   **Networking:** Networking revenue increased by 133% due to higher shipments of **InfiniBand** [NVDA-10K-FY2024#p282].\n*   **Gaming:** Gaming revenue grew by 15%, reflecting higher sell-in to partners following the normalization of channel inventory levels and growing demand [NVDA-10K-FY2024#p263].\n*   **Automotive:** Automotive revenue increased by 21%, primarily driven by growth in self-driving platforms [NVDA-10K-FY2024#p263]."
+ },
+ {
+  "grade_id": "g052",
+  "question_id": "U1",
+  "type": "unanswerable",
+  "question_en": "What was Intel's net income in FY2030?",
+  "rubric": {
+   "type": "unanswerable",
+   "answer": null,
+   "expected_behavior": "Agent kaže da podaci za FY2030 ne postoje (godina još nije završena) i ne izmišlja broj niti daje prognozu kao činjenicu."
+  },
+  "status": "answer",
+  "answer": "I do not have any data for fiscal year 2030. My available financial data is limited to historical filings."
+ },
+ {
+  "grade_id": "g053",
+  "question_id": "H2",
+  "type": "hard_multi_hop",
+  "question_en": "Which software company had the lowest operating margin in fiscal year 2024, and what does its 10-K say were the main drivers of the increase in its operating expenses?",
+  "rubric": {
+   "type": "hard_multi_hop",
+   "answer": {
+    "lowest": "NOW",
+    "operating_margin_pct": {
+     "MSFT": 44.6,
+     "ADBE": 31.3,
+     "CSCO": 22.6,
+     "CRM": 14.4,
+     "NOW": 12.4
+    },
+    "NOW": {
+     "revenue": 10.984,
+     "operating_income": 1.364,
+     "total_operating_expenses_2024": 7.333,
+     "total_operating_expenses_2023": 6.288
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "Increased headcount and personnel-related costs (incl. stock-based compensation) - the main driver in sales and marketing (+$330M) and R&D (+$350M)",
+     "Sales and marketing up $553M; also deferred commission amortization +$90M and marketing programs +$95M",
+     "R&D up $419M; also outside services +$48M and data center capacity costs +$27M",
+     "G&A up $73M"
+    ],
+    "must_include": "headcount / personnel-related costs as the main driver",
+    "min_points_for_full_credit": 2
+   },
+   "expected_citation": {
+    "filing": "ServiceNow 10-K za period koji se završava 2024-12-31, podnet 2025-01-30 (accn 0001373715-25-000010)",
+    "passages": "NOW-10K-FY2024#p271 (sales and marketing), #p272-#p273 (R&D), #p275 (G&A)"
+   },
+   "periods": {
+    "NOW": "2024-01-01..2024-12-31",
+    "CRM": "2023-02-01..2024-01-31"
+   },
+   "tests": "više koraka: tek posle brojeva se zna koju kompaniju treba pretražiti; planer pravi plan unapred, pa ovde multi-agent verovatno gubi"
+  },
+  "status": "answer",
+  "answer": "ServiceNow, Inc. (NOW) had the lowest operating margin in fiscal year 2024 at 12.4% [NOW-10K-FY2024]. The main drivers of the increase in its operating expenses were:\n\n* **Sales and marketing expenses:** An increase of $553 million, primarily due to increased headcount, which resulted in higher personnel-related costs (including stock-based compensation) and overhead expenses of $330 million [NOW-10K-FY2024#p271].\n* **Amortization expenses:** An increase of $90 million, driven by an increase in contracts with new customers, expansions, and renewals [NOW-10K-FY2024#p271]."
+ },
+ {
+  "grade_id": "g054",
+  "question_id": "C2",
+  "type": "comparative",
+  "question_en": "Rank Adobe, Salesforce and ServiceNow by operating margin in FY2025.",
+  "rubric": {
+   "type": "comparative",
+   "answer": {
+    "ADBE": {
+     "operating_margin_pct": 36.6,
+     "operating_income": 8.706,
+     "revenue": 23.769
+    },
+    "CRM": {
+     "operating_margin_pct": 19.0,
+     "operating_income": 7.205,
+     "revenue": 37.895
+    },
+    "NOW": {
+     "operating_margin_pct": 13.7,
+     "operating_income": 1.824,
+     "revenue": 13.278
+    },
+    "ranking": [
+     "ADBE",
+     "CRM",
+     "NOW"
+    ]
+   },
+   "periods": {
+    "ADBE": "2024-11-30..2025-11-28",
+    "CRM": "2024-02-01..2025-01-31",
+    "NOW": "2025-01-01..2025-12-31"
+   }
+  },
+  "status": "answer",
+  "answer": "The ranking by operating margin in FY2025 is:\n1. Adobe: 36.6% [ADBE-10K-FY2025]\n2. Salesforce: 19.0% [CRM-10K-FY2025]\n3. ServiceNow: 13.7% [NOW-10K-FY2025]"
+ },
+ {
+  "grade_id": "g055",
+  "question_id": "H3",
+  "type": "hard_fy_trap",
+  "question_en": "How did comparable sales change at Lowe's and Best Buy in the fiscal year that ended in early 2025, and how does that compare with the change in total revenue?",
+  "rubric": {
+   "type": "hard_fy_trap",
+   "answer": {
+    "LOW": {
+     "fiscal_year": 2025,
+     "period": "2024-02-03..2025-01-31",
+     "company_calls_it": "fiscal 2024",
+     "comparable_sales_pct": -2.7,
+     "revenue": 83.674,
+     "revenue_growth_pct": -3.1
+    },
+    "BBY": {
+     "fiscal_year": 2025,
+     "period": "2024-02-04..2025-02-01",
+     "company_calls_it": "fiscal 2025",
+     "comparable_sales_pct": -2.3,
+     "revenue": 41.528,
+     "revenue_growth_pct": -4.4
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "Lowe's: comparable sales -2.7% (transactions -3.0%, average ticket +0.3%); net sales -3.1%, decline primarily driven by comparable sales; both years had 52 weeks",
+     "Best Buy: comparable sales -2.3%, softer consumer demand; revenue -4.4% ($41.5B vs $43.5B)",
+     "Best Buy revenue fell more than comparable sales mainly because the prior year had a 53rd week (~$735M revenue); comparable sales exclude the 53rd week"
+    ],
+    "must_include": "correct comparable sales for both (-2.7% LOW, -2.3% BBY) and that Best Buy's revenue decline is larger partly due to the 53rd week in the prior year",
+    "min_points_for_full_credit": 2
+   },
+   "expected_citation": {
+    "LOW": "LOW-10K-FY2025#p158 (Executive Overview); accn 0000060667-25-000049",
+    "BBY": "BBY-10K-FY2025#p172; accn 0000764478-25-000007"
+   },
+   "trap": "Lowe's tu godinu zove 'fiscal 2024', Best Buy 'fiscal 2025'. Agent koji uzme godinu ranije dobija LOW comparable sales -4.7% i BBY -6.8% (FY2024); postoje i 10-K za godinu koja se završila početkom 2026 (FY2026), pa greška moguća u oba smera",
+   "tests": "zamka sa nazivom fiskalne godine u tekstu + objašnjenje razlike (53. nedelja)"
+  },
+  "status": "answer",
+  "answer": "For the fiscal year ending in early 2025, both Lowe's and Best Buy experienced declines in comparable sales, which were more pronounced than the declines in their total revenue.\n\n### **Lowe's (Fiscal Year Ended Jan 31, 2025)**\n*   **Comparable Sales:** Decreased by **2.7%** [LOW-10K-FY2025#p166]. This decline was primarily driven by a 3.0% decrease in comparable customer transactions, partially offset by a 0.3% increase in comparable average ticket [LOW-10K-FY2025#p166].\n*   **Total Revenue:** Decreased by **3.1%** to $83.7 billion [LOW-10K-FY2025#p166].\n\n### **Best Buy (Fiscal Year Ended Feb 1, 2025)**\n*   **Comparable Sales:** Decreased by **2.3%** [BBY-10K-FY2025#p172]. The decline was attributed to a challenged consumer electronics industry and softer consumer demand, with notable declines in appliances, home theater, and gaming [BBY-10K-FY2025#p172, BBY-10K-FY2025#p173].\n*   **Total Revenue:** Decreased by **4.4%** to $41.5 billion [BBY-10K-FY2025]. (Note: Best Buy's revenue decline was also impacted by the absence of a 53rd week that occurred in fiscal 2024, which contributed approximately $735 million in revenue [BBY-10K-FY2025#p172])."
+ },
+ {
+  "grade_id": "g056",
+  "question_id": "H2",
+  "type": "hard_multi_hop",
+  "question_en": "Which software company had the lowest operating margin in fiscal year 2024, and what does its 10-K say were the main drivers of the increase in its operating expenses?",
+  "rubric": {
+   "type": "hard_multi_hop",
+   "answer": {
+    "lowest": "NOW",
+    "operating_margin_pct": {
+     "MSFT": 44.6,
+     "ADBE": 31.3,
+     "CSCO": 22.6,
+     "CRM": 14.4,
+     "NOW": 12.4
+    },
+    "NOW": {
+     "revenue": 10.984,
+     "operating_income": 1.364,
+     "total_operating_expenses_2024": 7.333,
+     "total_operating_expenses_2023": 6.288
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "Increased headcount and personnel-related costs (incl. stock-based compensation) - the main driver in sales and marketing (+$330M) and R&D (+$350M)",
+     "Sales and marketing up $553M; also deferred commission amortization +$90M and marketing programs +$95M",
+     "R&D up $419M; also outside services +$48M and data center capacity costs +$27M",
+     "G&A up $73M"
+    ],
+    "must_include": "headcount / personnel-related costs as the main driver",
+    "min_points_for_full_credit": 2
+   },
+   "expected_citation": {
+    "filing": "ServiceNow 10-K za period koji se završava 2024-12-31, podnet 2025-01-30 (accn 0001373715-25-000010)",
+    "passages": "NOW-10K-FY2024#p271 (sales and marketing), #p272-#p273 (R&D), #p275 (G&A)"
+   },
+   "periods": {
+    "NOW": "2024-01-01..2024-12-31",
+    "CRM": "2023-02-01..2024-01-31"
+   },
+   "tests": "više koraka: tek posle brojeva se zna koju kompaniju treba pretražiti; planer pravi plan unapred, pa ovde multi-agent verovatno gubi"
+  },
+  "status": "answer",
+  "answer": "Among the software companies listed, **ServiceNow, Inc. (NOW)** had the lowest operating margin in fiscal year 2024 at **12.4%** [NOW-10K-FY2024].\n\nAccording to its 10-K filing, the main drivers for the increase in operating expenses (specifically within sales and marketing) were:\n* **Increased headcount:** This led to higher personnel-related costs, including stock-based compensation and overhead expenses, which increased by $330 million [NOW-10K-FY2024#p271].\n* **Amortization of deferred commissions:** These expenses increased by $90 million due to an increase in contracts with new customers, as well as expansion and renewal contracts [NOW-10K-FY2024#p271]."
+ },
+ {
+  "grade_id": "g057",
+  "question_id": "U1",
+  "type": "unanswerable",
+  "question_en": "What was Intel's net income in FY2030?",
+  "rubric": {
+   "type": "unanswerable",
+   "answer": null,
+   "expected_behavior": "Agent kaže da podaci za FY2030 ne postoje (godina još nije završena) i ne izmišlja broj niti daje prognozu kao činjenicu."
+  },
+  "status": "answer",
+  "answer": "Data for Intel Corporation's (INTC) net income for the fiscal year 2030 is unavailable [t1]."
+ },
+ {
+  "grade_id": "g058",
+  "question_id": "E3",
+  "type": "explanatory",
+  "question_en": "Why did Micron report a loss in FY2023, according to its 10-K?",
+  "rubric": {
+   "type": "explanatory",
+   "answer": {
+    "MU": {
+     "revenue_2022": 30.758,
+     "revenue_2023": 15.54,
+     "net_income_2022": 8.687,
+     "net_income_2023": -5.833
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "Memory and storage industry deteriorated sharply: weak end-market demand, macroeconomic challenges, customers reducing inventory levels",
+     "Significant declines in average selling prices: DRAM high-40s %, NAND low-50s %; total revenue down 49%",
+     "$1.83B inventory write-downs to net realizable value",
+     "$382M facility underutilization costs from reduced wafer starts",
+     "Gross margin fell from 45% to -9%"
+    ],
+    "min_points_for_full_credit": 2,
+    "must_include": "ASP (price) declines for DRAM/NAND driven by weak demand / customer inventory reduction"
+   },
+   "expected_citation": {
+    "filing": "Micron 10-K za period koji se završava 2023-08-31, podnet 2023-10-06 (accn 0000723125-23-000054)",
+    "section": "Item 7 MD&A -> Overview -> 'Industry Conditions'; Results of Operations -> 'Total Revenue' i 'Consolidated Gross Margin'"
+   },
+   "periods": {
+    "MU": "2022-09-02..2023-08-31"
+   }
+  },
+  "status": "answer",
+  "answer": "Micron reported a net loss of $5.833 billion for fiscal year 2023 [MU-10K-FY2023]. According to its 10-K filing, this loss was driven by several key factors:\n\n*   **Deteriorating Industry Conditions:** The memory and storage industry environment deteriorated sharply throughout 2023 due to weak demand across many end markets, global macroeconomic challenges, and customer actions to reduce inventory levels [MU-10K-FY2023#p221].\n*   **Declining Average Selling Prices (ASPs):** These industry conditions led to significant reductions in average selling prices for both DRAM and NAND products, which resulted in revenue declines across all business segments [MU-10K-FY2023#p221].\n*   **Inventory Write-downs:** Due to the challenging pricing environment, Micron recognized $1.83 billion in charges to write down inventories to their estimated net realizable value (NRV) [MU-10K-FY2023#p221].\n*   **Facility Underutilization:** The company also incurred $382 million in facility underutilization costs during 2023 [MU-10K-FY2023#p231].\n\nThese factors combined to cause a significant decrease in consolidated gross margin, which fell to negative 9% in 2023 from 45% in 2022 [MU-10K-FY2023#p231]."
+ },
+ {
+  "grade_id": "g059",
+  "question_id": "F2",
+  "type": "factual",
+  "question_en": "What was Applied Materials' gross margin in FY2024?",
+  "rubric": {
+   "type": "factual",
+   "answer": {
+    "AMAT": {
+     "gross_margin_pct": 47.5,
+     "gross_profit": 12.897,
+     "revenue": 27.176
+    }
+   },
+   "periods": {
+    "AMAT": "2023-10-30..2024-10-27"
+   }
+  },
+  "status": "answer",
+  "answer": "Applied Materials' gross margin for the fiscal year 2024 was 47.5% [AMAT-10K-FY2024]."
+ },
+ {
+  "grade_id": "g060",
+  "question_id": "F2",
+  "type": "factual",
+  "question_en": "What was Applied Materials' gross margin in FY2024?",
+  "rubric": {
+   "type": "factual",
+   "answer": {
+    "AMAT": {
+     "gross_margin_pct": 47.5,
+     "gross_profit": 12.897,
+     "revenue": 27.176
+    }
+   },
+   "periods": {
+    "AMAT": "2023-10-30..2024-10-27"
+   }
+  },
+  "status": "answer",
+  "answer": "Applied Materials' gross margin in FY2024 was 47.5% [AMAT-10K-FY2024]."
+ },
+ {
+  "grade_id": "g061",
+  "question_id": "F3",
+  "type": "factual",
+  "question_en": "What was Best Buy's net income in FY2025?",
+  "rubric": {
+   "type": "factual",
+   "answer": {
+    "BBY": {
+     "net_income": 0.927
+    }
+   },
+   "periods": {
+    "BBY": "2024-02-04..2025-02-01"
+   }
+  },
+  "status": "answer",
+  "answer": "Best Buy's net income in fiscal year 2025 was $0.927 billion [BBY-10K-FY2025]."
+ },
+ {
+  "grade_id": "g062",
+  "question_id": "U1",
+  "type": "unanswerable",
+  "question_en": "What was Intel's net income in FY2030?",
+  "rubric": {
+   "type": "unanswerable",
+   "answer": null,
+   "expected_behavior": "Agent kaže da podaci za FY2030 ne postoje (godina još nije završena) i ne izmišlja broj niti daje prognozu kao činjenicu."
+  },
+  "status": "answer",
+  "answer": "I do not have any data for fiscal year 2030. My available financial data only covers historical fiscal years."
+ },
+ {
+  "grade_id": "g063",
+  "question_id": "E1",
+  "type": "explanatory",
+  "question_en": "Why did Intel report a large loss in FY2024, according to its 10-K?",
+  "rubric": {
+   "type": "explanatory",
+   "answer": {
+    "INTC": {
+     "net_income_2023": 1.689,
+     "net_income_2024": -18.756
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "$9.9B non-cash tax charge, substantially related to valuation allowances on US net deferred tax assets",
+     "$2.8B restructuring charges from the 2024 Restructuring Plan (~15% core workforce reduction)",
+     "$3.3B non-cash impairments and accelerated depreciation of manufacturing assets (mostly Intel 7 node)",
+     "$3.1B non-cash impairment of goodwill and certain acquired intangible assets"
+    ],
+    "min_points_for_full_credit": 2,
+    "must_include": "valuation allowance on deferred tax assets (najveća pojedinačna stavka)"
+   },
+   "expected_citation": {
+    "filing": "Intel 10-K za period koji se završava 2024-12-28, podnet 2025-01-31 (accn 0000050863-25-000009)",
+    "section": "Item 7 MD&A -> Overview -> 'A Year in Review' i 'Restructuring'; detalji u Note 7 (Restructuring and Other Charges) i Note 8 (Income Taxes)"
+   },
+   "periods": {
+    "INTC": "2023-12-31..2024-12-28"
+   }
+  },
+  "status": "answer",
+  "answer": "Intel reported a net loss of $18.756 billion for fiscal year 2024 [INTC-10K-FY2024]. This loss was materially impacted by several significant non-cash charges:\n\n*   **Income Tax Provision:** A $9.9 billion non-cash charge related to valuation allowances recorded against net deferred tax assets [INTC-10K-FY2024#p103].\n*   **Manufacturing Asset Impairments:** $3.3 billion in charges, primarily due to non-cash impairments and accelerated depreciation for certain manufacturing assets, mostly related to the Intel 7 process node [INTC-10K-FY2024#p103].\n*   **Goodwill and Intangible Impairments:** $3.1 billion in non-cash charges from the impairment of goodwill for certain reporting units and certain acquired intangible assets [INTC-10K-FY2024#p103].\n*   **Restructuring Charges:** $2.8 billion in charges resulting from the 2024 Restructuring Plan, which involved an approximate 15% decrease in the core Intel workforce [INTC-10K-FY2024#p103]."
+ },
+ {
+  "grade_id": "g064",
+  "question_id": "C2",
+  "type": "comparative",
+  "question_en": "Rank Adobe, Salesforce and ServiceNow by operating margin in FY2025.",
+  "rubric": {
+   "type": "comparative",
+   "answer": {
+    "ADBE": {
+     "operating_margin_pct": 36.6,
+     "operating_income": 8.706,
+     "revenue": 23.769
+    },
+    "CRM": {
+     "operating_margin_pct": 19.0,
+     "operating_income": 7.205,
+     "revenue": 37.895
+    },
+    "NOW": {
+     "operating_margin_pct": 13.7,
+     "operating_income": 1.824,
+     "revenue": 13.278
+    },
+    "ranking": [
+     "ADBE",
+     "CRM",
+     "NOW"
+    ]
+   },
+   "periods": {
+    "ADBE": "2024-11-30..2025-11-28",
+    "CRM": "2024-02-01..2025-01-31",
+    "NOW": "2025-01-01..2025-12-31"
+   }
+  },
+  "status": "answer",
+  "answer": "The ranking of the companies by operating margin in FY2025 is as follows:\n\n1. **Adobe (ADBE)**: 36.6% [ADBE-10K-FY2025]\n2. **Salesforce (CRM)**: 19.0% [CRM-10K-FY2025]\n3. **ServiceNow (NOW)**: 13.7% [NOW-10K-FY2025]"
+ },
+ {
+  "grade_id": "g065",
+  "question_id": "E2",
+  "type": "explanatory",
+  "question_en": "According to its 10-K, what drove NVIDIA's revenue growth in FY2024?",
+  "rubric": {
+   "type": "explanatory",
+   "answer": {
+    "NVDA": {
+     "revenue_2023": 26.974,
+     "revenue_2024": 60.922,
+     "growth_pct": 125.9
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "Data Center revenue $47.5B, up 217% (Data Center compute up 244%, Networking up 133%)",
+     "Strong demand from enterprise software and consumer internet applications and multiple industry verticals (automotive, financial services, healthcare)",
+     "AI platforms built on Hopper / Grace Hopper / Ada for generative AI and LLM workloads; ~40% of Data Center revenue estimated to be AI inference",
+     "Large cloud providers were more than half of Data Center revenue in Q4 FY2024",
+     "Gaming up 15% (channel inventory normalization) - minor contributor"
+    ],
+    "min_points_for_full_credit": 2,
+    "must_include": "Data Center segment as the main driver"
+   },
+   "expected_citation": {
+    "filing": "NVIDIA 10-K za period koji se završava 2024-01-28, podnet 2024-02-21 (accn 0001045810-24-000029)",
+    "section": "Item 7 MD&A -> 'Fiscal Year 2024 Summary' i opis Data Center segmenta"
+   },
+   "periods": {
+    "NVDA": "2023-01-30..2024-01-28"
+   }
+  },
+  "status": "answer",
+  "answer": "NVIDIA's revenue growth in fiscal year 2024 (which ended January 28, 2024) was primarily driven by significant increases across several key segments, most notably the **Data Center** segment, which saw revenue growth of **217%** [NVDA-10K-FY2024#p286, NVDA-10K-FY2024#p285].\n\nOther segment drivers included:\n*   **Networking:** Revenue increased by **133%** [NVDA-10K-FY2024#p263].\n*   **Automotive:** Revenue grew by **21%**, primarily due to growth in self-driving platforms [NVDA-10K-FY2024#p263].\n*   **Gaming:** Revenue increased by **15%**, reflecting growing demand and higher sell-in to partners following the normalization of channel inventory levels [NVDA-10K-FY2024#p263].\n*   **Professional Visualization:** Revenue grew by **1%** [NVDA-10K-FY2024#p263]."
+ },
+ {
+  "grade_id": "g066",
+  "question_id": "C4",
+  "type": "comparative",
+  "question_en": "Compare revenue and net margin of Home Depot and Lowe's for FY2023-FY2025. Which has the more stable margin?",
+  "rubric": {
+   "type": "comparative",
+   "answer": {
+    "HD": {
+     "2023": {
+      "revenue": 157.403,
+      "net_income": 17.105,
+      "net_margin_pct": 10.9
+     },
+     "2024": {
+      "revenue": 152.669,
+      "net_income": 15.143,
+      "net_margin_pct": 9.9
+     },
+     "2025": {
+      "revenue": 159.514,
+      "net_income": 14.806,
+      "net_margin_pct": 9.3
+     }
+    },
+    "LOW": {
+     "2023": {
+      "revenue": 97.059,
+      "net_income": 6.437,
+      "net_margin_pct": 6.6
+     },
+     "2024": {
+      "revenue": 86.377,
+      "net_income": 7.726,
+      "net_margin_pct": 8.9
+     },
+     "2025": {
+      "revenue": 83.674,
+      "net_income": 6.957,
+      "net_margin_pct": 8.3
+     }
+    },
+    "expected_conclusion": "HD: marža stalno pada (raspon 1,6 p.p.); LOW: marža osciluje (raspon 2,3 p.p.), prihod pada. HD je stabilniji po rasponu marže."
+   },
+   "periods": {
+    "HD": "2022-01-31..2023-01-29 / 2023-01-30..2024-01-28 / 2024-01-29..2025-02-02",
+    "LOW": "2022-01-29..2023-02-03 / 2023-02-04..2024-02-02 / 2024-02-03..2025-01-31"
+   },
+   "trap": "HD i LOW ove godine sami zovu FY2022-FY2024; agent koji preuzme njihovu konvenciju iz 10-K teksta uzeće pogrešne periode"
+  },
+  "status": "answer",
+  "answer": "For Home Depot (HD), the revenue and net margin for the requested fiscal years are:\n* **FY2023:** Revenue of $157.403 billion [HD-10K-FY2023] and a net margin of 10.9% [HD-10K-FY2023].\n* **FY2024:** Revenue of $152.669 billion [HD-10K-FY2024] and a net margin of 9.9% [HD-10K-FY2024].\n* **FY2025:** Revenue of $159.514 billion [HD-10K-FY2025] and a net margin of 9.3% [HD-10K-FY2025].\n\nData regarding the revenue and net margin for Lowe's (LOW) for FY2023-FY2025 is missing [t2]. Therefore, a comparison of stability between the two companies cannot be made."
+ },
+ {
+  "grade_id": "g067",
+  "question_id": "C4",
+  "type": "comparative",
+  "question_en": "Compare revenue and net margin of Home Depot and Lowe's for FY2023-FY2025. Which has the more stable margin?",
+  "rubric": {
+   "type": "comparative",
+   "answer": {
+    "HD": {
+     "2023": {
+      "revenue": 157.403,
+      "net_income": 17.105,
+      "net_margin_pct": 10.9
+     },
+     "2024": {
+      "revenue": 152.669,
+      "net_income": 15.143,
+      "net_margin_pct": 9.9
+     },
+     "2025": {
+      "revenue": 159.514,
+      "net_income": 14.806,
+      "net_margin_pct": 9.3
+     }
+    },
+    "LOW": {
+     "2023": {
+      "revenue": 97.059,
+      "net_income": 6.437,
+      "net_margin_pct": 6.6
+     },
+     "2024": {
+      "revenue": 86.377,
+      "net_income": 7.726,
+      "net_margin_pct": 8.9
+     },
+     "2025": {
+      "revenue": 83.674,
+      "net_income": 6.957,
+      "net_margin_pct": 8.3
+     }
+    },
+    "expected_conclusion": "HD: marža stalno pada (raspon 1,6 p.p.); LOW: marža osciluje (raspon 2,3 p.p.), prihod pada. HD je stabilniji po rasponu marže."
+   },
+   "periods": {
+    "HD": "2022-01-31..2023-01-29 / 2023-01-30..2024-01-28 / 2024-01-29..2025-02-02",
+    "LOW": "2022-01-29..2023-02-03 / 2023-02-04..2024-02-02 / 2024-02-03..2025-01-31"
+   },
+   "trap": "HD i LOW ove godine sami zovu FY2022-FY2024; agent koji preuzme njihovu konvenciju iz 10-K teksta uzeće pogrešne periode"
+  },
+  "status": "answer",
+  "answer": "Between FY2023 and FY2025, the revenue and net margin comparison for Home Depot (HD) and Lowe's (LOW) is as follows:\n\n### **Revenue Comparison (USD Billions)**\n| Fiscal Year | Home Depot (HD) | Lowe's (LOW) |\n| :--- | :--- | :--- |\n| **2023** | $157.40 [HD-10K-FY2023] | $97.06 [LOW-10K-FY2023] |\n| **2024** | $152.67 [HD-10K-FY2024] | $86.38 [LOW-10K-FY2024] |\n| **2025** | $159.51 [HD-10K-FY2025] | $83.67 [LOW-10K-FY2025] |\n\n### **Net Margin Comparison (%)**\n| Fiscal Year | Home Depot (HD) | Lowe's (LOW) |\n| :--- | :--- | :--- |\n| **2023** | 10.9% [HD-10K-FY2023] | 6.6% [LOW-10K-FY2023] |\n| **2024** | 9.9% [HD-10K-FY2024] | 8.9% [LOW-10K-FY2024] |\n| **2025** | 9.3% [HD-10K-FY2025] | 8.3% [LOW-10K-FY2025] |\n\n### **Stability Analysis**\n*   **Home Depot's** net margin declined steadily from 10.9% to 9.3% (a total variance of **1.6 percentage points**) [HD-10K-FY2023, HD-10K-FY2024, HD-10K-FY2025].\n*   **Lowe's** net margin fluctuated, rising from 6.6% to 8.9% before settling at 8.3% (a total variance of **2.3 percentage points**) [LOW-10K-FY2023, LOW-10K-FY2024, LOW-10K-FY2025].\n\n**Conclusion:** **Home Depot** has the more stable net margin, as its margin fluctuations were smaller (1.6 pts) compared to Lowe's (2.3 pts) over this period."
+ },
+ {
+  "grade_id": "g068",
+  "question_id": "F1",
+  "type": "factual",
+  "question_en": "What was Intel's revenue in FY2024?",
+  "rubric": {
+   "type": "factual",
+   "answer": {
+    "INTC": {
+     "revenue": 53.101
+    }
+   },
+   "periods": {
+    "INTC": "2023-12-31..2024-12-28"
+   }
+  },
+  "status": "answer",
+  "answer": "Intel's revenue in FY2024 was $53.101 billion [INTC-10K-FY2024]."
+ },
+ {
+  "grade_id": "g069",
+  "question_id": "E3",
+  "type": "explanatory",
+  "question_en": "Why did Micron report a loss in FY2023, according to its 10-K?",
+  "rubric": {
+   "type": "explanatory",
+   "answer": {
+    "MU": {
+     "revenue_2022": 30.758,
+     "revenue_2023": 15.54,
+     "net_income_2022": 8.687,
+     "net_income_2023": -5.833
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "Memory and storage industry deteriorated sharply: weak end-market demand, macroeconomic challenges, customers reducing inventory levels",
+     "Significant declines in average selling prices: DRAM high-40s %, NAND low-50s %; total revenue down 49%",
+     "$1.83B inventory write-downs to net realizable value",
+     "$382M facility underutilization costs from reduced wafer starts",
+     "Gross margin fell from 45% to -9%"
+    ],
+    "min_points_for_full_credit": 2,
+    "must_include": "ASP (price) declines for DRAM/NAND driven by weak demand / customer inventory reduction"
+   },
+   "expected_citation": {
+    "filing": "Micron 10-K za period koji se završava 2023-08-31, podnet 2023-10-06 (accn 0000723125-23-000054)",
+    "section": "Item 7 MD&A -> Overview -> 'Industry Conditions'; Results of Operations -> 'Total Revenue' i 'Consolidated Gross Margin'"
+   },
+   "periods": {
+    "MU": "2022-09-02..2023-08-31"
+   }
+  },
+  "status": "answer",
+  "answer": "Micron reported a net loss in FY2023 due to the following factors:\n\n* **Market and Industry Conditions:** The memory and storage industry environment deteriorated sharply because of weak demand across many end markets, global macroeconomic challenges, and customer actions to reduce inventory levels [MU-10K-FY2023#p221]. This led to significant reductions in average selling prices (ASPs) for DRAM and NAND products [MU-10K-FY2023#p221].\n* **Inventory Write-downs:** The company recognized $1.83 billion in charges to write down inventories to their estimated net realizable value (NRV) due to the challenging pricing environment [MU-10K-FY2023#p221].\n* **Facility Underutilization:** The company incurred $382 million in facility underutilization costs [MU-10K-FY2023#p231].\n* **Gross Margin Impact:** These factors caused the consolidated gross margin percentage to decrease to negative 9% in 2023, from 45% in 2022 [MU-10K-FY2023#p231]."
+ },
+ {
+  "grade_id": "g070",
+  "question_id": "H1",
+  "type": "hard_multi_explanatory",
+  "question_en": "For NVIDIA, AMD and Intel: what was the revenue growth in fiscal year 2024, and what was the main reason for the change according to each company's 10-K?",
+  "rubric": {
+   "type": "hard_multi_explanatory",
+   "answer": {
+    "NVDA": {
+     "revenue_2023": 26.974,
+     "revenue_2024": 60.922,
+     "growth_pct": 125.9
+    },
+    "AMD": {
+     "revenue_2023": 22.68,
+     "revenue_2024": 25.785,
+     "growth_pct": 13.7
+    },
+    "INTC": {
+     "revenue_2023": 54.228,
+     "revenue_2024": 53.101,
+     "growth_pct": -2.1
+    }
+   },
+   "expected_explanation": {
+    "NVDA": {
+     "must_include": "Data Center as the main driver (up 217%)",
+     "key_points": [
+      "Data Center revenue up 217% (compute up 244%, networking up 133%)",
+      "Demand from enterprise software, consumer internet and industry verticals (AI infrastructure)"
+     ],
+     "citation": "NVDA-10K-FY2024#p262 (Fiscal Year 2024 Summary); accn 0001045810-24-000029"
+    },
+    "AMD": {
+     "must_include": "Data Center segment growth (Instinct GPUs / EPYC CPUs)",
+     "key_points": [
+      "Data Center net revenue $12.6B, up 94%, from AMD Instinct GPUs and EPYC CPUs",
+      "Client segment up 52% (Ryzen processors)",
+      "Partially offset by Gaming down 58% (semi-custom) and Embedded down 33% (customer inventory normalization)"
+     ],
+     "citation": "AMD-10K-FY2024#p282 (Overview); accn 0000002488-25-000012"
+    },
+    "INTC": {
+     "must_include": "decline from lower 'all other' revenue (Altera, Mobileye) and/or lower Intel Foundry external revenue, partially offset by Intel Products",
+     "key_points": [
+      "Revenue $53.1B, down $1.1B or 2%",
+      "All other revenue down 32%: Altera and Mobileye customers reducing inventories",
+      "Intel Foundry external revenue down 60% (packaging services, equipment sales)",
+      "Partially offset by Intel Products up 3% (CCG up 4% on notebook volume, DCAI up 1%)"
+     ],
+     "citation": "INTC-10K-FY2024#p98 (A Year in Review); accn 0000050863-25-000009"
+    },
+    "min_points_for_full_credit": "tačan rast i must_include za sve tri kompanije"
+   },
+   "periods": {
+    "NVDA": "2023-01-30..2024-01-28",
+    "AMD": "2023-12-31..2024-12-28",
+    "INTC": "2023-12-31..2024-12-28"
+   },
+   "tests": "brojevi + objašnjenja za više kompanija; jedan agent skuplja tekst svih u jednom dugom kontekstu"
+  },
+  "status": "answer",
+  "answer": "For fiscal year 2024, the revenue growth and primary drivers for NVIDIA, AMD, and Intel were as follows:\n\n*   **NVIDIA**: Revenue grew by **125.9%** [NVDA-10K-FY2024]. The growth was primarily driven by strong **Data Center** revenue, which increased by 217% [NVDA-10K-FY2024#p263, NVDA-10K-FY2024#p285].\n*   **AMD**: Revenue grew by **13.7%** [AMD-10K-FY2024]. This growth was driven by the performance of the **Data Center** segment (up 94% due to higher sales of AMD Instinct™ GPUs and AMD EPYC™ CPUs) and the **Client** segment (up 52% due to higher sales of Ryzen™ mobile and desktop processors) [AMD-10K-FY2024#p282].\n*   **Intel**: Revenue decreased by **2.1%** [INTC-10K-FY2024]. The decline was due to lower **\"all other revenue\"** (specifically lower Altera and Mobileye revenue as customers reduced existing inventories) and lower **Intel Foundry** revenue, which was only partially offset by a 3% increase in Intel Products revenue [INTC-10K-FY2024#p157, INTC-10K-FY2024#p98]."
+ },
+ {
+  "grade_id": "g071",
+  "question_id": "H3",
+  "type": "hard_fy_trap",
+  "question_en": "How did comparable sales change at Lowe's and Best Buy in the fiscal year that ended in early 2025, and how does that compare with the change in total revenue?",
+  "rubric": {
+   "type": "hard_fy_trap",
+   "answer": {
+    "LOW": {
+     "fiscal_year": 2025,
+     "period": "2024-02-03..2025-01-31",
+     "company_calls_it": "fiscal 2024",
+     "comparable_sales_pct": -2.7,
+     "revenue": 83.674,
+     "revenue_growth_pct": -3.1
+    },
+    "BBY": {
+     "fiscal_year": 2025,
+     "period": "2024-02-04..2025-02-01",
+     "company_calls_it": "fiscal 2025",
+     "comparable_sales_pct": -2.3,
+     "revenue": 41.528,
+     "revenue_growth_pct": -4.4
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "Lowe's: comparable sales -2.7% (transactions -3.0%, average ticket +0.3%); net sales -3.1%, decline primarily driven by comparable sales; both years had 52 weeks",
+     "Best Buy: comparable sales -2.3%, softer consumer demand; revenue -4.4% ($41.5B vs $43.5B)",
+     "Best Buy revenue fell more than comparable sales mainly because the prior year had a 53rd week (~$735M revenue); comparable sales exclude the 53rd week"
+    ],
+    "must_include": "correct comparable sales for both (-2.7% LOW, -2.3% BBY) and that Best Buy's revenue decline is larger partly due to the 53rd week in the prior year",
+    "min_points_for_full_credit": 2
+   },
+   "expected_citation": {
+    "LOW": "LOW-10K-FY2025#p158 (Executive Overview); accn 0000060667-25-000049",
+    "BBY": "BBY-10K-FY2025#p172; accn 0000764478-25-000007"
+   },
+   "trap": "Lowe's tu godinu zove 'fiscal 2024', Best Buy 'fiscal 2025'. Agent koji uzme godinu ranije dobija LOW comparable sales -4.7% i BBY -6.8% (FY2024); postoje i 10-K za godinu koja se završila početkom 2026 (FY2026), pa greška moguća u oba smera",
+   "tests": "zamka sa nazivom fiskalne godine u tekstu + objašnjenje razlike (53. nedelja)"
+  },
+  "status": "answer",
+  "answer": "For the fiscal year ending in early 2025, both Lowe's and Best Buy experienced declines in both comparable sales and total revenue.\n\n### **Lowe's (Fiscal Year Ended Jan 31, 2025)**\n*   **Comparable Sales:** Decreased by **2.7%** [LOW-10K-FY2025#p166]. This decline was primarily driven by a 3.0% decrease in comparable customer transactions, partially offset by a 0.3% increase in comparable average ticket [LOW-10K-FY2025#p166].\n*   **Total Revenue:** Decreased by **3.1%** to $83.7 billion [LOW-10K-FY2025#p166].\n\n### **Best Buy (Fiscal Year Ended Feb 1, 2025)**\n*   **Comparable Sales:** Decreased by **2.3%** [BBY-10K-FY2025#p172]. The decline was attributed to a challenged consumer electronics industry and softer consumer demand, with notable declines in appliances, home theater, and gaming [BBY-10K-FY2025#p172, BBY-10K-FY2025#p182].\n*   **Total Revenue:** Decreased by **4.4%** to $41.5 billion [BBY-10K-FY2025 (via get_financials)]. Note that Best Buy's revenue decline was also impacted by the absence of a 53rd week that occurred in fiscal 2024 [BBY-10K-FY2025#p172]."
+ },
+ {
+  "grade_id": "g072",
+  "question_id": "H1",
+  "type": "hard_multi_explanatory",
+  "question_en": "For NVIDIA, AMD and Intel: what was the revenue growth in fiscal year 2024, and what was the main reason for the change according to each company's 10-K?",
+  "rubric": {
+   "type": "hard_multi_explanatory",
+   "answer": {
+    "NVDA": {
+     "revenue_2023": 26.974,
+     "revenue_2024": 60.922,
+     "growth_pct": 125.9
+    },
+    "AMD": {
+     "revenue_2023": 22.68,
+     "revenue_2024": 25.785,
+     "growth_pct": 13.7
+    },
+    "INTC": {
+     "revenue_2023": 54.228,
+     "revenue_2024": 53.101,
+     "growth_pct": -2.1
+    }
+   },
+   "expected_explanation": {
+    "NVDA": {
+     "must_include": "Data Center as the main driver (up 217%)",
+     "key_points": [
+      "Data Center revenue up 217% (compute up 244%, networking up 133%)",
+      "Demand from enterprise software, consumer internet and industry verticals (AI infrastructure)"
+     ],
+     "citation": "NVDA-10K-FY2024#p262 (Fiscal Year 2024 Summary); accn 0001045810-24-000029"
+    },
+    "AMD": {
+     "must_include": "Data Center segment growth (Instinct GPUs / EPYC CPUs)",
+     "key_points": [
+      "Data Center net revenue $12.6B, up 94%, from AMD Instinct GPUs and EPYC CPUs",
+      "Client segment up 52% (Ryzen processors)",
+      "Partially offset by Gaming down 58% (semi-custom) and Embedded down 33% (customer inventory normalization)"
+     ],
+     "citation": "AMD-10K-FY2024#p282 (Overview); accn 0000002488-25-000012"
+    },
+    "INTC": {
+     "must_include": "decline from lower 'all other' revenue (Altera, Mobileye) and/or lower Intel Foundry external revenue, partially offset by Intel Products",
+     "key_points": [
+      "Revenue $53.1B, down $1.1B or 2%",
+      "All other revenue down 32%: Altera and Mobileye customers reducing inventories",
+      "Intel Foundry external revenue down 60% (packaging services, equipment sales)",
+      "Partially offset by Intel Products up 3% (CCG up 4% on notebook volume, DCAI up 1%)"
+     ],
+     "citation": "INTC-10K-FY2024#p98 (A Year in Review); accn 0000050863-25-000009"
+    },
+    "min_points_for_full_credit": "tačan rast i must_include za sve tri kompanije"
+   },
+   "periods": {
+    "NVDA": "2023-01-30..2024-01-28",
+    "AMD": "2023-12-31..2024-12-28",
+    "INTC": "2023-12-31..2024-12-28"
+   },
+   "tests": "brojevi + objašnjenja za više kompanija; jedan agent skuplja tekst svih u jednom dugom kontekstu"
+  },
+  "status": "answer",
+  "answer": "The revenue growth and main reasons for change for each company in fiscal year 2024 are as follows:\n\n* **NVIDIA:** Reported revenue growth of 125.9% [NVDA-10K-FY2024]. The main drivers were strong growth in the Data Center segment (up 217%) [NVDA-10K-FY2024#p286, NVDA-10K-FY2024#p285], increased Networking revenue (up 133%) [NVDA-10K-FY2024#p263], increased Gaming revenue (up 15%) due to higher sell-in and growing demand [NVDA-10K-FY2024#p263], and increased Automotive revenue (up 21%) driven by self-driving platforms [NVDA-10K-FY2024#p263].\n* **AMD:** Reported revenue growth of 13.7% [AMD-10K-FY2024]. Growth was driven by the Data Center segment (up 94% due to higher sales of AMD Instinct™ GPUs and AMD EPYC™ CPUs) [AMD-10K-FY2024#p282, AMD-10K-FY2024#p283] and the Client segment (up 52% due to higher sales of AMD Ryzen™ mobile and desktop processors) [AMD-10K-FY2024#p282]. These were offset by decreases in the Gaming segment (down 58% due to lower semi-custom product revenue) and the Embedded segment (down 33% as customers normalized inventory levels) [AMD-10K-FY2024#p282, AMD-10K-FY2024#p283].\n* **Intel:** Reported revenue growth of -2.1% [INTC-10K-FY2024]. The decrease was due to lower \"All Other\" revenue (down 32% due to lower Altera and Mobileye revenue as customers reduced inventories) and lower Intel Foundry revenue (down 60% due to lower traditional packaging services and equipment sales) [INTC-10K-FY2024#p157]. These declines were partially offset by a 3% increase in Intel Products revenue driven by the Client Computing Group (CCG) and Data Center and AI (DCAI) [INTC-10K-FY2024#p157]."
+ },
+ {
+  "grade_id": "g073",
+  "question_id": "F1",
+  "type": "factual",
+  "question_en": "What was Intel's revenue in FY2024?",
+  "rubric": {
+   "type": "factual",
+   "answer": {
+    "INTC": {
+     "revenue": 53.101
+    }
+   },
+   "periods": {
+    "INTC": "2023-12-31..2024-12-28"
+   }
+  },
+  "status": "answer",
+  "answer": "Intel's revenue in FY2024 was $53.101 billion [INTC-10K-FY2024]."
+ },
+ {
+  "grade_id": "g074",
+  "question_id": "B1",
+  "type": "breadth",
+  "question_en": "Among all 18 companies covered, which three had the highest and which three the lowest net margin in fiscal year 2024?",
+  "rubric": {
+   "type": "breadth",
+   "answer": {
+    "highest": [
+     {
+      "ticker": "NVDA",
+      "net_margin_pct": 48.8
+     },
+     {
+      "ticker": "MSFT",
+      "net_margin_pct": 36.0
+     },
+     {
+      "ticker": "TXN",
+      "net_margin_pct": 30.7
+     }
+    ],
+    "lowest": [
+     {
+      "ticker": "INTC",
+      "net_margin_pct": -35.3
+     },
+     {
+      "ticker": "BBY",
+      "net_margin_pct": 2.9
+     },
+     {
+      "ticker": "MU",
+      "net_margin_pct": 3.1
+     }
+    ],
+    "all_net_margin_pct": {
+     "NVDA": 48.8,
+     "MSFT": 36.0,
+     "TXN": 30.7,
+     "AMAT": 26.4,
+     "ADBE": 25.9,
+     "LRCX": 25.7,
+     "CSCO": 19.2,
+     "ADI": 17.3,
+     "NOW": 13.0,
+     "CRM": 11.9,
+     "AVGO": 11.4,
+     "HD": 9.9,
+     "LOW": 8.9,
+     "AMD": 6.4,
+     "DG": 4.3,
+     "MU": 3.1,
+     "BBY": 2.9,
+     "INTC": -35.3
+    }
+   },
+   "grading_note": "Redosled unutar trojki nije bitan. Najbliže granici: 4. najveća AMAT 26,4 (TXN 30,7), 4. najmanja DG 4,3 (MU 3,1).",
+   "tests": "širina: 18 kompanija; jedan agent mora sve u jednom kontekstu"
+  },
+  "status": "answer",
+  "answer": "Based on the findings provided for the 18 companies, the three highest and three lowest net margins for fiscal year 2024 are:\n\n**Three Highest Net Margins:**\n1. NVIDIA (NVDA): 48.8% [NVDA-10K-FY2024]\n2. Microsoft (MSFT): 36.0% [MSFT-10K-FY2024]\n3. Texas Instruments (TXN): 30.7% [TXN-10K-FY2024]\n\n**Three Lowest Net Margins:**\n1. Intel Corporation (INTC): -35.3% [INTC-10K-FY2024]\n2. Best Buy Co., Inc. (BBY): 2.9% [BBY-10K-FY2024]\n3. Micron Technology, Inc. (MU): 3.1% [MU-10K-FY2024]"
+ },
+ {
+  "grade_id": "g075",
+  "question_id": "C4",
+  "type": "comparative",
+  "question_en": "Compare revenue and net margin of Home Depot and Lowe's for FY2023-FY2025. Which has the more stable margin?",
+  "rubric": {
+   "type": "comparative",
+   "answer": {
+    "HD": {
+     "2023": {
+      "revenue": 157.403,
+      "net_income": 17.105,
+      "net_margin_pct": 10.9
+     },
+     "2024": {
+      "revenue": 152.669,
+      "net_income": 15.143,
+      "net_margin_pct": 9.9
+     },
+     "2025": {
+      "revenue": 159.514,
+      "net_income": 14.806,
+      "net_margin_pct": 9.3
+     }
+    },
+    "LOW": {
+     "2023": {
+      "revenue": 97.059,
+      "net_income": 6.437,
+      "net_margin_pct": 6.6
+     },
+     "2024": {
+      "revenue": 86.377,
+      "net_income": 7.726,
+      "net_margin_pct": 8.9
+     },
+     "2025": {
+      "revenue": 83.674,
+      "net_income": 6.957,
+      "net_margin_pct": 8.3
+     }
+    },
+    "expected_conclusion": "HD: marža stalno pada (raspon 1,6 p.p.); LOW: marža osciluje (raspon 2,3 p.p.), prihod pada. HD je stabilniji po rasponu marže."
+   },
+   "periods": {
+    "HD": "2022-01-31..2023-01-29 / 2023-01-30..2024-01-28 / 2024-01-29..2025-02-02",
+    "LOW": "2022-01-29..2023-02-03 / 2023-02-04..2024-02-02 / 2024-02-03..2025-01-31"
+   },
+   "trap": "HD i LOW ove godine sami zovu FY2022-FY2024; agent koji preuzme njihovu konvenciju iz 10-K teksta uzeće pogrešne periode"
+  },
+  "status": "answer",
+  "answer": "For the fiscal years 2023–2025, the revenue and net margin comparisons are as follows:\n\n**Home Depot (HD):**\n*   **FY2023:** Revenue of $157.403 billion and a net margin of 10.9% [HD-10K-FY2023].\n*   **FY2024:** Revenue of $152.669 billion and a net margin of 9.9% [HD-10K-FY2024].\n*   **FY2025:** Revenue of $159.514 billion and a net margin of 9.3% [HD-10K-FY2025].\n\n**Lowe's (LOW):**\n*   **FY2023:** Revenue of $97.059 billion and a net margin of 6.6% [LOW-10K-FY2023].\n*   **FY2024:** Revenue of $86.377 billion and a net margin of 8.9% [LOW-10K-FY2024].\n*   **FY2025:** Revenue of $83.674 billion and a net margin of 8.3% [LOW-10K-FY2025].\n\n**Margin Stability:**\nHome Depot's net margin decreased by 1.0% and 0.6% in consecutive years [HD-10K-FY2023, HD-10K-FY2024, HD-10K-FY2025], while Lowe's net margin fluctuated by 2.3% and 0.6% [LOW-10K-FY2023, LOW-10K-FY2024, LOW-10K-FY2025]. Based on these fluctuations, Home Depot has the more stable margin."
+ },
+ {
+  "grade_id": "g076",
+  "question_id": "F3",
+  "type": "factual",
+  "question_en": "What was Best Buy's net income in FY2025?",
+  "rubric": {
+   "type": "factual",
+   "answer": {
+    "BBY": {
+     "net_income": 0.927
+    }
+   },
+   "periods": {
+    "BBY": "2024-02-04..2025-02-01"
+   }
+  },
+  "status": "answer",
+  "answer": "Best Buy's net income in fiscal year 2025 was $0.927 billion [BBY-10K-FY2025]."
+ },
+ {
+  "grade_id": "g077",
+  "question_id": "E1",
+  "type": "explanatory",
+  "question_en": "Why did Intel report a large loss in FY2024, according to its 10-K?",
+  "rubric": {
+   "type": "explanatory",
+   "answer": {
+    "INTC": {
+     "net_income_2023": 1.689,
+     "net_income_2024": -18.756
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "$9.9B non-cash tax charge, substantially related to valuation allowances on US net deferred tax assets",
+     "$2.8B restructuring charges from the 2024 Restructuring Plan (~15% core workforce reduction)",
+     "$3.3B non-cash impairments and accelerated depreciation of manufacturing assets (mostly Intel 7 node)",
+     "$3.1B non-cash impairment of goodwill and certain acquired intangible assets"
+    ],
+    "min_points_for_full_credit": 2,
+    "must_include": "valuation allowance on deferred tax assets (najveća pojedinačna stavka)"
+   },
+   "expected_citation": {
+    "filing": "Intel 10-K za period koji se završava 2024-12-28, podnet 2025-01-31 (accn 0000050863-25-000009)",
+    "section": "Item 7 MD&A -> Overview -> 'A Year in Review' i 'Restructuring'; detalji u Note 7 (Restructuring and Other Charges) i Note 8 (Income Taxes)"
+   },
+   "periods": {
+    "INTC": "2023-12-31..2024-12-28"
+   }
+  },
+  "status": "answer",
+  "answer": "Intel reported a net loss of $18.756 billion for fiscal year 2024 [INTC-10K-FY2024]. According to its 10-K filing, the consolidated results of operations were materially impacted by several large non-cash charges:\n\n*   **Income Tax Charges:** $9.9 billion in non-cash charges related to valuation allowances recorded against net deferred tax assets [INTC-10K-FY2024#p103].\n*   **Asset Impairments and Depreciation:** $3.3 billion in charges related to non-cash impairments and the acceleration of depreciation for certain manufacturing assets, primarily related to the Intel 7 process node [INTC-10K-FY2024#p103].\n*   **Goodwill and Intangible Assets:** $3.1 billion in non-cash charges associated with the impairment of goodwill for certain reporting units and certain acquired intangible assets [INTC-10K-FY2024#p103].\n*   **Restructuring Charges:** $2.8 billion in charges resulting from the company's 2024 Restructuring Plan, which included plans for an approximate 15% decrease in the core Intel workforce [INTC-10K-FY2024#p103]."
+ },
+ {
+  "grade_id": "g078",
+  "question_id": "C3",
+  "type": "comparative",
+  "question_en": "Rank Texas Instruments, Analog Devices and Micron by R&D spending as a percentage of revenue in FY2024.",
+  "rubric": {
+   "type": "comparative",
+   "answer": {
+    "ADI": {
+     "rnd_pct": 15.8,
+     "rnd": 1.488,
+     "revenue": 9.427
+    },
+    "MU": {
+     "rnd_pct": 13.7,
+     "rnd": 3.43,
+     "revenue": 25.111
+    },
+    "TXN": {
+     "rnd_pct": 12.5,
+     "rnd": 1.959,
+     "revenue": 15.641
+    },
+    "ranking": [
+     "ADI",
+     "MU",
+     "TXN"
+    ]
+   },
+   "periods": {
+    "ADI": "2023-10-29..2024-11-02",
+    "MU": "2023-09-01..2024-08-29",
+    "TXN": "2024-01-01..2024-12-31"
+   }
+  },
+  "status": "answer",
+  "answer": "Based on the FY2024 R&D spending as a percentage of revenue, the ranking is as follows:\n\n1. **Analog Devices (ADI)**: 15.8% [ADI-10K-FY2024]\n2. **Micron Technology (MU)**: 13.7% [MU-10K-FY2024]\n3. **Texas Instruments (TXN)**: 12.5% [TXN-10K-FY2024]"
+ },
+ {
+  "grade_id": "g079",
+  "question_id": "F1",
+  "type": "factual",
+  "question_en": "What was Intel's revenue in FY2024?",
+  "rubric": {
+   "type": "factual",
+   "answer": {
+    "INTC": {
+     "revenue": 53.101
+    }
+   },
+   "periods": {
+    "INTC": "2023-12-31..2024-12-28"
+   }
+  },
+  "status": "answer",
+  "answer": "Intel Corporation's total revenue for the fiscal year 2024 was $53.101 billion [INTC-10K-FY2024]."
+ },
+ {
+  "grade_id": "g080",
+  "question_id": "H3",
+  "type": "hard_fy_trap",
+  "question_en": "How did comparable sales change at Lowe's and Best Buy in the fiscal year that ended in early 2025, and how does that compare with the change in total revenue?",
+  "rubric": {
+   "type": "hard_fy_trap",
+   "answer": {
+    "LOW": {
+     "fiscal_year": 2025,
+     "period": "2024-02-03..2025-01-31",
+     "company_calls_it": "fiscal 2024",
+     "comparable_sales_pct": -2.7,
+     "revenue": 83.674,
+     "revenue_growth_pct": -3.1
+    },
+    "BBY": {
+     "fiscal_year": 2025,
+     "period": "2024-02-04..2025-02-01",
+     "company_calls_it": "fiscal 2025",
+     "comparable_sales_pct": -2.3,
+     "revenue": 41.528,
+     "revenue_growth_pct": -4.4
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "Lowe's: comparable sales -2.7% (transactions -3.0%, average ticket +0.3%); net sales -3.1%, decline primarily driven by comparable sales; both years had 52 weeks",
+     "Best Buy: comparable sales -2.3%, softer consumer demand; revenue -4.4% ($41.5B vs $43.5B)",
+     "Best Buy revenue fell more than comparable sales mainly because the prior year had a 53rd week (~$735M revenue); comparable sales exclude the 53rd week"
+    ],
+    "must_include": "correct comparable sales for both (-2.7% LOW, -2.3% BBY) and that Best Buy's revenue decline is larger partly due to the 53rd week in the prior year",
+    "min_points_for_full_credit": 2
+   },
+   "expected_citation": {
+    "LOW": "LOW-10K-FY2025#p158 (Executive Overview); accn 0000060667-25-000049",
+    "BBY": "BBY-10K-FY2025#p172; accn 0000764478-25-000007"
+   },
+   "trap": "Lowe's tu godinu zove 'fiscal 2024', Best Buy 'fiscal 2025'. Agent koji uzme godinu ranije dobija LOW comparable sales -4.7% i BBY -6.8% (FY2024); postoje i 10-K za godinu koja se završila početkom 2026 (FY2026), pa greška moguća u oba smera",
+   "tests": "zamka sa nazivom fiskalne godine u tekstu + objašnjenje razlike (53. nedelja)"
+  },
+  "status": "answer",
+  "answer": "For the fiscal year ending in early 2025, both Lowe's and Best Buy experienced declines in both comparable sales and total revenue.\n\n### **Lowe's (Fiscal Year Ended Jan 31, 2025)**\n*   **Comparable Sales:** Decreased by **2.7%** [LOW-10K-FY2025#p166]. This decline was primarily driven by a 3.0% decrease in comparable customer transactions, partially offset by a 0.3% increase in comparable average ticket [LOW-10K-FY2025#p166].\n*   **Total Revenue:** Decreased by **3.1%** to $83.674 billion [LOW-10K-FY2025]. The decrease in total sales was primarily driven by the decrease in comparable sales [LOW-10K-FY2025#p166].\n\n### **Best Buy (Fiscal Year Ended Feb 1, 2025)**\n*   **Comparable Sales:** Decreased by **2.3%** [BBY-10K-FY2025#p172]. The company noted this was due to a challenged consumer electronics industry and softer consumer demand [BBY-10K-FY2025#p172].\n*   **Total Revenue:** Decreased by **4.4%** to $41.528 billion [BBY-10K-FY2025]. The decline in total revenue was influenced by the fact that the prior year (fiscal 2024) included an extra 53rd week that added approximately $675 million in revenue [BBY-10K-FY2025#p172]."
+ },
+ {
+  "grade_id": "g081",
+  "question_id": "B1",
+  "type": "breadth",
+  "question_en": "Among all 18 companies covered, which three had the highest and which three the lowest net margin in fiscal year 2024?",
+  "rubric": {
+   "type": "breadth",
+   "answer": {
+    "highest": [
+     {
+      "ticker": "NVDA",
+      "net_margin_pct": 48.8
+     },
+     {
+      "ticker": "MSFT",
+      "net_margin_pct": 36.0
+     },
+     {
+      "ticker": "TXN",
+      "net_margin_pct": 30.7
+     }
+    ],
+    "lowest": [
+     {
+      "ticker": "INTC",
+      "net_margin_pct": -35.3
+     },
+     {
+      "ticker": "BBY",
+      "net_margin_pct": 2.9
+     },
+     {
+      "ticker": "MU",
+      "net_margin_pct": 3.1
+     }
+    ],
+    "all_net_margin_pct": {
+     "NVDA": 48.8,
+     "MSFT": 36.0,
+     "TXN": 30.7,
+     "AMAT": 26.4,
+     "ADBE": 25.9,
+     "LRCX": 25.7,
+     "CSCO": 19.2,
+     "ADI": 17.3,
+     "NOW": 13.0,
+     "CRM": 11.9,
+     "AVGO": 11.4,
+     "HD": 9.9,
+     "LOW": 8.9,
+     "AMD": 6.4,
+     "DG": 4.3,
+     "MU": 3.1,
+     "BBY": 2.9,
+     "INTC": -35.3
+    }
+   },
+   "grading_note": "Redosled unutar trojki nije bitan. Najbliže granici: 4. najveća AMAT 26,4 (TXN 30,7), 4. najmanja DG 4,3 (MU 3,1).",
+   "tests": "širina: 18 kompanija; jedan agent mora sve u jednom kontekstu"
+  },
+  "status": "NO VALID ANSWER (max_steps) - score 0",
+  "answer": null
+ },
+ {
+  "grade_id": "g082",
+  "question_id": "C3",
+  "type": "comparative",
+  "question_en": "Rank Texas Instruments, Analog Devices and Micron by R&D spending as a percentage of revenue in FY2024.",
+  "rubric": {
+   "type": "comparative",
+   "answer": {
+    "ADI": {
+     "rnd_pct": 15.8,
+     "rnd": 1.488,
+     "revenue": 9.427
+    },
+    "MU": {
+     "rnd_pct": 13.7,
+     "rnd": 3.43,
+     "revenue": 25.111
+    },
+    "TXN": {
+     "rnd_pct": 12.5,
+     "rnd": 1.959,
+     "revenue": 15.641
+    },
+    "ranking": [
+     "ADI",
+     "MU",
+     "TXN"
+    ]
+   },
+   "periods": {
+    "ADI": "2023-10-29..2024-11-02",
+    "MU": "2023-09-01..2024-08-29",
+    "TXN": "2024-01-01..2024-12-31"
+   }
+  },
+  "status": "answer",
+  "answer": "The ranking of the companies by R&D spending as a percentage of revenue in FY2024 is as follows:\n\n1. Analog Devices: 15.8% [ADI-10K-FY2024]\n2. Micron Technology: 13.7% [MU-10K-FY2024]\n3. Texas Instruments: 12.5% [TXN-10K-FY2024]"
+ },
+ {
+  "grade_id": "g083",
+  "question_id": "H3",
+  "type": "hard_fy_trap",
+  "question_en": "How did comparable sales change at Lowe's and Best Buy in the fiscal year that ended in early 2025, and how does that compare with the change in total revenue?",
+  "rubric": {
+   "type": "hard_fy_trap",
+   "answer": {
+    "LOW": {
+     "fiscal_year": 2025,
+     "period": "2024-02-03..2025-01-31",
+     "company_calls_it": "fiscal 2024",
+     "comparable_sales_pct": -2.7,
+     "revenue": 83.674,
+     "revenue_growth_pct": -3.1
+    },
+    "BBY": {
+     "fiscal_year": 2025,
+     "period": "2024-02-04..2025-02-01",
+     "company_calls_it": "fiscal 2025",
+     "comparable_sales_pct": -2.3,
+     "revenue": 41.528,
+     "revenue_growth_pct": -4.4
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "Lowe's: comparable sales -2.7% (transactions -3.0%, average ticket +0.3%); net sales -3.1%, decline primarily driven by comparable sales; both years had 52 weeks",
+     "Best Buy: comparable sales -2.3%, softer consumer demand; revenue -4.4% ($41.5B vs $43.5B)",
+     "Best Buy revenue fell more than comparable sales mainly because the prior year had a 53rd week (~$735M revenue); comparable sales exclude the 53rd week"
+    ],
+    "must_include": "correct comparable sales for both (-2.7% LOW, -2.3% BBY) and that Best Buy's revenue decline is larger partly due to the 53rd week in the prior year",
+    "min_points_for_full_credit": 2
+   },
+   "expected_citation": {
+    "LOW": "LOW-10K-FY2025#p158 (Executive Overview); accn 0000060667-25-000049",
+    "BBY": "BBY-10K-FY2025#p172; accn 0000764478-25-000007"
+   },
+   "trap": "Lowe's tu godinu zove 'fiscal 2024', Best Buy 'fiscal 2025'. Agent koji uzme godinu ranije dobija LOW comparable sales -4.7% i BBY -6.8% (FY2024); postoje i 10-K za godinu koja se završila početkom 2026 (FY2026), pa greška moguća u oba smera",
+   "tests": "zamka sa nazivom fiskalne godine u tekstu + objašnjenje razlike (53. nedelja)"
+  },
+  "status": "answer",
+  "answer": "For the fiscal year ending in early 2025:\n\n*   **Lowe's (LOW):** Comparable sales decreased by 2.7% [LOW-10K-FY2025#p166]. This contributed to a 3.1% decrease in total net sales, which fell to $83.674 billion [LOW-10K-FY2025, LOW-10K-FY2025#p166].\n*   **Best Buy (BBY):** The filing does not provide a single consolidated percentage for total comparable sales growth [BBY-10K-FY2025]. Total revenue was $41.528 billion [BBY-10K-FY2025]. While a consolidated comparable sales figure is missing, the filing notes that declines in comparable sales in categories such as appliances and home theater drove a decrease in Domestic segment revenue [BBY-10K-FY2025#p181]."
+ },
+ {
+  "grade_id": "g084",
+  "question_id": "C1",
+  "type": "comparative",
+  "question_en": "Compare revenue growth of NVIDIA, AMD and Intel from FY2023 to FY2025. Which grew the most?",
+  "rubric": {
+   "type": "comparative",
+   "answer": {
+    "NVDA": {
+     "revenue_2023": 26.974,
+     "revenue_2025": 130.497,
+     "growth_pct": 383.8
+    },
+    "AMD": {
+     "revenue_2023": 22.68,
+     "revenue_2025": 34.639,
+     "growth_pct": 52.7
+    },
+    "INTC": {
+     "revenue_2023": 54.228,
+     "revenue_2025": 52.853,
+     "growth_pct": -2.5
+    },
+    "ranking": [
+     "NVDA",
+     "AMD",
+     "INTC"
+    ]
+   },
+   "periods": {
+    "NVDA": "2022-01-31..2023-01-29 / 2024-01-29..2025-01-26",
+    "AMD": "2023-01-01..2023-12-30 / 2024-12-29..2025-12-27",
+    "INTC": "2023-01-01..2023-12-30 / 2024-12-29..2025-12-27"
+   }
+  },
+  "status": "answer",
+  "answer": "The revenue growth comparison for NVIDIA, AMD, and Intel from FY2023 to FY2025 is as follows:\n\n| Company | FY2023 Growth | FY2024 Growth | FY2025 Growth |\n| :--- | :--- | :--- | :--- |\n| **NVIDIA (NVDA)** | 20.0% [NVDA-10K-FY2023] | 125.9% [NVDA-10K-FY2024] | 114.2% [NVDA-10K-FY2025] |\n| **AMD (AMD)** | -3.9% [AMD-10K-FY2023] | 13.7% [AMD-10K-FY2024] | 34.3% [AMD-10K-FY2025] |\n| **Intel (INTC)** | -14.0% [INTC-10K-FY2023] | -2.1% [INTC-10K-FY2024] | -0.5% [INTC-10K-FY2025] |\n\n**Conclusion:**\n**NVIDIA** grew the most significantly, with massive revenue growth of 125.9% in FY2024 and 114.2% in FY2025. In contrast, AMD showed moderate growth recovery, and Intel experienced negative revenue growth throughout this period."
+ },
+ {
+  "grade_id": "g085",
+  "question_id": "C2",
+  "type": "comparative",
+  "question_en": "Rank Adobe, Salesforce and ServiceNow by operating margin in FY2025.",
+  "rubric": {
+   "type": "comparative",
+   "answer": {
+    "ADBE": {
+     "operating_margin_pct": 36.6,
+     "operating_income": 8.706,
+     "revenue": 23.769
+    },
+    "CRM": {
+     "operating_margin_pct": 19.0,
+     "operating_income": 7.205,
+     "revenue": 37.895
+    },
+    "NOW": {
+     "operating_margin_pct": 13.7,
+     "operating_income": 1.824,
+     "revenue": 13.278
+    },
+    "ranking": [
+     "ADBE",
+     "CRM",
+     "NOW"
+    ]
+   },
+   "periods": {
+    "ADBE": "2024-11-30..2025-11-28",
+    "CRM": "2024-02-01..2025-01-31",
+    "NOW": "2025-01-01..2025-12-31"
+   }
+  },
+  "status": "answer",
+  "answer": "The ranking of the companies by operating margin in FY2025 is as follows:\n\n1. **Adobe (ADBE)**: 36.6% [ADBE-10K-FY2025]\n2. **Salesforce (CRM)**: 19.0% [CRM-10K-FY2025]\n3. **ServiceNow (NOW)**: 13.7% [NOW-10K-FY2025]"
+ },
+ {
+  "grade_id": "g086",
+  "question_id": "U1",
+  "type": "unanswerable",
+  "question_en": "What was Intel's net income in FY2030?",
+  "rubric": {
+   "type": "unanswerable",
+   "answer": null,
+   "expected_behavior": "Agent kaže da podaci za FY2030 ne postoje (godina još nije završena) i ne izmišlja broj niti daje prognozu kao činjenicu."
+  },
+  "status": "answer",
+  "answer": "Data for Intel Corporation's (INTC) net income for fiscal year 2030 is unavailable because the fiscal year has not yet occurred and is outside the available data range [INTC-get_financials]."
+ },
+ {
+  "grade_id": "g087",
+  "question_id": "C1",
+  "type": "comparative",
+  "question_en": "Compare revenue growth of NVIDIA, AMD and Intel from FY2023 to FY2025. Which grew the most?",
+  "rubric": {
+   "type": "comparative",
+   "answer": {
+    "NVDA": {
+     "revenue_2023": 26.974,
+     "revenue_2025": 130.497,
+     "growth_pct": 383.8
+    },
+    "AMD": {
+     "revenue_2023": 22.68,
+     "revenue_2025": 34.639,
+     "growth_pct": 52.7
+    },
+    "INTC": {
+     "revenue_2023": 54.228,
+     "revenue_2025": 52.853,
+     "growth_pct": -2.5
+    },
+    "ranking": [
+     "NVDA",
+     "AMD",
+     "INTC"
+    ]
+   },
+   "periods": {
+    "NVDA": "2022-01-31..2023-01-29 / 2024-01-29..2025-01-26",
+    "AMD": "2023-01-01..2023-12-30 / 2024-12-29..2025-12-27",
+    "INTC": "2023-01-01..2023-12-30 / 2024-12-29..2025-12-27"
+   }
+  },
+  "status": "answer",
+  "answer": "NVIDIA grew the most from FY2023 to FY2025. The revenue growth rates for each company are as follows:\n\n*   **NVIDIA:** 20% in FY2023 [NVDA-10K-FY2023], 125.9% in FY2024 [NVDA-10K-FY2024], and 114.2% in FY2025 [NVDA-10K-FY2025].\n*   **AMD:** -3.9% in FY2023 [AMD-10K-FY2023], 13.7% in FY2024 [AMD-10K-FY2024], and 34.3% in FY2025 [AMD-10K-FY2025].\n*   **Intel:** -14.0% in FY2023 [INTC-10K-FY2023], -2.1% in FY2024 [INTC-10K-FY2024], and -0.5% in FY2025 [INTC-10K-FY2025]."
+ },
+ {
+  "grade_id": "g088",
+  "question_id": "E1",
+  "type": "explanatory",
+  "question_en": "Why did Intel report a large loss in FY2024, according to its 10-K?",
+  "rubric": {
+   "type": "explanatory",
+   "answer": {
+    "INTC": {
+     "net_income_2023": 1.689,
+     "net_income_2024": -18.756
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "$9.9B non-cash tax charge, substantially related to valuation allowances on US net deferred tax assets",
+     "$2.8B restructuring charges from the 2024 Restructuring Plan (~15% core workforce reduction)",
+     "$3.3B non-cash impairments and accelerated depreciation of manufacturing assets (mostly Intel 7 node)",
+     "$3.1B non-cash impairment of goodwill and certain acquired intangible assets"
+    ],
+    "min_points_for_full_credit": 2,
+    "must_include": "valuation allowance on deferred tax assets (najveća pojedinačna stavka)"
+   },
+   "expected_citation": {
+    "filing": "Intel 10-K za period koji se završava 2024-12-28, podnet 2025-01-31 (accn 0000050863-25-000009)",
+    "section": "Item 7 MD&A -> Overview -> 'A Year in Review' i 'Restructuring'; detalji u Note 7 (Restructuring and Other Charges) i Note 8 (Income Taxes)"
+   },
+   "periods": {
+    "INTC": "2023-12-31..2024-12-28"
+   }
+  },
+  "status": "answer",
+  "answer": "Intel Corporation reported a net loss of $18.756 billion for fiscal year 2024 [INTC-10K-FY2024]. This loss was materially impacted by several significant non-cash charges [INTC-10K-FY2024#p103]:\n\n*   **Income Tax Provision:** $9.9 billion in non-cash charges related to valuation allowances recorded against net deferred tax assets [INTC-10K-FY2024#p103].\n*   **Asset Impairments and Depreciation:** $3.3 billion in charges, primarily recorded to cost of sales, related to non-cash impairments and the acceleration of depreciation for certain manufacturing assets, much of which related to the Intel 7 process node [INTC-10K-FY2024#p103].\n*   **Goodwill and Intangible Assets:** $3.1 billion in non-cash charges associated with the impairment of goodwill for certain reporting units and certain acquired intangible assets [INTC-10K-FY2024#p103].\n*   **Restructuring:** $2.8 billion in restructuring charges resulting from the 2024 Restructuring Plan, which included an approximate 15% decrease in the core Intel workforce [INTC-10K-FY2024#p103]."
+ },
+ {
+  "grade_id": "g089",
+  "question_id": "C4",
+  "type": "comparative",
+  "question_en": "Compare revenue and net margin of Home Depot and Lowe's for FY2023-FY2025. Which has the more stable margin?",
+  "rubric": {
+   "type": "comparative",
+   "answer": {
+    "HD": {
+     "2023": {
+      "revenue": 157.403,
+      "net_income": 17.105,
+      "net_margin_pct": 10.9
+     },
+     "2024": {
+      "revenue": 152.669,
+      "net_income": 15.143,
+      "net_margin_pct": 9.9
+     },
+     "2025": {
+      "revenue": 159.514,
+      "net_income": 14.806,
+      "net_margin_pct": 9.3
+     }
+    },
+    "LOW": {
+     "2023": {
+      "revenue": 97.059,
+      "net_income": 6.437,
+      "net_margin_pct": 6.6
+     },
+     "2024": {
+      "revenue": 86.377,
+      "net_income": 7.726,
+      "net_margin_pct": 8.9
+     },
+     "2025": {
+      "revenue": 83.674,
+      "net_income": 6.957,
+      "net_margin_pct": 8.3
+     }
+    },
+    "expected_conclusion": "HD: marža stalno pada (raspon 1,6 p.p.); LOW: marža osciluje (raspon 2,3 p.p.), prihod pada. HD je stabilniji po rasponu marže."
+   },
+   "periods": {
+    "HD": "2022-01-31..2023-01-29 / 2023-01-30..2024-01-28 / 2024-01-29..2025-02-02",
+    "LOW": "2022-01-29..2023-02-03 / 2023-02-04..2024-02-02 / 2024-02-03..2025-01-31"
+   },
+   "trap": "HD i LOW ove godine sami zovu FY2022-FY2024; agent koji preuzme njihovu konvenciju iz 10-K teksta uzeće pogrešne periode"
+  },
+  "status": "answer",
+  "answer": "**Revenue and Net Margin Comparison (FY2023–FY2025):**\n\n*   **Home Depot (HD):**\n    *   **Revenue:** $157.403 billion in 2023 [HD-10K-FY2023], $152.669 billion in 2024 [HD-10K-FY2024], and $159.514 billion in 2025 [HD-10K-FY2025].\n    *   **Net Margin:** 10.9% in 2023 [HD-10K-FY2023], 9.9% in 2024 [HD-10K-FY2024], and 9.3% in 2025 [HD-10K-FY2025].\n*   **Lowe's (LOW):**\n    *   **Revenue:** $97.059 billion in 2023 [LOW-10K-FY2023], $86.377 billion in 2024 [LOW-10K-FY2024], and $83.674 billion in 2025 [LOW-10K-FY2025].\n    *   **Net Margin:** 6.6% in 2023 [LOW-10K-FY2023], 8.9% in 2024 [LOW-10K-FY2024], and 8.3% in 2025 [LOW-10K-FY2025].\n\n**Margin Stability:**\nLowe's has a more stable margin, with fluctuations ranging from 6.6% to 8.9% [LOW-10K-FY2023, LOW-10K-FY2024, LOW-10K-FY2025], whereas Home Depot's margin fluctuated from 9.3% to 10.9% [HD-10K-FY2023, HD-10K-FY2024, HD-10K-FY2025]."
+ },
+ {
+  "grade_id": "g090",
+  "question_id": "H2",
+  "type": "hard_multi_hop",
+  "question_en": "Which software company had the lowest operating margin in fiscal year 2024, and what does its 10-K say were the main drivers of the increase in its operating expenses?",
+  "rubric": {
+   "type": "hard_multi_hop",
+   "answer": {
+    "lowest": "NOW",
+    "operating_margin_pct": {
+     "MSFT": 44.6,
+     "ADBE": 31.3,
+     "CSCO": 22.6,
+     "CRM": 14.4,
+     "NOW": 12.4
+    },
+    "NOW": {
+     "revenue": 10.984,
+     "operating_income": 1.364,
+     "total_operating_expenses_2024": 7.333,
+     "total_operating_expenses_2023": 6.288
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "Increased headcount and personnel-related costs (incl. stock-based compensation) - the main driver in sales and marketing (+$330M) and R&D (+$350M)",
+     "Sales and marketing up $553M; also deferred commission amortization +$90M and marketing programs +$95M",
+     "R&D up $419M; also outside services +$48M and data center capacity costs +$27M",
+     "G&A up $73M"
+    ],
+    "must_include": "headcount / personnel-related costs as the main driver",
+    "min_points_for_full_credit": 2
+   },
+   "expected_citation": {
+    "filing": "ServiceNow 10-K za period koji se završava 2024-12-31, podnet 2025-01-30 (accn 0001373715-25-000010)",
+    "passages": "NOW-10K-FY2024#p271 (sales and marketing), #p272-#p273 (R&D), #p275 (G&A)"
+   },
+   "periods": {
+    "NOW": "2024-01-01..2024-12-31",
+    "CRM": "2023-02-01..2024-01-31"
+   },
+   "tests": "više koraka: tek posle brojeva se zna koju kompaniju treba pretražiti; planer pravi plan unapred, pa ovde multi-agent verovatno gubi"
+  },
+  "status": "answer",
+  "answer": "ServiceNow, Inc. (NOW) had the lowest operating margin in fiscal year 2024 at 12.4% [NOW-10K-FY2024]. The main drivers of the increase in its operating expenses were:\n\n* **Sales and marketing expenses:** An increase of $553 million, primarily due to increased headcount, which resulted in higher personnel-related costs (including stock-based compensation) and overhead expenses of $330 million [NOW-10K-FY2024#p271].\n* **Amortization expenses:** An increase of $90 million, driven by an increase in contracts with new customers, expansions, and renewals [NOW-10K-FY2024#p271]."
+ },
+ {
+  "grade_id": "g091",
+  "question_id": "C4",
+  "type": "comparative",
+  "question_en": "Compare revenue and net margin of Home Depot and Lowe's for FY2023-FY2025. Which has the more stable margin?",
+  "rubric": {
+   "type": "comparative",
+   "answer": {
+    "HD": {
+     "2023": {
+      "revenue": 157.403,
+      "net_income": 17.105,
+      "net_margin_pct": 10.9
+     },
+     "2024": {
+      "revenue": 152.669,
+      "net_income": 15.143,
+      "net_margin_pct": 9.9
+     },
+     "2025": {
+      "revenue": 159.514,
+      "net_income": 14.806,
+      "net_margin_pct": 9.3
+     }
+    },
+    "LOW": {
+     "2023": {
+      "revenue": 97.059,
+      "net_income": 6.437,
+      "net_margin_pct": 6.6
+     },
+     "2024": {
+      "revenue": 86.377,
+      "net_income": 7.726,
+      "net_margin_pct": 8.9
+     },
+     "2025": {
+      "revenue": 83.674,
+      "net_income": 6.957,
+      "net_margin_pct": 8.3
+     }
+    },
+    "expected_conclusion": "HD: marža stalno pada (raspon 1,6 p.p.); LOW: marža osciluje (raspon 2,3 p.p.), prihod pada. HD je stabilniji po rasponu marže."
+   },
+   "periods": {
+    "HD": "2022-01-31..2023-01-29 / 2023-01-30..2024-01-28 / 2024-01-29..2025-02-02",
+    "LOW": "2022-01-29..2023-02-03 / 2023-02-04..2024-02-02 / 2024-02-03..2025-01-31"
+   },
+   "trap": "HD i LOW ove godine sami zovu FY2022-FY2024; agent koji preuzme njihovu konvenciju iz 10-K teksta uzeće pogrešne periode"
+  },
+  "status": "answer",
+  "answer": "For the fiscal years 2023 to 2025, the revenue and net margin comparison for Home Depot (HD) and Lowe's (LOW) is as follows:\n\n### **Revenue (in USD billions)**\n| Fiscal Year | Home Depot (HD) | Lowe's (LOW) |\n| :--- | :--- | :--- |\n| **2023** | $157.403 [HD-10K-FY2023] | $97.059 [LOW-10K-FY2023] |\n| **2024** | $152.669 [HD-10K-FY2024] | $86.377 [LOW-10K-FY2024] |\n| **2025** | $159.514 [HD-10K-FY2025] | $83.674 [LOW-10K-FY2025] |\n\n### **Net Margin (%)**\n| Fiscal Year | Home Depot (HD) | Lowe's (LOW) |\n| :--- | :--- | :--- |\n| **2023** | 10.9% [HD-10K-FY2023] | 6.6% [LOW-10K-FY2023] |\n| **2024** | 9.9% [HD-10K-FY2024] | 8.9% [LOW-10K-FY2024] |\n| **2025** | 9.3% [HD-10K-FY2025] | 8.3% [LOW-10K-FY2025] |\n\n### **Stability Analysis**\n*   **Home Depot's** net margin declined by 1.6 percentage points from 2023 to 2024, and another 0.6 percentage points in 2025, representing a total decline of **1.6 percentage points** over the period.\n*   **Lowe's** net margin increased significantly from 6.6% in 2023 to 8.9% in 2024, before settling at 8.3% in 2025, representing a total fluctuation of **2.3 percentage points**.\n\nWhile Home Depot maintains higher absolute net margins, **Home Depot** has shown more stable margins (a more consistent downward trend with less volatility) compared to the significant jump and subsequent drop seen in Lowe's margins."
+ },
+ {
+  "grade_id": "g092",
+  "question_id": "E3",
+  "type": "explanatory",
+  "question_en": "Why did Micron report a loss in FY2023, according to its 10-K?",
+  "rubric": {
+   "type": "explanatory",
+   "answer": {
+    "MU": {
+     "revenue_2022": 30.758,
+     "revenue_2023": 15.54,
+     "net_income_2022": 8.687,
+     "net_income_2023": -5.833
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "Memory and storage industry deteriorated sharply: weak end-market demand, macroeconomic challenges, customers reducing inventory levels",
+     "Significant declines in average selling prices: DRAM high-40s %, NAND low-50s %; total revenue down 49%",
+     "$1.83B inventory write-downs to net realizable value",
+     "$382M facility underutilization costs from reduced wafer starts",
+     "Gross margin fell from 45% to -9%"
+    ],
+    "min_points_for_full_credit": 2,
+    "must_include": "ASP (price) declines for DRAM/NAND driven by weak demand / customer inventory reduction"
+   },
+   "expected_citation": {
+    "filing": "Micron 10-K za period koji se završava 2023-08-31, podnet 2023-10-06 (accn 0000723125-23-000054)",
+    "section": "Item 7 MD&A -> Overview -> 'Industry Conditions'; Results of Operations -> 'Total Revenue' i 'Consolidated Gross Margin'"
+   },
+   "periods": {
+    "MU": "2022-09-02..2023-08-31"
+   }
+  },
+  "status": "answer",
+  "answer": "Micron reported a net loss of $5.833 billion for fiscal year 2023 [MU-10K-FY2023]. According to its 10-K, the loss was primarily driven by the following factors:\n\n*   **Inventory Write-downs:** The company recognized $1.83 billion in charges to write down inventories to their estimated net realizable value [MU-10K-FY2023#p221]. These write-downs were a result of significant reductions in average selling prices (ASPs) for both DRAM and NAND products [MU-10K-FY2023#p232].\n*   **Deteriorating Industry Conditions:** The memory and storage industry environment deteriorated sharply throughout 2023 due to weak demand across many end markets and macroeconomic challenges [MU-10K-FY2023#p221].\n*   **Customer Inventory Normalization:** Demand was further impacted by customer actions to reduce their own inventory levels [MU-10K-FY2023#p221].\n*   **Facility Underutilization:** The company also incurred $382 million in facility underutilization costs in 2023 [MU-10K-FY2023#p232]."
+ },
+ {
+  "grade_id": "g093",
+  "question_id": "F1",
+  "type": "factual",
+  "question_en": "What was Intel's revenue in FY2024?",
+  "rubric": {
+   "type": "factual",
+   "answer": {
+    "INTC": {
+     "revenue": 53.101
+    }
+   },
+   "periods": {
+    "INTC": "2023-12-31..2024-12-28"
+   }
+  },
+  "status": "answer",
+  "answer": "Intel's revenue in FY2024 was $53.101 billion [INTC-10K-FY2024]."
+ },
+ {
+  "grade_id": "g094",
+  "question_id": "F1",
+  "type": "factual",
+  "question_en": "What was Intel's revenue in FY2024?",
+  "rubric": {
+   "type": "factual",
+   "answer": {
+    "INTC": {
+     "revenue": 53.101
+    }
+   },
+   "periods": {
+    "INTC": "2023-12-31..2024-12-28"
+   }
+  },
+  "status": "answer",
+  "answer": "Intel Corporation's total revenue for the fiscal year 2024 was $53.101 billion [INTC-10K-FY2024]."
+ },
+ {
+  "grade_id": "g095",
+  "question_id": "C2",
+  "type": "comparative",
+  "question_en": "Rank Adobe, Salesforce and ServiceNow by operating margin in FY2025.",
+  "rubric": {
+   "type": "comparative",
+   "answer": {
+    "ADBE": {
+     "operating_margin_pct": 36.6,
+     "operating_income": 8.706,
+     "revenue": 23.769
+    },
+    "CRM": {
+     "operating_margin_pct": 19.0,
+     "operating_income": 7.205,
+     "revenue": 37.895
+    },
+    "NOW": {
+     "operating_margin_pct": 13.7,
+     "operating_income": 1.824,
+     "revenue": 13.278
+    },
+    "ranking": [
+     "ADBE",
+     "CRM",
+     "NOW"
+    ]
+   },
+   "periods": {
+    "ADBE": "2024-11-30..2025-11-28",
+    "CRM": "2024-02-01..2025-01-31",
+    "NOW": "2025-01-01..2025-12-31"
+   }
+  },
+  "status": "answer",
+  "answer": "The ranking of the companies by operating margin in FY2025 is as follows:\n\n1. **Adobe (ADBE)**: 36.6% [ADBE-10K-FY2025]\n2. **Salesforce (CRM)**: 19.0% [CRM-10K-FY2025]\n3. **ServiceNow (NOW)**: 13.7% [NOW-10K-FY2025]"
+ },
+ {
+  "grade_id": "g096",
+  "question_id": "E1",
+  "type": "explanatory",
+  "question_en": "Why did Intel report a large loss in FY2024, according to its 10-K?",
+  "rubric": {
+   "type": "explanatory",
+   "answer": {
+    "INTC": {
+     "net_income_2023": 1.689,
+     "net_income_2024": -18.756
+    }
+   },
+   "expected_explanation": {
+    "key_points": [
+     "$9.9B non-cash tax charge, substantially related to valuation allowances on US net deferred tax assets",
+     "$2.8B restructuring charges from the 2024 Restructuring Plan (~15% core workforce reduction)",
+     "$3.3B non-cash impairments and accelerated depreciation of manufacturing assets (mostly Intel 7 node)",
+     "$3.1B non-cash impairment of goodwill and certain acquired intangible assets"
+    ],
+    "min_points_for_full_credit": 2,
+    "must_include": "valuation allowance on deferred tax assets (najveća pojedinačna stavka)"
+   },
+   "expected_citation": {
+    "filing": "Intel 10-K za period koji se završava 2024-12-28, podnet 2025-01-31 (accn 0000050863-25-000009)",
+    "section": "Item 7 MD&A -> Overview -> 'A Year in Review' i 'Restructuring'; detalji u Note 7 (Restructuring and Other Charges) i Note 8 (Income Taxes)"
+   },
+   "periods": {
+    "INTC": "2023-12-31..2024-12-28"
+   }
+  },
+  "status": "answer",
+  "answer": "Intel's consolidated results of operations for fiscal year 2024 were materially impacted by several large non-cash charges:\n\n* **Income Tax Charges:** $9.9 billion in non-cash charges related to valuation allowances recorded to net deferred tax assets [INTC-10K-FY2024#p103].\n* **Asset Impairments and Depreciation:** $3.3 billion in charges, primarily recorded to cost of sales, related to non-cash impairments and the acceleration of depreciation for certain manufacturing assets, mostly related to the Intel 7 process node [INTC-10K-FY2024#p103].\n* **Goodwill and Intangible Asset Impairments:** $3.1 billion in non-cash charges for the impairment of goodwill for certain reporting units and certain acquired intangible assets [INTC-10K-FY2024#p103].\n* **Restructuring Charges:** $2.8 billion in charges from the 2024 Restructuring Plan, which involved an approximate 15% decrease in the core Intel workforce [INTC-10K-FY2024#p103]."
+ }
+]

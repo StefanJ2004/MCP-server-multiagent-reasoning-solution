@@ -40,5 +40,6 @@ def test_citation_valid_only_if_returned_in_same_run():
 
 
 def test_cost_and_stability():
-    assert cost_usd(1_000_000, 1_000_000) == pytest.approx(0.375)
+    assert cost_usd(1_000_000, 1_000_000, "deepseek/deepseek-v4.1-flash") == pytest.approx(0.375)
+    assert cost_usd(1_000_000, 1_000_000, "google/gemma-4-26b-a4b-it") == pytest.approx(0.41)
     assert stability({"F1": [1, 1, 1], "C4": [0, 1, 0], "E1": [0.5]}) == 0.5   # E1 ima 1 pokretanje

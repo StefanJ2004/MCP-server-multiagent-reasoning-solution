@@ -29,13 +29,13 @@ def load(out_dir: Path):
     return results, True
 
 
-def enrich(r: dict) -> dict:
+def enrich(r: dict, model: str) -> dict:
     """Automatske metrike po odgovoru."""
     returned = {i for c in r.get("tool_calls") or [] for i in c.get("returned_ids", [])}
     cit = check_citations(r["answer"] if r["stop_reason"] == "answer" else None, returned)
     calls = r.get("tool_calls") or []
     return {**r, **{f"cit_{k}": v for k, v in cit.items()},
-            "cost": cost_usd(r.get("input_tokens", 0), r.get("output_tokens", 0)),
+            "cost": cost_usd(r.get("input_tokens", 0), r.get("output_tokens", 0), model),
             "n_tool_calls": len(calls),
             "n_search": sum(c["name"] == "search_filing" for c in calls),
             "n_financials": sum(c["name"] == "get_financials" for c in calls),
@@ -116,8 +116,8 @@ def per_question_table(rows: list[dict], graded: bool) -> list[str]:
 def main():
     out_dir = Path(sys.argv[1]) if len(sys.argv) > 1 else sys.exit("Upotreba: python eval/report.py <folder>")
     results, graded = load(out_dir)
-    rows = [enrich(r) for r in results]
     config = json.loads((out_dir / "config.json").read_text("utf-8"))
+    rows = [enrich(r, config["model"]) for r in results]
     per_system = {s: system_metrics([r for r in rows if r["system"] == s], graded) for s in SYSTEMS}
 
     lines = [f"# Eval izveštaj: {out_dir.name}", "",
@@ -127,7 +127,7 @@ def main():
              f"pokretanja: {config['runs']}.", "",
              "Ocenjivanje: " + ("Claude, naslepo (to_grade.json bez oznake sistema), po pravilima iz "
                                 "questions.json; 1 / 0,5 / 0." if graded else "**još nema ocena** (grades.json)."),
-             "Cena je gornja granica (cene Alibaba endpointa, bez popusta za keširan ulaz).", "",
+             "Cena je gornja granica (cena zakucanog provajdera iz eval/metrics.py, bez popusta za keširan ulaz).", "",
              "## Po sistemu", "", "| Metrika | Jedan agent | Multi-agent |", "|---|---|---|"]
     metric_order = list(dict.fromkeys(list(per_system["single"]) + list(per_system["multi"])))
     for metric in metric_order:

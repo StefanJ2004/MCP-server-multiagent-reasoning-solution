@@ -3,7 +3,7 @@
 Model: `deepseek/deepseek-v4.1-flash`, provajder(i): Alibaba; modeli u odgovorima: deepseek/deepseek-v4.1-flash; pokretanja: 3.
 
 Ocenjivanje: Claude, naslepo (to_grade.json bez oznake sistema), po pravilima iz questions.json; 1 / 0,5 / 0.
-Cena je gornja granica (cene Alibaba endpointa, bez popusta za keširan ulaz).
+Cena je gornja granica (cena zakucanog provajdera iz eval/metrics.py, bez popusta za keširan ulaz).
 
 ## Po sistemu
 

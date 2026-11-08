@@ -4,10 +4,12 @@ import statistics
 
 from mcp_server.companies import COMPANIES
 
-# Alibaba Cloud preko OpenRouter-a, 2026-11-08 (USD po milionu tokena). Kesirani ulaz je jeftiniji,
-# pa je cena izracunata ovako GORNJA granica.
-PRICE_INPUT_PER_M = 0.075
-PRICE_OUTPUT_PER_M = 0.30
+# USD po milionu tokena (ulaz, izlaz) za zakucanog provajdera na OpenRouter-u, cene od 2026-11-08.
+# Kesirani ulaz je jeftiniji, pa je cena izracunata ovako GORNJA granica.
+PRICES = {
+    "deepseek/deepseek-v4.1-flash": (0.075, 0.30),   # Alibaba Cloud
+    "google/gemma-4-26b-a4b-it": (0.07, 0.34),       # DeepInfra (fp8); Google Vertex spaja paralelne pozive alata
+}
 
 _CITATION = re.compile(r"[A-Z]{1,5}-10K-FY\d{4}(?:#p\d+)?")
 _BRACKET = re.compile(r"\[([^\[\]]+)\]")
@@ -45,8 +47,9 @@ def check_citations(answer: str | None, returned: set[str]) -> dict:
     return {"citations": len(citations), "valid": len(citations) - len(invalid), "invalid": invalid}
 
 
-def cost_usd(input_tokens: int, output_tokens: int) -> float:
-    return input_tokens / 1e6 * PRICE_INPUT_PER_M + output_tokens / 1e6 * PRICE_OUTPUT_PER_M
+def cost_usd(input_tokens: int, output_tokens: int, model: str) -> float:
+    price_in, price_out = PRICES[model]          # KeyError = dodaj cenu novog modela u PRICES
+    return input_tokens / 1e6 * price_in + output_tokens / 1e6 * price_out
 
 
 def summary(values: list[float]) -> dict:

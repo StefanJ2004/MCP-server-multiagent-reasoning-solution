@@ -131,6 +131,14 @@ def test_invalid_json_arguments_go_back_as_error():
     assert llm.requests[1]["messages"][-1]["content"].startswith("Error: arguments are not valid JSON")
 
 
+def test_invalid_json_is_not_echoed_back_in_history():
+    # Google Vertex vraca 400 na ceo zahtev ako u istoriji stoji neispravan JSON argumenata.
+    llm = FakeLLM(reply(tool="get_financials", arguments='{"ticker":"ADBE"}{"ticker":"CRM"}'), reply("Kraj."))
+    run(llm)
+    assistant = llm.requests[1]["messages"][-2]
+    assert assistant["tool_calls"][0]["function"]["arguments"] == "{}"
+
+
 def test_tool_error_goes_back_as_error():
     bad = json.dumps({"ticker": "INTC", "metrics": ["ebitda"], "fiscal_years": [2024]})
     llm = FakeLLM(reply(tool="get_financials", arguments=bad), reply("Kraj."))

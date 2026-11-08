@@ -22,6 +22,7 @@ import json
 import os
 import random
 import sys
+import zlib
 import time
 from datetime import datetime
 from pathlib import Path
@@ -35,7 +36,6 @@ from agents.single_agent import LLM_TIMEOUT_SECONDS, provider_options, run_agent
 
 ROOT = Path(__file__).resolve().parent.parent
 SYSTEMS = ("single", "multi")
-SHUFFLE_SEED = 2026
 RUBRIC_SKIP = {"id", "question", "question_en", "set", "verified"}   # sve ostalo iz pitanja ide ocenjivacu
 
 
@@ -93,7 +93,9 @@ def make_grading_files(out_dir: Path) -> None:
         return
     by_id = {q["id"]: q for q in load_questions(None)}   # sva pitanja, i kod nastavka sa drugim --ids
     records = read_results(out_dir / "results.jsonl")
-    random.Random(SHUFFLE_SEED).shuffle(records)
+    # Seme zavisi od foldera: svaki eval ima drugaciji raspored g###, pa ocenjivac iz ranijeg evala
+    # ne moze da zna koji ID je koji sistem (u evalu 2026-11-08_1949 seme je bilo isto kao u _1903).
+    random.Random(zlib.crc32(out_dir.name.encode())).shuffle(records)
     to_grade, key = [], {}
     for i, r in enumerate(records, start=1):
         grade_id = f"g{i:03d}"

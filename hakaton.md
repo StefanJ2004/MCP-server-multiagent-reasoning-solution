@@ -155,5 +155,21 @@ Evaluacija je dokaz za CV: konkretan rezultat tipa „multi-agent tačan u 8/10 
     - C4 je jedan agent u evalu rešio 3/3, iako je u ranijem pojedinačnom pokretanju pogrešio → pouka: jedno pokretanje nije dokaz
     - Ograničenja: plafon (skoro sve tačno, pitanja su laka za ovaj model); slepoća nije savršena (multi-agent odgovori ponekad pominju „researcher"/„findings"/`[t1]`); ocenjivač je isti asistent koji je napravio sistem → potrebna ljudska provera uzorka
   - [ ] Ljudska provera uzorka ocena (~15) i upis slaganja u izveštaj
+  - [x] **Eval sa slabijim modelom: Gemma 4 26B A4B** (grana `eval-gemma-4-26b`, `eval/results/2026-11-08_1949/report.md`; DeepInfra fp8, thinking isključen, isti kod i pitanja):
+    | | Jedan agent | Multi-agent |
+    |---|---|---|
+    | Tačnost main (12) / extra (4) / sve | 95,8% / **70,8%** / 89,6% | 91,7% / **91,7%** / 91,7% |
+    | Vreme (prosek) | 6,5 s | 11,1 s |
+    | Ulazni tokeni (prosek) | 8,1k | 12,1k |
+    | Cena po tačnom odgovoru | $0,0008 | $0,0012 |
+    | Najveći kontekst u 1 pozivu (max) | 7,8k | 4,5k |
+    | Stop na max_steps | 3 (sve na B1) | 0 |
+    - **Sa slabijim modelom multi-agent pobeđuje na težim pitanjima (+21 p.p.)**, ukupno +2 p.p.; na osnovnim pitanjima jedan agent je malo bolji (multi-agent jednom pogrešio zaključak na C4)
+    - Razlika je skoro cela iz B1 (18 kompanija): Gemma kao jedan agent zove **jedan alat po koraku** i ne stigne do kraja za 10 koraka (0/3); DeepSeek je zvao više alata odjednom. Multi-agent: svaki istraživač 1 kompanija → 3/3. Zavisi i od našeg limita MAX_STEPS=10
+    - Ovde se hipoteza o kratkom kontekstu POTVRĐUJE: najveći prompt 4,5k (multi) naspram 7,8k (jedan agent); kod DeepSeek-a je bilo obrnuto
+    - Oba sistema na C1 daju samo godišnje stope umesto rasta FY2023→FY2025 (0,5 svima)
+    - Provajder: Google Vertex spaja paralelne pozive alata u jedan neispravan (`{..}{..}{..}`) i daje 400 na istoriju sa neispravnim JSON-om; 9 drugih provajdera radi ispravno → DeepInfra. Petlja sada u istoriji menja neispravne argumente sa `{}` (ne utiče na DeepSeek eval: 0 grešaka alata)
+    - Ograničenje: seme mešanja `to_grade.json` bilo je isto kao u DeepSeek evalu, pa su ID-evi mapirani isto (ocenjivač je za 4 odgovora znao sistem iz ranijeg ocenjivanja). Ispravljeno: seme sada zavisi od foldera
+  - **Poređenje modela (glavna priča za CV):** sa jakim modelom (DeepSeek V4.1 Flash) multi-agent ne donosi tačnost, a košta ~3× više; sa slabijim modelom (Gemma 4 26B A4B) multi-agent rešava zadatke koje jedan agent ne može da završi (širina: 18 kompanija), uz ~1,6× veću cenu. Arhitektura sa više agenata vredi kad je model slabiji ili kad je zadatak širok
 - [ ] Faza 5
 - [ ] Faza 6

@@ -1,0 +1,35 @@
+{
+ "model": "google/gemma-4-26b-a4b-it",
+ "base_url": "https://openrouter.ai/api/v1",
+ "extra_body": {
+  "reasoning": {
+   "enabled": false
+  },
+  "provider": {
+   "only": [
+    "deepinfra"
+   ],
+   "allow_fallbacks": false
+  }
+ },
+ "runs": 3,
+ "questions": [
+  "F1",
+  "F2",
+  "F3",
+  "C1",
+  "C2",
+  "C3",
+  "C4",
+  "E1",
+  "E2",
+  "E3",
+  "U1",
+  "U2",
+  "B1",
+  "H1",
+  "H2",
+  "H3"
+ ],
+ "started": "2026-11-08T19:49:23.945112"
+}
