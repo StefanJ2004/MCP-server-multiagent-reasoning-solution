@@ -1,153 +1,189 @@
-# Multi-agent istraživač nad SEC EDGAR podacima
+# SEC EDGAR Multi-Agent Researcher
 
-MCP server izlaže finansijske podatke 18 američkih kompanija (XBRL brojevi + tekst 10-K izveštaja),
-a multi-agent sistem (planer → paralelni istraživači → sintetizator) odgovara na pitanja sa citatima.
-Rezultat se poredi sa jednim agentom na eval setu od 16 pitanja (`eval/questions.json`), sa dva modela.
+An MCP server over SEC filings of 18 US companies, two hand-written agent architectures on top of it
+(a single agent and a planner → parallel researchers → synthesizer team), a live UI that shows the agents
+at work, and an evaluation that measures when the multi-agent design is actually worth it.
 
-Plan i status: [`hakaton.md`](hakaton.md).
+**Python · MCP (Model Context Protocol) · OpenRouter (DeepSeek V4.1 Flash, Gemma 4 26B) · Starlette + SSE · Next.js**
 
-## Struktura
+![Single agent and multi-agent answering the same question side by side](docs/img/ui-hero.png)
 
+*Left: the single agent fetches all 18 companies in one step. Right: the planner splits the question into
+18 subtasks and the researchers run in parallel. Every model call and tool call streams to the browser live.*
+
+## Key results
+
+16 questions × 2 systems × 3 runs, for each of two models. Same tools and prompt rules for both systems,
+thinking off, temperature 0. Answers graded blind; citations validated automatically.
+
+| | DeepSeek V4.1 Flash<br>single / multi | Gemma 4 26B A4B<br>single / multi |
+|---|---|---|
+| Accuracy, 12 core questions | 100% / 100% | 95.8% / 91.7% |
+| Accuracy, 4 hard questions | 91.7% / 91.7% | **70.8% / 91.7%** |
+| Cost per correct answer | **$0.0007** / $0.0020 | **$0.0008** / $0.0012 |
+| Time per question | **5.8 s** / 11.1 s | **6.5 s** / 11.1 s |
+| Largest single prompt | **6.9k** / 9.5k tokens | 7.8k / **4.5k** tokens |
+| Valid citations | 99.5% / 97.5% | 99.5% / 98.7% |
+
+What we found:
+
+1. **With a strong model, the multi-agent system is not worth it here.** Same accuracy, ~3× the cost,
+   ~2× the latency. Parallel researchers do speed up the research phase (~2×), but the extra planner and
+   synthesizer calls cost more than parallelism saves.
+2. **With a weaker model, it pays off on broad tasks** (+21 points on the hard questions). Asked about all
+   18 companies, Gemma as a single agent calls one tool per step and runs out of its 10-step budget (0/3);
+   each researcher handles one company and finishes (3/3).
+3. **"Researchers keep contexts short" held only for the weaker model.** With DeepSeek the largest prompt
+   was in the multi-agent system, because the synthesizer receives every researcher's findings.
+4. **Known architecture risk:** the planner commits to a plan before seeing any data. On a question like
+   *"compare the top 3 companies in every group"* it picked the first three companies of each sector,
+   missed Micron and answered wrongly, at 9× the single agent's cost (details below).
+
+Full reports: [`eval/results/2026-11-08_1903/report.md`](eval/results/2026-11-08_1903/report.md) (DeepSeek),
+[`eval/results/2026-11-08_1949/report.md`](eval/results/2026-11-08_1949/report.md) (Gemma).
+
+## Architecture
+
+```mermaid
+flowchart LR
+    UI["Browser<br/>Next.js UI"] <-->|"SSE: live events"| API["Backend<br/>Starlette"]
+    API --> SA["Single agent<br/>(tool loop)"]
+    API --> PL
+    subgraph MA["Multi-agent"]
+        direction TB
+        PL["Planner<br/>(JSON plan)"] --> R1["Researcher 1"] & R2["Researcher 2"] & RN["Researcher N"]
+        R1 & R2 & RN --> SY["Synthesizer"]
+    end
+    SA -->|"MCP (stdio)"| MCP["MCP server<br/>list_companies<br/>get_financials<br/>search_filing"]
+    MA -->|MCP| MCP
+    MCP --> DATA[("SEC EDGAR<br/>XBRL facts + 10-K text")]
 ```
-mcp_server/   MCP server i alati nad podacima
-agents/       agent petlja, planer, istraživači, sintetizator
-web/          backend (server.py, SSE) i frontend (ui/, Next.js)
-eval/         pitanja, pokretanje evala, metrike, izveštaji (eval/results/<datum_vreme>/)
-scripts/      skidanje podataka; scripts/exploration/ = skripte iz faze 0 (referenca)
-data/raw/     skinuti podaci (nije u gitu)
-tests/
-```
 
-## Podešavanje (Windows)
+All agents call the model through one OpenAI-compatible client (OpenRouter, provider pinned) and share
+**one** MCP connection. The researchers are the same loop as the single agent, with their own prompt.
+
+## How it works
+
+**MCP server** (`mcp_server/`). Three tools over SEC EDGAR data for 18 companies (semiconductors, software,
+retail), fiscal years 2022+:
+- `get_financials`: annual revenue, gross/operating/net income, R&D, plus margins and growth computed by
+  the server. The messy parts of XBRL are handled here, not left to the model: duplicate periods across
+  filings (keep the original 10-K), the same metric under several tags (fixed priority, never min/max),
+  and fiscal years that companies name differently (fiscal year = calendar year in which it *ends*).
+- `search_filing`: hand-written BM25 over 10-K passages (150-word overlapping windows, section names from
+  headings, risk-factor boilerplate down-weighted).
+- Every number carries a `source_id` (`INTC-10K-FY2024`) and every passage a `passage_id`
+  (`MU-10K-FY2023#p221`), so answers can be cited and checked.
+
+**Agent loop** (`agents/single_agent.py`, no framework). A list of messages and a `for` loop: send messages
+and tool schemas to the model; if it asks for tools, run them over MCP and append the results; otherwise
+stop. Tool errors go back to the model as text so it can fix its arguments. A response cut at the token
+limit is not counted as an answer. Provider-specific options are built in one place (`provider_options`).
+
+**Multi-agent** (`agents/multi_agent.py`). The planner gets the list of companies (no tools) and returns a
+JSON plan, with one retry and a single-researcher fallback. Researchers run with `asyncio.gather`, at most 6
+at a time, and one failing researcher does not stop the others. The synthesizer writes the answer only from
+the findings and must say which data is missing.
+
+**Evaluation** (`eval/`).
+- Questions and verified answers were written **before** running any system. Four harder questions
+  (breadth, multi-company explanations, multi-hop, a fiscal-year naming trap) were added and verified
+  before their first run.
+- `run_eval.py` runs both systems in alternating order and stores a full trace of every answer.
+- Answers are shuffled and anonymised (`to_grade.json`). Grades (1 / 0.5 / 0, with a reason, by the rules
+  stored with each question) are written before the system key is opened. The team spot-checked a sample.
+- A citation counts as valid only if that ID was returned by a tool **in the same run**.
+
+**UI** (`web/`). The backend runs an agent as a task and forwards every `on_event` callback to the browser
+over Server-Sent Events; closing the page cancels the agent. The frontend turns the event stream into screen
+state with a reducer. Citations are buttons: green if a tool returned that source in this run, red if not.
+Clicking one shows the exact 10-K passage.
+
+![Answer with citations](docs/img/ui-answer.png)
+![Clicking a citation shows the 10-K passage](docs/img/ui-citation.png)
+
+## Run it
+
+Windows / PowerShell, Python 3.11+, Node 20+.
 
 ```powershell
-python -m venv .venv
-.venv\Scripts\activate
+git clone https://github.com/StefanJ2004/MCP-server-multiagent-reasoning-solution.git
+cd MCP-server-multiagent-reasoning-solution
+python -m venv .venv; .venv\Scripts\activate
 pip install -e ".[dev]"
-copy .env.example .env      # pa popuni SEC_USER_AGENT
-python scripts/download_data.py
+copy .env.example .env            # set OPENAI_API_KEY (OpenRouter) and SEC_USER_AGENT ("Name email")
+python scripts/download_data.py   # ~100 MB of SEC data, a few minutes
+pytest -q                         # 102 tests; agents are tested with a fake model, tools and data are real
 ```
 
-## MCP server
-
-Tri alata (`mcp_server/server.py`): `list_companies`, `get_financials`, `search_filing`.
+**Ask a question from the command line**
 
 ```powershell
-pytest -q                                  # svi testovi, ukljucujuci server preko stdio-a
-python -m mcp_server.server                # pokretanje servera (stdio; ceka klijenta)
+python -m agents.single_agent --id F1
+python -m agents.multi_agent "Why did Micron report a loss in FY2023, according to its 10-K?"
 ```
 
-**MCP Inspector** (web UI za rucno pozivanje alata, treba Node):
+**Live UI** (two terminals)
 
 ```powershell
-npx @modelcontextprotocol/inspector .venv\Scripts\python.exe -m mcp_server.server
+python -m web.server                   # backend on http://localhost:8000
+cd web/ui; npm install; npm run dev    # frontend on http://localhost:3000
 ```
 
-**Claude Desktop**: u `%APPDATA%\Claude\claude_desktop_config.json` dodaj (putanja do svog projekta),
-pa restartuj Claude Desktop:
+**Evaluation**
+
+```powershell
+python eval/run_eval.py                       # 16 questions x 2 systems x 3 runs -> eval/results/<timestamp>/
+python eval/report.py eval/results/<folder>   # report.md (accuracy needs grades.json)
+```
+
+Another model without touching `.env`: `$env:MODEL="google/gemma-4-26b-a4b-it"; $env:OPENROUTER_PROVIDER="deepinfra"`.
+
+**Use the MCP server directly**: `npx @modelcontextprotocol/inspector .venv\Scripts\python.exe -m mcp_server.server`,
+or add it to Claude Desktop (`%APPDATA%\Claude\claude_desktop_config.json`):
 
 ```json
-{
-  "mcpServers": {
-    "sec-edgar": {
-      "command": "C:\\Users\\Korisnik\\hakaton\\.venv\\Scripts\\python.exe",
-      "args": ["-m", "mcp_server.server"]
-    }
-  }
-}
+{ "mcpServers": { "sec-edgar": { "command": "<path>\\.venv\\Scripts\\python.exe", "args": ["-m", "mcp_server.server"] } } }
 ```
 
-## Model
+## Limitations and risks
 
-| Podešavanje | Vrednost |
-|---|---|
-| Provajder | OpenRouter, zakucan na **Alibaba Cloud** (`OPENROUTER_PROVIDER=alibaba`, bez prebacivanja na druge provajdere); ključ u `.env`, `OPENAI_API_KEY` |
-| Model | `deepseek/deepseek-v4.1-flash` (DeepSeek V4.1 Flash) |
-| Endpoint | `https://openrouter.ai/api/v1` (OpenAI-kompatibilan) |
-| Cena (Alibaba, 2026-11-08) | $0,075 / 1M ulaznih, $0,30 / 1M izlaznih tokena |
-| Temperatura | 0 (ima efekat samo kad je razmišljanje isključeno) |
-| Izlaz po koraku | Najviše 8192 tokena; agent `finish_reason=length` tretira kao grešku |
-| Thinking | `THINKING=disabled` u `.env`; ako je `enabled`, razmišljanje se vraća u sledećim zahtevima (`reasoning_details` na OpenRouter-u, `reasoning_content` na DeepSeek API-ju) |
+- **The planner decides before it sees data.** On *"compare the top 3 companies form every groupation and
+  tell me which one is the most profitable"* (asked outside the eval, DeepSeek), the planner took the first
+  three companies listed per sector, missed Micron (63.8% net margin, the highest) and answered "NVIDIA",
+  using 36 model calls and $0.0147. The single agent looked at all 18 companies and answered correctly
+  (Micron by margin, Microsoft by absolute profit) with 3 model calls and $0.0016. A two-step planner that
+  ranks with `get_financials` first would address this; it is not implemented. The question was deliberately
+  **not** added to the eval, because it was chosen after seeing the result.
+- **Small, easy-for-strong-models eval.** 16 questions, 3 runs each; the strong model is near the ceiling.
+- **Grading.** Done blind by Claude (the same assistant that helped build the system) and spot-checked by
+  the team. Blindness was imperfect: multi-agent answers sometimes mention "researchers", and the second
+  eval reused the first eval's shuffle seed (fixed since).
+- **The 10-step limit matters.** Gemma's single-agent failure on the breadth question depends on it.
+- **Provider effects.** Gemma on Google Vertex merged parallel tool calls into one invalid call, so the Gemma
+  eval uses DeepInfra (fp8 quantized). The loop now strips invalid arguments from the history.
 
-Parametri koji se razlikuju po provajderu prave se u `provider_options()` (`agents/single_agent.py`).
-DeepSeek API direktno i dalje radi: promeni `OPENAI_BASE_URL` i `MODEL` (vidi `.env.example`).
-Agent loguje `model` i `provider` iz svakog odgovora, da se vidi ko je stvarno odgovorio.
+## What we learned
 
-Eval se pokreće na engleskom (`question_en`), istim modelom za jednog agenta i za multi-agent sistem.
+- Tool design and data cleaning decide most of the quality: clear tool descriptions, enums for arguments,
+  and server-side handling of XBRL quirks did more than prompt tweaks.
+- One run proves nothing. The single agent got the C4 conclusion wrong once in a quick test and right
+  3/3 times in the eval.
+- Multi-agent is not free. It helped exactly where a single context and a step budget became the bottleneck
+  (a weaker model, a broad task), and cost more everywhere else.
+- Providers differ: the same open model can call tools correctly on one host and break them on another.
 
-## Agenti
+## Project structure
 
-```powershell
-python -m agents.single_agent --id F1          # jedan agent (pitanje iz evala)
-python -m agents.multi_agent --id C4           # planer -> paralelni istrazivaci -> sintetizator
-python -m agents.multi_agent "Compare revenue of NVDA and AMD in FY2024."
+```
+mcp_server/   MCP server: data cleaning (financials.py), BM25 search (search.py), tools (server.py)
+agents/       single_agent.py (tool loop), multi_agent.py (planner, researchers, synthesizer)
+eval/         questions.json, run_eval.py, report.py, metrics.py, results/
+web/          server.py (Starlette, SSE) and ui/ (Next.js)
+scripts/      download_data.py, benchmark_ollama.py (why a local 4B model was dropped)
+tests/        102 tests
+docs/         screenshots, demo video script
 ```
 
-## UI (uživo)
-
-Dva terminala, iz root foldera:
-
-```powershell
-python -m web.server                 # backend: http://localhost:8000 (agenti + SSE tok događaja)
-cd web/ui; npm install; npm run dev  # frontend: http://localhost:3000
-```
-
-Pitanje (ili izbor iz evala) → režim **Jedan agent / Multi-agent / Uporedo** → **Pokreni**. Uživo se vidi planer,
-istraživači u paralelnim kolonama (svaki poziv modela i alata), sintetizator i odgovor. Citati su dugmići:
-zeleni = taj izvor je vratio alat u ovom pokretanju, crveni = nije; klik prikazuje tačan pasus iz 10-K izveštaja.
-Ispod odgovora: vreme, pozivi modela i alata, tokeni, najveći kontekst, cena (iste metrike kao u evalu).
-
-Backend (`web/server.py`, Starlette, bez novih paketa) šalje događaje iz `on_event` kroz SSE; frontend
-(`web/ui`, Next.js) ih pretvara u stanje ekrana reducer-om (`web/ui/lib/useRun.ts`).
-
-## Eval
-
-```powershell
-python eval/run_eval.py                        # 16 pitanja x 2 sistema x 3 pokretanja -> eval/results/<datum_vreme>/
-python eval/report.py eval/results/<folder>    # izveštaj (report.md); bez grades.json samo automatske metrike
-```
-
-Model za eval se menja bez izmene `.env`, npr.
-`$env:MODEL="google/gemma-4-26b-a4b-it"; $env:OPENROUTER_PROVIDER="deepinfra"` pa `python eval/run_eval.py`.
-Cene modela su u `eval/metrics.py` (`PRICES`).
-
-Ocenjivanje: `run_eval.py` pravi `to_grade.json` (odgovori izmešani i anonimni) i `key.json` (koji je koji sistem).
-Ocene (1 / 0,5 / 0, sa obrazloženjem, po pravilima iz pitanja) idu u `grades.json` pre otvaranja ključa.
-Citat važi samo ako je taj `source_id` / `passage_id` vratio alat u istom pokretanju (provera je automatska).
-
-| | DeepSeek V4.1 Flash: jedan / multi | Gemma 4 26B A4B: jedan / multi |
-|---|---|---|
-| Tačnost, 12 osnovnih | 100% / 100% | 95,8% / 91,7% |
-| Tačnost, 4 teža (B1, H1–H3) | 91,7% / 91,7% | 70,8% / 91,7% |
-| Cena po tačnom odgovoru | $0,0007 / $0,0020 | $0,0008 / $0,0012 |
-| Vreme po pitanju | 5,8 s / 11,1 s | 6,5 s / 11,1 s |
-
-Sa jakim modelom multi-agent ne donosi tačnost, a košta ~3× više. Sa slabijim modelom rešava širok zadatak
-(B1, 18 kompanija) koji jedan agent ne završi u 10 koraka. Detalji i ograničenja: `eval/results/*/report.md`
-i odeljak Faza 4 u `hakaton.md`.
-
-Napomena o provajderu: Gemma na Google Vertex-u spaja više poziva alata u jedan neispravan poziv, pa se koristi DeepInfra.
-
-## Ograničenja i rizici
-
-**Planer pravi plan pre nego što vidi podatke.** Planer dobija samo spisak kompanija i deli posao unapred,
-bez alata. Zato ne može dobro da reši pitanja tipa „prvo nađi, pa onda istraži“ (npr. „top 3 kompanije po
-sektoru“): ne zna koje su to kompanije dok ne vidi brojke, pa bira proizvoljno.
-- Izmereno 2026-11-08 (DeepSeek V4.1 Flash, van eval seta): pitanje *„compare the top 3 companies from every
-  group and tell me which one is the most profitable“*. Planer je uzeo prve 3 kompanije sa spiska u svakom
-  sektoru, propustio Micron i odgovorio „NVIDIA“ (tačno: Micron po neto marži 63,8%, Microsoft po iznosu
-  $133,7B). Pri tome 36 poziva modela, 60 poziva alata, $0,0147, 31 s. Jedan agent je uzeo svih 18 kompanija
-  i odgovorio tačno: 3 poziva modela, $0,0016, 16 s. Ocena: jedan agent 9/10, multi-agent 3/10.
-- Na H2 iz evala (isti tip pitanja) do greške nije došlo, jer je planer poslao istraživače na svih 5
-  softverskih kompanija; rizik se javlja kad planer mora da bira podskup.
-- Moguće rešenje (nije urađeno): planer prvo pozove `get_financials` za rangiranje, pa tek onda deli posao
-  (plan u dva koraka), ili istraživači mogu da vrate zahtev za novim podzadatkom.
-- Pitanje namerno NIJE dodato u eval: izabrano je posle gledanja rezultata, pa bi naginjalo protiv multi-agenta.
-
-Ostalo: pitanja u evalu su za jak model uglavnom laka (plafon); razlika na B1 zavisi i od limita od 10 koraka
-(`MAX_STEPS`); ocenjivao je Claude naslepo, a tim je proverio uzorak. Detalji u `hakaton.md`.
-
-## Konvencije
-
-- **FY** = kalendarska godina u kojoj se fiskalna godina završava (polje `fy` iz EDGAR-a se ne koristi).
-- Kad metrika postoji pod više XBRL tagova, važi redosled tagova (npr. `NetIncomeLoss` pre `ProfitLoss`).
+Built by a team of four students in ~30 hours, with Claude Code as a pair programmer. Planning notes,
+decisions and the full status log are in Serbian: [`hakaton.md`](hakaton.md), [`handoff.md`](handoff.md).

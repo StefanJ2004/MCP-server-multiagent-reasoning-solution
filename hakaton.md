@@ -117,7 +117,7 @@ sektoru“): ne zna koje su to kompanije dok ne vidi brojke, pa bira proizvoljno
   - [x] Ručni test: MCP Inspector i Claude Desktop (2026-11-08, tim)
   - [x] Teach-back faze 1
 - Handoff na drugi računar (2026-11-08): vidi `handoff.md`
-- Grane: `main` ima fazu 0–4 sa DeepSeek evalom; `eval-gemma-4-26b` dodaje Gemma eval, čišćenje argumenata u petlji i poređenje modela. Odluka tima (2026-11-08): grana se **ne spaja** u `main` za sada; rad se nastavlja na njoj
+- Grane: `eval-gemma-4-26b` (Gemma eval, UI, faza 6) spojena u `main` na kraju faze 6 (odluka tima 2026-11-08); rad se nastavlja na `main`
 - [x] Faza 2 — završena 2026-11-08 (teach-back preskočen, tim je prošao kod)
   - [x] `agents/single_agent.py` (ručna petlja) + `tests/test_single_agent.py` (lažni model)
   - [x] Teach-back petlje (2026-11-08)
@@ -189,10 +189,16 @@ sektoru“): ne zna koje su to kompanije dok ne vidi brojke, pa bira proizvoljno
     - Provajder: Google Vertex spaja paralelne pozive alata u jedan neispravan (`{..}{..}{..}`) i daje 400 na istoriju sa neispravnim JSON-om; 9 drugih provajdera radi ispravno → DeepInfra. Petlja sada u istoriji menja neispravne argumente sa `{}` (ne utiče na DeepSeek eval: 0 grešaka alata)
     - Ograničenje: seme mešanja `to_grade.json` bilo je isto kao u DeepSeek evalu, pa su ID-evi mapirani isto (ocenjivač je za 4 odgovora znao sistem iz ranijeg ocenjivanja). Ispravljeno: seme sada zavisi od foldera
   - **Poređenje modela (glavna priča za CV):** sa jakim modelom (DeepSeek V4.1 Flash) multi-agent ne donosi tačnost, a košta ~3× više; sa slabijim modelom (Gemma 4 26B A4B) multi-agent rešava zadatke koje jedan agent ne može da završi (širina: 18 kompanija), uz ~1,6× veću cenu. Arhitektura sa više agenata vredi kad je model slabiji ili kad je zadatak širok
-- [ ] Faza 5 — u toku
+- [x] Faza 5 — završena 2026-11-08
   - [x] Backend `web/server.py` (Starlette + `sse_starlette`, već instalirani uz MCP SDK): `/api/run` pokreće agenta i šalje svaki događaj iz `on_event` uživo kroz SSE; zatvaranje stranice prekida agenta; `/api/passage` vraća tekst citata; jedna MCP veza za sva pokretanja
   - [x] Događaji dopunjeni za UI: `plan` nosi sve podzadatke, `finish` nalaz istraživača, `tool` spisak vraćenih ID-eva
   - [x] Frontend `web/ui` (Next.js 16, React 19): režimi jedan agent / multi-agent / uporedo; planer, istraživači u paralelnim kolonama, sintetizator; citati kao dugmići (zeleno = vratio alat, crveno = nije) sa prikazom pasusa; metrike ispod odgovora
   - [x] Testovi: `tests/test_web.py` (red događaja, greška API-ja, citati), ukupno 102; ručna provera u pregledaču (Edge, headless) na C2 (uporedo) i E3 (multi-agent)
-  - [ ] Pregled tima i sitne dorade
-- [ ] Faza 6
+  - [x] Pregled tima: tema prebačena na paletu tima (#1B0D38, #24154F, #640579, #F4F1E1, #E5A4CB, #B10F2E)
+- [ ] Faza 6 — u toku
+  - [x] README na engleskom kao naslovna strana (odluka tima): rezultati oba modela, Mermaid dijagram (proveren renderom), kako radi, pokretanje, ograničenja i rizici, pouke; tehnička dokumentacija ostaje na srpskom
+  - [x] Snimci ekrana (`docs/img/`) i sirovi video UI-ja bez zvuka (`docs/video/demo-raw.webm`, van gita), snimljeni automatski u Edge-u
+  - [x] Scenario za video od 2 min sa naracijom (`docs/demo-script.md`)
+  - [x] Opis i teme repoa na GitHub-u (tim potvrdio 2026-11-08)
+  - [x] Spajanje `eval-gemma-4-26b` u `main` (odluka tima 2026-11-08, fast-forward)
+  - [ ] Video sa naracijom (tim)

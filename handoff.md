@@ -13,13 +13,12 @@ Ovaj fajl dopunjuje `hakaton.md`: gde smo stali, kako podići okruženje i šta 
 
 - **Faze 0–4 su gotove.** MCP server (3 alata), jedan agent, multi-agent (planer → paralelni istraživači →
   sintetizator), eval na 16 pitanja sa dva modela, ocene naslepo, tim je proverio uzorak ocena.
-- **Grane:** `main` ima faze 0–4 sa DeepSeek evalom. `eval-gemma-4-26b` dodaje Gemma eval, čišćenje
-  argumenata u petlji i poređenje modela. **Tim je odlučio da se grana ne spaja za sada; rad se nastavlja na njoj.**
+- **Grane:** sve je spojeno u `main` na kraju faze 6 (2026-11-08). Grana `eval-gemma-4-26b` je ostala na GitHub-u kao istorija.
 - **Faza 5 (UI) je urađena, čeka pregled tima.** `python -m web.server` (backend, :8000) + `cd web/ui; npm install;
   npm run dev` (frontend, :3000). Događaji iz `on_event` idu kroz SSE; frontend ih pretvara u ekran reducer-om (`web/ui/lib/useRun.ts`).
   `reactStrictMode` je isključen namerno (inače bi se agent pokretao dvaput), a `EventSource` se zatvara na `done`
   (inače se sam ponovo poveže i ponovo pokrene agenta).
-- **Sledeće — Faza 6: demo** (README, dijagram, video od 2 min).
+- **Faza 6 (demo):** README na engleskom, dijagram, snimci, scenario, opis repoa i spajanje u `main` su gotovi; ostaje video sa naracijom (tim, `docs/demo-script.md`).
 - **Samo ako ostane vremena:** B1 za jednog agenta sa većim `MAX_STEPS`; proverivač brojeva i citata; web pretraga za demo.
 
 ## Podešavanje na novom računaru (Windows, PowerShell)
@@ -27,7 +26,6 @@ Ovaj fajl dopunjuje `hakaton.md`: gde smo stali, kako podići okruženje i šta 
 ```powershell
 git clone https://github.com/StefanJ2004/MCP-server-multiagent-reasoning-solution.git
 cd MCP-server-multiagent-reasoning-solution
-git switch eval-gemma-4-26b     # grana na kojoj se radi
 python -m venv .venv            # Python 3.11+ (razvijano na 3.13)
 .venv\Scripts\activate
 pip install -e ".[dev]"

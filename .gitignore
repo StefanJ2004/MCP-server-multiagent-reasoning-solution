@@ -10,3 +10,6 @@ data/raw/
 node_modules/
 .next/
 *.tsbuildinfo
+
+# sirovi demo video (veliki fajl, deli se van gita)
+docs/video/
