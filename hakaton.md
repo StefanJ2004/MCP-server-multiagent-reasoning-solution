@@ -52,8 +52,25 @@ Evaluacija je dokaz za CV: konkretan rezultat tipa „multi-agent tačan u 8/10 
 **Samo ako ostane vremena:**
 - proveravač brojeva i citata
 - web pretraga samo za demo, isključena tokom evala
+- B1 za jednog agenta sa većim `MAX_STEPS` (npr. 25): da li je Gemma pala na B1 zbog modela ili zbog limita od 10 koraka
 
 **Pravilo za izmene plana:** plan se menja samo ako nešto ne može da radi ili izmereni rezultat pokaže da je pristup pogrešan. Nove ideje idu na spisak „samo ako ostane vremena“ i ne ulaze u fazu koja je u toku.
+
+## Rizici izabrane arhitekture
+
+**Planer pravi plan pre nego što vidi podatke.** Planer dobija samo spisak kompanija i deli posao unapred,
+bez alata. Zato ne može dobro da reši pitanja tipa „prvo nađi, pa onda istraži“ (npr. „top 3 kompanije po
+sektoru“): ne zna koje su to kompanije dok ne vidi brojke, pa bira proizvoljno.
+- Izmereno 2026-11-08 (DeepSeek V4.1 Flash, van eval seta): pitanje *„compare the top 3 companies from every
+  group and tell me which one is the most profitable“*. Planer je uzeo prve 3 kompanije sa spiska u svakom
+  sektoru, propustio Micron i odgovorio „NVIDIA“ (tačno: Micron po neto marži 63,8%, Microsoft po iznosu
+  $133,7B). Pri tome 36 poziva modela, 60 poziva alata, $0,0147, 31 s. Jedan agent je uzeo svih 18 kompanija
+  i odgovorio tačno: 3 poziva modela, $0,0016, 16 s. Ocena: jedan agent 9/10, multi-agent 3/10.
+- Na H2 iz evala (isti tip pitanja) do greške nije došlo, jer je planer poslao istraživače na svih 5
+  softverskih kompanija; rizik se javlja kad planer mora da bira podskup.
+- Moguće rešenje (nije urađeno): planer prvo pozove `get_financials` za rangiranje, pa tek onda deli posao
+  (plan u dva koraka), ili istraživači mogu da vrate zahtev za novim podzadatkom.
+- Pitanje namerno NIJE dodato u eval: izabrano je posle gledanja rezultata, pa bi naginjalo protiv multi-agenta.
 
 ## Pravila rada tima
 
@@ -100,6 +117,7 @@ Evaluacija je dokaz za CV: konkretan rezultat tipa „multi-agent tačan u 8/10 
   - [x] Ručni test: MCP Inspector i Claude Desktop (2026-11-08, tim)
   - [x] Teach-back faze 1
 - Handoff na drugi računar (2026-11-08): vidi `handoff.md`
+- Grane: `main` ima fazu 0–4 sa DeepSeek evalom; `eval-gemma-4-26b` dodaje Gemma eval, čišćenje argumenata u petlji i poređenje modela. Odluka tima (2026-11-08): grana se **ne spaja** u `main` za sada; rad se nastavlja na njoj
 - [x] Faza 2 — završena 2026-11-08 (teach-back preskočen, tim je prošao kod)
   - [x] `agents/single_agent.py` (ručna petlja) + `tests/test_single_agent.py` (lažni model)
   - [x] Teach-back petlje (2026-11-08)
@@ -115,7 +133,7 @@ Evaluacija je dokaz za CV: konkretan rezultat tipa „multi-agent tačan u 8/10 
     - Prompt NE podešavamo prema ovim pitanjima (to bi bilo „učenje na ispitu"); greške ostaju da ih eval izmeri
     - Za fazu 3: jak model rešava ova pitanja u 2 koraka, pa će razliku multi-agenta pokazati teža pitanja (C4 sa zamkom, 13. pitanje sa 18 kompanija)
   - Zašto nije Ollama: `qwen3:4b` je na CPU-u potrošio ceo limit na razmišljanje (F1 i C2 bez poziva alata, E3 pogrešan odgovor; razmišljanje nismo mogli pouzdano da ugasimo)
-- [ ] Faza 3 — u toku
+- [x] Faza 3 — završena 2026-11-08 (teach-back orkestracije nije rađen)
   - Dizajn: `asyncio`, jedna MCP veza za sve agente
   - [x] `agents/multi_agent.py`: planer (bez alata, spisak kompanija u promptu, JSON plan, 2 pokušaja pa rezervni plan) → istraživači (`run_agent` sa svojim promptom, `asyncio.gather` + `Semaphore(6)`, pad jednog ne obara ostale) → sintetizator (bez alata, samo iz nalaza); `run_agent` dobio parametar `system_prompt`
   - [x] `tests/test_multi_agent.py` (lažni model po ulozi; dokazano da istraživači rade istovremeno nad jednom MCP vezom i da limit paralelizma radi; ukupno 85 testova, prolaze)
@@ -126,7 +144,7 @@ Evaluacija je dokaz za CV: konkretan rezultat tipa „multi-agent tačan u 8/10 
     | C4 | ⚠️ tačni brojevi, pogrešan zaključak (LOW) | ✅ tačan zaključak (HD, raspon 1,6 naspram 2,3 p.p.), 6 poziva, 8,9k/2,0k tokena, 10,9 s |
     - Jedno pokretanje nije dokaz; eval (faza 4) meri na svim pitanjima
     - Primećeno: planer u podzadacima traži da istraživač „izračuna" maržu, iako je pravilo da se koriste izvedene metrike; istraživači su ipak uzeli maržu iz alata
-- [ ] Faza 4 — u toku
+- [x] Faza 4 — završena 2026-11-08
   - **Izmena plana 2026-11-08: dodata teža pitanja H1–H3** (posebna kategorija, glavni rezultat na 12 pitanja ostaje kako je definisan). Razlog je izmeren: jak model rešava postojeća pitanja u 2 koraka, pa razlika između sistema ne može da se vidi. Pravila da eval ostane pošten:
     - pitanja se biraju po principu (širina, brojevi + objašnjenja za više kompanija, više koraka zaključivanja), ne po rezultatu
     - pitanja i provereni odgovori se pišu PRE pokretanja bilo kog sistema; nijedno se ne izbacuje posle gledanja rezultata
@@ -154,7 +172,7 @@ Evaluacija je dokaz za CV: konkretan rezultat tipa „multi-agent tačan u 8/10 
     - Greške: jedan agent H1 jednom (pogrešan razlog za Intel) i H3 jednom (bez ukupnog comparable sales za BBY); multi-agent H3 dvaput (jednom upao u FY zamku za Lowe's, jednom istraživač stao na max_steps)
     - C4 je jedan agent u evalu rešio 3/3, iako je u ranijem pojedinačnom pokretanju pogrešio → pouka: jedno pokretanje nije dokaz
     - Ograničenja: plafon (skoro sve tačno, pitanja su laka za ovaj model); slepoća nije savršena (multi-agent odgovori ponekad pominju „researcher"/„findings"/`[t1]`); ocenjivač je isti asistent koji je napravio sistem → potrebna ljudska provera uzorka
-  - [ ] Ljudska provera uzorka ocena (~15) i upis slaganja u izveštaj
+  - [x] Ljudska provera uzorka ocena: tim proverio uzorak (2026-11-08), neslaganja nisu prijavljena
   - [x] **Eval sa slabijim modelom: Gemma 4 26B A4B** (grana `eval-gemma-4-26b`, `eval/results/2026-11-08_1949/report.md`; DeepInfra fp8, thinking isključen, isti kod i pitanja):
     | | Jedan agent | Multi-agent |
     |---|---|---|
@@ -171,5 +189,10 @@ Evaluacija je dokaz za CV: konkretan rezultat tipa „multi-agent tačan u 8/10 
     - Provajder: Google Vertex spaja paralelne pozive alata u jedan neispravan (`{..}{..}{..}`) i daje 400 na istoriju sa neispravnim JSON-om; 9 drugih provajdera radi ispravno → DeepInfra. Petlja sada u istoriji menja neispravne argumente sa `{}` (ne utiče na DeepSeek eval: 0 grešaka alata)
     - Ograničenje: seme mešanja `to_grade.json` bilo je isto kao u DeepSeek evalu, pa su ID-evi mapirani isto (ocenjivač je za 4 odgovora znao sistem iz ranijeg ocenjivanja). Ispravljeno: seme sada zavisi od foldera
   - **Poređenje modela (glavna priča za CV):** sa jakim modelom (DeepSeek V4.1 Flash) multi-agent ne donosi tačnost, a košta ~3× više; sa slabijim modelom (Gemma 4 26B A4B) multi-agent rešava zadatke koje jedan agent ne može da završi (širina: 18 kompanija), uz ~1,6× veću cenu. Arhitektura sa više agenata vredi kad je model slabiji ili kad je zadatak širok
-- [ ] Faza 5
+- [ ] Faza 5 — u toku
+  - [x] Backend `web/server.py` (Starlette + `sse_starlette`, već instalirani uz MCP SDK): `/api/run` pokreće agenta i šalje svaki događaj iz `on_event` uživo kroz SSE; zatvaranje stranice prekida agenta; `/api/passage` vraća tekst citata; jedna MCP veza za sva pokretanja
+  - [x] Događaji dopunjeni za UI: `plan` nosi sve podzadatke, `finish` nalaz istraživača, `tool` spisak vraćenih ID-eva
+  - [x] Frontend `web/ui` (Next.js 16, React 19): režimi jedan agent / multi-agent / uporedo; planer, istraživači u paralelnim kolonama, sintetizator; citati kao dugmići (zeleno = vratio alat, crveno = nije) sa prikazom pasusa; metrike ispod odgovora
+  - [x] Testovi: `tests/test_web.py` (red događaja, greška API-ja, citati), ukupno 102; ručna provera u pregledaču (Edge, headless) na C2 (uporedo) i E3 (multi-agent)
+  - [ ] Pregled tima i sitne dorade
 - [ ] Faza 6

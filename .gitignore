@@ -7,3 +7,6 @@ __pycache__/
 
 # skinuti podaci (regenerisu se sa scripts/download_data.py)
 data/raw/
+node_modules/
+.next/
+*.tsbuildinfo

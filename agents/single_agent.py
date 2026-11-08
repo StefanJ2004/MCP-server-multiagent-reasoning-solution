@@ -196,7 +196,7 @@ async def run_agent(question: str, llm, mcp, model: str, extra_body: dict | None
             ids, error = returned_ids(output), _is_error(output)
             result.tool_calls.append({"name": name, "arguments": arguments, "error": error, "returned_ids": ids})
             on_event("tool", name=name, arguments=arguments, result_chars=len(output), error=error,
-                     returned_ids=len(ids))
+                     returned_ids=ids)
             # tool_call_id povezuje rezultat sa pozivom; bez njega model ne zna cemu rezultat pripada
             messages.append({"role": "tool", "tool_call_id": call.id, "content": output})
 

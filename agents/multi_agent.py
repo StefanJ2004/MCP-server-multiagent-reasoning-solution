@@ -91,6 +91,8 @@ class MultiAgentResult:
 
 
 def _print_event(event: str, agent: str = "", **data) -> None:
+    data.pop("tasks", None)          # pun plan i nalazi su za UI; u terminalu bi bili predugacki
+    data.pop("answer", None)
     print(f"[{agent}] [{event}] " + " ".join(f"{k}={v}" for k, v in data.items()), flush=True)
 
 
@@ -160,14 +162,16 @@ async def make_plan(question, llm, mcp, model, extra_body, usage, on_event) -> t
             if choice.finish_reason != "stop":
                 raise ValueError(f"response was not finished (finish_reason={choice.finish_reason})")
             plan = parse_plan(choice.message.content)
-            on_event("plan", agent="planner", subtasks=len(plan))
+            on_event("plan", agent="planner", subtasks=len(plan), tasks=plan)
             return plan, False
         except ValueError as e:
             on_event("plan_error", agent="planner", attempt=attempt, error=e)
             messages += [{"role": "assistant", "content": choice.message.content or ""},
                          {"role": "user", "content": f"Your plan is invalid: {e}. Respond with JSON only, "
                                                      "in the required format."}]
-    return [{"id": "t1", "task": question}], True
+    fallback_plan = [{"id": "t1", "task": question}]
+    on_event("plan", agent="planner", subtasks=1, tasks=fallback_plan, fallback=True)
+    return fallback_plan, True
 
 
 async def research(subtask, question, llm, mcp, model, extra_body, semaphore, on_event) -> AgentResult:
@@ -176,13 +180,15 @@ async def research(subtask, question, llm, mcp, model, extra_body, semaphore, on
     async with semaphore:                              # najvise N istrazivaca istovremeno
         on_event("start", agent=agent, task=subtask["task"])
         try:
-            return await run_agent(
+            result = await run_agent(
                 f"Subtask: {subtask['task']}\n\nOriginal question (context only): {question}",
                 llm, mcp, model, extra_body=extra_body, system_prompt=RESEARCHER_PROMPT,
                 on_event=lambda event, **data: on_event(event, agent=agent, **data))
         except Exception as e:                         # pad jednog istrazivaca ne obara ostale
             on_event("error", agent=agent, error=repr(e))
-            return AgentResult(answer=None, stop_reason=f"error: {e}")
+            result = AgentResult(answer=None, stop_reason=f"error: {e}")
+        on_event("finish", agent=agent, stop_reason=result.stop_reason, seconds=result.seconds, answer=result.answer)
+        return result
 
 
 def _findings_text(question: str, plan: list[dict], results: list[AgentResult]) -> str:
