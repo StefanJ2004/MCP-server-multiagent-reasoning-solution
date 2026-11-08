@@ -8,7 +8,7 @@ from types import SimpleNamespace as NS
 
 import pytest
 
-from agents.single_agent import mcp_tools_to_openai, run_agent
+from agents.single_agent import mcp_tools_to_openai, provider_options, run_agent
 from mcp import Client
 from mcp_server.search import FILINGS_DIR
 from mcp_server.server import server
@@ -20,11 +20,13 @@ pytestmark = pytest.mark.skipif(
 INTC_ARGS = json.dumps({"ticker": "INTC", "metrics": ["revenue"], "fiscal_years": [2024]})
 
 
-def reply(content="", tool=None, arguments=INTC_ARGS, finish=None, prompt_tokens=100, reasoning=None):
+def reply(content="", tool=None, arguments=INTC_ARGS, finish=None, prompt_tokens=100, reasoning=None,
+          reasoning_details=None):
     calls = None
     if tool:
         calls = [NS(id="call_1", function=NS(name=tool, arguments=arguments))]
-    message = NS(content=content, tool_calls=calls, reasoning_content=reasoning)
+    message = NS(content=content, tool_calls=calls, reasoning_content=reasoning,
+                 reasoning_details=reasoning_details)
     finish = finish or ("tool_calls" if tool else "stop")
     return NS(choices=[NS(message=message, finish_reason=finish)],
               usage=NS(prompt_tokens=prompt_tokens, completion_tokens=10))
@@ -82,16 +84,39 @@ def test_reasoning_is_passed_back_when_present():
     assert llm.requests[1]["messages"][-2]["reasoning_content"] == "razmisljanje"
 
 
+def test_openrouter_reasoning_details_are_passed_back():
+    # OpenRouter vraca razmisljanje kao reasoning_details (lista blokova) i trazi ga nazad neizmenjeno.
+    details = [{"type": "reasoning.text", "text": "razmisljanje"}]
+    llm = FakeLLM(reply(tool="get_financials", reasoning_details=details), reply("Kraj."))
+    run(llm)
+    assert llm.requests[1]["messages"][-2]["reasoning_details"] == details
+
+
 def test_no_reasoning_field_when_thinking_is_off():
     llm = FakeLLM(reply(tool="get_financials"), reply("Kraj."))
     run(llm)
-    assert "reasoning_content" not in llm.requests[1]["messages"][-2]
+    assistant = llm.requests[1]["messages"][-2]
+    assert "reasoning_content" not in assistant and "reasoning_details" not in assistant
 
 
-def test_thinking_setting_is_sent_to_api():
+def test_extra_body_is_sent_to_api_unchanged():
     llm = FakeLLM(reply("Kraj."))
-    run(llm, thinking="enabled")
+    run(llm, extra_body={"thinking": {"type": "enabled"}})
     assert llm.requests[0]["extra_body"] == {"thinking": {"type": "enabled"}}
+
+
+def test_provider_options_openrouter_pinned(monkeypatch):
+    monkeypatch.setenv("OPENAI_BASE_URL", "https://openrouter.ai/api/v1")
+    monkeypatch.setenv("OPENROUTER_PROVIDER", "alibaba")
+    monkeypatch.setenv("THINKING", "disabled")
+    assert provider_options() == {"reasoning": {"enabled": False},
+                                  "provider": {"only": ["alibaba"], "allow_fallbacks": False}}
+
+
+def test_provider_options_deepseek_direct(monkeypatch):
+    monkeypatch.setenv("OPENAI_BASE_URL", "https://api.deepseek.com")
+    monkeypatch.setenv("THINKING", "enabled")
+    assert provider_options() == {"thinking": {"type": "enabled"}}
 
 
 def test_tokens_are_summed_across_steps():

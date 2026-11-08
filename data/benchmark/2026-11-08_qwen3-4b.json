@@ -1,0 +1,221 @@
+{
+  "model": "qwen3:4b",
+  "date": "2026-11-08",
+  "quick": false,
+  "machine": {
+    "cpu": "Intel64 Family 6 Model 154 Stepping 4, GenuineIntel",
+    "logical_cpus": 12,
+    "ollama": "0.40.15"
+  },
+  "load": {
+    "load_s": 3.69,
+    "memory_gb_ctx8192": 3.62
+  },
+  "generation": [
+    {
+      "prompt_tokens": 57,
+      "prefill_tps": 54.7,
+      "output_tokens": 200,
+      "gen_tps": 13.8,
+      "load_s": 0.03,
+      "wall_s": 17.6
+    },
+    {
+      "prompt_tokens": 56,
+      "prefill_tps": 55.7,
+      "output_tokens": 200,
+      "gen_tps": 13.6,
+      "load_s": 0.01,
+      "wall_s": 17.8
+    }
+  ],
+  "prefill": [
+    {
+      "prompt_tokens": 1701,
+      "prefill_tps": 44.1,
+      "output_tokens": 24,
+      "gen_tps": 8.8,
+      "load_s": 0.01,
+      "wall_s": 43.4
+    },
+    {
+      "prompt_tokens": 3255,
+      "prefill_tps": 35.8,
+      "output_tokens": 24,
+      "gen_tps": 5.4,
+      "load_s": 0.01,
+      "wall_s": 97.6
+    },
+    {
+      "prompt_tokens": 5380,
+      "prefill_tps": 29.4,
+      "output_tokens": 24,
+      "gen_tps": 3.2,
+      "load_s": 0.02,
+      "wall_s": 192.9
+    }
+  ],
+  "ctx16384": {
+    "prompt_tokens": 54,
+    "prefill_tps": 47.0,
+    "output_tokens": 200,
+    "gen_tps": 13.2,
+    "load_s": 4.91,
+    "wall_s": 23.3,
+    "memory_gb": 4.76
+  },
+  "threads": {
+    "2": {
+      "prompt_tokens": 55,
+      "prefill_tps": 34.5,
+      "output_tokens": 200,
+      "gen_tps": 6.2,
+      "load_s": 3.62,
+      "wall_s": 39.5
+    },
+    "4": {
+      "prompt_tokens": 57,
+      "prefill_tps": 43.5,
+      "output_tokens": 200,
+      "gen_tps": 12.2,
+      "load_s": 3.55,
+      "wall_s": 23.4
+    },
+    "8": {
+      "prompt_tokens": 56,
+      "prefill_tps": 59.8,
+      "output_tokens": 200,
+      "gen_tps": 14.6,
+      "load_s": 3.61,
+      "wall_s": 20.3
+    },
+    "12": {
+      "prompt_tokens": 57,
+      "prefill_tps": 73.2,
+      "output_tokens": 200,
+      "gen_tps": 15.4,
+      "load_s": 3.62,
+      "wall_s": 19.4
+    }
+  },
+  "concurrency": {
+    "single_wall_s": 17.9,
+    "two_parallel_wall_s": 34.5,
+    "two_sequential_estimate_s": 35.8,
+    "parallel_runs": [
+      {
+        "prompt_tokens": 54,
+        "prefill_tps": 58.8,
+        "output_tokens": 200,
+        "gen_tps": 13.4,
+        "load_s": 0.01,
+        "wall_s": 18.0
+      },
+      {
+        "prompt_tokens": 57,
+        "prefill_tps": 44.7,
+        "output_tokens": 200,
+        "gen_tps": 13.2,
+        "load_s": 0.03,
+        "wall_s": 34.5
+      }
+    ]
+  },
+  "tool_calls": {
+    "think_off": [
+      {
+        "id": "F1",
+        "question": "What was Intel's revenue in FY2024?",
+        "prompt_tokens": 809,
+        "prefill_tps": 42.6,
+        "output_tokens": 512,
+        "gen_tps": 9.8,
+        "load_s": 0.03,
+        "wall_s": 73.5,
+        "thinking_chars": 0,
+        "tool_calls": [],
+        "text": "Okay, the user is asking for Intel's revenue in FY2024. Let me think about how to approach this.\n\nFirst, I need to figure out Intel's ticker symbol. Intel's ticker is INTC. Wait, but the user mentioned FY2024. Fiscal years can be tricky here. The tool's description says that fiscal_year is the calen"
+      },
+      {
+        "id": "C2",
+        "question": "Rank Adobe, Salesforce and ServiceNow by operating margin in FY2025.",
+        "prompt_tokens": 814,
+        "prefill_tps": 1070.6,
+        "output_tokens": 512,
+        "gen_tps": 9.7,
+        "load_s": 0.01,
+        "wall_s": 55.6,
+        "thinking_chars": 0,
+        "tool_calls": [],
+        "text": "Okay, let's tackle this user query. The user wants me to rank Adobe, Salesforce, and ServiceNow by operating margin in FY2025. First, I need to figure out the correct fiscal years for each company. Wait, the user mentioned FY2025, but I remember that fiscal years can be tricky. For example, some com"
+      },
+      {
+        "id": "E3",
+        "question": "Why did Micron report a loss in FY2023, according to its 10-K?",
+        "prompt_tokens": 819,
+        "prefill_tps": 893.5,
+        "output_tokens": 512,
+        "gen_tps": 9.7,
+        "load_s": 0.01,
+        "wall_s": 55.8,
+        "thinking_chars": 0,
+        "tool_calls": [],
+        "text": "Okay, let's tackle this user query. The user is asking why Micron reported a loss in FY2023 according to its 10-K. \n\nFirst, I need to figure out the correct fiscal year for Micron. The user mentioned FY2023, but fiscal years can be a bit tricky. In the US, companies often have fiscal years that end "
+      }
+    ],
+    "think_on": [
+      {
+        "id": "F1",
+        "question": "What was Intel's revenue in FY2024?",
+        "prompt_tokens": 809,
+        "prefill_tps": 1304.5,
+        "output_tokens": 1572,
+        "gen_tps": 7.9,
+        "load_s": 0.01,
+        "wall_s": 201.0,
+        "thinking_chars": 5570,
+        "tool_calls": [
+          {
+            "name": "get_financials",
+            "arguments": {
+              "ticker": "INTC",
+              "fiscal_years": [
+                2024
+              ],
+              "metrics": [
+                "revenue"
+              ]
+            }
+          }
+        ],
+        "text": ""
+      },
+      {
+        "id": "C2",
+        "question": "Rank Adobe, Salesforce and ServiceNow by operating margin in FY2025.",
+        "prompt_tokens": 814,
+        "prefill_tps": 1104.6,
+        "output_tokens": 2048,
+        "gen_tps": 8.9,
+        "load_s": 0.01,
+        "wall_s": 232.8,
+        "thinking_chars": 8130,
+        "tool_calls": [],
+        "text": ""
+      },
+      {
+        "id": "E3",
+        "question": "Why did Micron report a loss in FY2023, according to its 10-K?",
+        "prompt_tokens": 819,
+        "prefill_tps": 862.1,
+        "output_tokens": 2048,
+        "gen_tps": 8.7,
+        "load_s": 0.02,
+        "wall_s": 237.6,
+        "thinking_chars": 8172,
+        "tool_calls": [],
+        "text": ""
+      }
+    ]
+  }
+}

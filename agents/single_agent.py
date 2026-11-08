@@ -57,6 +57,19 @@ class AgentResult:
     seconds: float = 0.0
 
 
+def provider_options() -> dict:
+    """Parametri koji nisu deo standardnog OpenAI API-ja i razlikuju se po provajderu.
+    Salju se kroz `extra_body`, pa petlja ostaje ista za svaki provajder."""
+    thinking = os.environ.get("THINKING", "disabled") == "enabled"
+    if "openrouter.ai" in os.environ.get("OPENAI_BASE_URL", ""):
+        options = {"reasoning": {"enabled": thinking}}
+        if provider := os.environ.get("OPENROUTER_PROVIDER"):
+            # only = samo ovaj provajder; allow_fallbacks=False = greska umesto tihog prebacivanja na drugog
+            options["provider"] = {"only": [provider], "allow_fallbacks": False}
+        return options
+    return {"thinking": {"type": "enabled" if thinking else "disabled"}}   # DeepSeek API direktno
+
+
 def mcp_tools_to_openai(tools) -> list[dict]:
     """MCP i OpenAI opisuju alate istom JSON semom, razlikuje se samo omot oko nje."""
     return [
@@ -86,10 +99,11 @@ def _print_event(event: str, **data) -> None:
     print(f"[{event}] " + " ".join(f"{k}={v}" for k, v in data.items()), flush=True)
 
 
-async def run_agent(question: str, llm, mcp, model: str, thinking: str = "disabled",
+async def run_agent(question: str, llm, mcp, model: str, extra_body: dict | None = None,
                     max_steps: int = MAX_STEPS, on_event: Callable = _print_event) -> AgentResult:
     """Glavna petlja. `llm` i `mcp` se prosledjuju spolja, pa testovi mogu da podmetnu lazni model,
-    a faza 3 moze da pusti vise agenata nad istim MCP klijentom."""
+    a faza 3 moze da pusti vise agenata nad istim MCP klijentom.
+    `extra_body` su parametri specificni za provajdera (vidi provider_options)."""
     started = time.perf_counter()
     tools = mcp_tools_to_openai((await mcp.list_tools()).tools)
     messages: list[dict] = [
@@ -109,14 +123,16 @@ async def run_agent(question: str, llm, mcp, model: str, thinking: str = "disabl
         response = await llm.chat.completions.create(
             model=model, messages=messages, tools=tools, max_tokens=MAX_OUTPUT_TOKENS,
             temperature=0,  # sto ponovljiviji eval; bez efekta kad je razmisljanje ukljuceno
-            extra_body={"thinking": {"type": thinking}})
+            extra_body=extra_body or {})
         choice, usage = response.choices[0], response.usage
         reply = choice.message
         result.input_tokens += usage.prompt_tokens
         result.output_tokens += usage.completion_tokens
+        # model i provider: ko je STVARNO odgovorio (alias moze da promeni model, OpenRouter provajdera)
         on_event("model", step=step, seconds=round(time.perf_counter() - t0, 1),
                  input_tokens=usage.prompt_tokens, output_tokens=usage.completion_tokens,
-                 finish=choice.finish_reason)
+                 finish=choice.finish_reason, model=getattr(response, "model", None),
+                 provider=getattr(response, "provider", None))
 
         # Odsecen ili filtriran izlaz nije odgovor, cak i kad tekst postoji.
         if choice.finish_reason == "length":
@@ -134,10 +150,13 @@ async def run_agent(question: str, llm, mcp, model: str, thinking: str = "disabl
                             "function": {"name": c.function.name, "arguments": c.function.arguments}}
                            for c in reply.tool_calls],
         }
-        # DeepSeek uz alate trazi da se razmisljanje vrati u sledecem zahtevu, inace vraca gresku 400.
-        reasoning = getattr(reply, "reasoning_content", None)
-        if reasoning:
-            assistant_message["reasoning_content"] = reasoning
+        # Uz alate se razmisljanje vraca u sledecem zahtevu, da model nastavi istu misao
+        # (DeepSeek direktno inace vraca gresku 400). Polje se razlikuje po provajderu:
+        # reasoning_content = DeepSeek API, reasoning_details = OpenRouter.
+        for field_name in ("reasoning_content", "reasoning_details"):
+            value = getattr(reply, field_name, None)
+            if value:
+                assistant_message[field_name] = value
         messages.append(assistant_message)
 
         for call in reply.tool_calls:
@@ -174,8 +193,7 @@ async def main() -> None:
     server = StdioServerParameters(command=sys.executable, args=["-m", "mcp_server.server"], cwd=str(ROOT))
     print(f"Pitanje: {question}\n", flush=True)
     async with Client(server) as mcp:
-        result = await run_agent(question, llm, mcp, os.environ["MODEL"],
-                                 thinking=os.environ.get("THINKING", "disabled"))
+        result = await run_agent(question, llm, mcp, os.environ["MODEL"], extra_body=provider_options())
 
     print(f"\nKraj: {result.stop_reason} | koraka: {result.steps} | poziva alata: {len(result.tool_calls)} "
           f"| tokena ulaz/izlaz: {result.input_tokens}/{result.output_tokens} | {result.seconds} s")

@@ -60,13 +60,17 @@ pa restartuj Claude Desktop:
 
 | Podešavanje | Vrednost |
 |---|---|
-| Provajder | DeepSeek API (plaćeno; ključ u `.env`, `OPENAI_API_KEY`) |
-| Model | `deepseek-flash` (DeepSeek V4.1 Flash) |
-| Endpoint | `https://api.deepseek.com` (OpenAI-kompatibilan) |
+| Provajder | OpenRouter, zakucan na **Alibaba Cloud** (`OPENROUTER_PROVIDER=alibaba`, bez prebacivanja na druge provajdere); ključ u `.env`, `OPENAI_API_KEY` |
+| Model | `deepseek/deepseek-v4.1-flash` (DeepSeek V4.1 Flash) |
+| Endpoint | `https://openrouter.ai/api/v1` (OpenAI-kompatibilan) |
+| Cena (Alibaba, 2026-11-08) | $0,075 / 1M ulaznih, $0,30 / 1M izlaznih tokena |
 | Temperatura | 0 (ima efekat samo kad je razmišljanje isključeno) |
 | Izlaz po koraku | Najviše 8192 tokena; agent `finish_reason=length` tretira kao grešku |
-| Thinking | `THINKING=disabled` u `.env`; ako je `enabled`, `reasoning_content` se vraća u sledećim zahtevima, jer DeepSeek inače daje grešku 400 |
-| Istovremeni zahtevi | Do 2500 po nalogu; preko toga HTTP 429 |
+| Thinking | `THINKING=disabled` u `.env`; ako je `enabled`, razmišljanje se vraća u sledećim zahtevima (`reasoning_details` na OpenRouter-u, `reasoning_content` na DeepSeek API-ju) |
+
+Parametri koji se razlikuju po provajderu prave se u `provider_options()` (`agents/single_agent.py`).
+DeepSeek API direktno i dalje radi: promeni `OPENAI_BASE_URL` i `MODEL` (vidi `.env.example`).
+Agent loguje `model` i `provider` iz svakog odgovora, da se vidi ko je stvarno odgovorio.
 
 Eval se pokreće na engleskom (`question_en`), istim modelom za jednog agenta i za multi-agent sistem.
 

@@ -13,8 +13,9 @@ Ovaj fajl dopunjuje `hakaton.md`: gde smo stali, kako podići okruženje i šta 
 - **Faza 0**: gotova (domen, 18 kompanija, eval set od 12 proverenih pitanja).
 - **Faza 1 (MCP server)**: gotova, uključujući ručni test i teach-back.
 - **Sledeće — Faza 2**: jedan agent, ručna petlja `model → tool_call → MCP alat → rezultat → model`
-  sa DeepSeek V4.1 Flash preko API-ja. Kod je u `agents/single_agent.py`, ali **još nije probao pravi model**.
-  Prvi korak: upisati `OPENAI_API_KEY` u `.env`, pa probati F1, C2 i E3 (`python -m agents.single_agent --id F1`).
+  sa DeepSeek V4.1 Flash preko **OpenRouter-a, zakucanog na Alibaba Cloud**. Kod je u `agents/single_agent.py`, ali **još nije probao pravi model**.
+  Prvi korak: upisati OpenRouter ključ kao `OPENAI_API_KEY` u `.env`, pa probati F1, C2 i E3 (`python -m agents.single_agent --id F1`).
+  U ispisu `[model]` proveriti da je `provider=Alibaba`.
   Uspeh: sva tri stižu do odgovora, a bar dva su tačna. Zvaničnu cenu proveriti pre uplate.
 
 ## Podešavanje na novom računaru (Windows, PowerShell)
@@ -27,13 +28,13 @@ python -m venv .venv            # Python 3.11+ (razvijano na 3.13)
 pip install -e ".[dev]"
 copy .env.example .env          # popuni SEC_USER_AGENT: "Ime Prezime email@domen.com" (SEC to traži)
 python scripts/download_data.py # ~100 MB, par minuta; data/raw/ NIJE u gitu
-pytest -q                       # očekivano: 68 passed
+pytest -q                       # očekivano: 71 passed
 ```
 
 Podaci se skidaju ponovo jer nisu u gitu: 18 `companyfacts` JSON-a (~70 MB) i 82 teksta 10-K izveštaja (~30 MB).
-Bez njih testovi koji traže podatke budu preskočeni (skip), a ne oboreni. Proveri da piše **68 passed**, a ne "skipped".
+Bez njih testovi koji traže podatke budu preskočeni (skip), a ne oboreni. Proveri da piše **71 passed**, a ne "skipped".
 
-**Model**: DeepSeek API; ključ upisati u `.env` kao `OPENAI_API_KEY` (nikad u git). Ollama više nije potrebna.
+**Model**: DeepSeek V4.1 Flash preko OpenRouter-a (Alibaba Cloud); OpenRouter ključ upisati u `.env` kao `OPENAI_API_KEY` (nikad u git, repo je javan). Ollama više nije potrebna.
 
 ## Struktura i šta je gde
 
@@ -58,9 +59,10 @@ Bez njih testovi koji traže podatke budu preskočeni (skip), a ne oboreni. Prov
 - Docstring postaje opis alata; `Literal[...]` u tipu postaje `enum` u šemi. Pogrešan enum daje `is_error` sa spiskom dozvoljenih vrednosti.
 - `pyproject.toml` zato traži `mcp>=2.3,<3`.
 
-**`openai` SDK** (3.46.0) se koristi kao klijent za DeepSeek OpenAI-kompatibilan endpoint
-(`OPENAI_BASE_URL=https://api.deepseek.com`, `MODEL=deepseek-flash`). Uz alate, DeepSeek traži da se
-`reasoning_content` vrati u narednim zahtevima, inače daje grešku 400; agent to radi.
+**`openai` SDK** (3.46.0) se koristi kao klijent za OpenRouter (`OPENAI_BASE_URL=https://openrouter.ai/api/v1`,
+`MODEL=deepseek/deepseek-v4.1-flash`, `OPENROUTER_PROVIDER=alibaba`). Parametri koji nisu standardni OpenAI
+(`reasoning`, `provider` na OpenRouter-u; `thinking` na DeepSeek API-ju) prave se u `provider_options()` i šalju kroz `extra_body`.
+Uz alate se razmišljanje vraća u narednim zahtevima: `reasoning_details` (OpenRouter) ili `reasoning_content` (DeepSeek direktno).
 
 **Zamke u EDGAR podacima** (rešava server, model ih ne vidi)
 - Isti period se ponavlja kroz više 10-K prijava. Uzima se **najranija** prijava (originalni 10-K).
@@ -79,7 +81,7 @@ loš za neodređena pitanja ("reasons for loss"). Zato opis alata `search_filing
 ## Odluke koje ne treba ponovo otvarati
 
 - Domen SEC EDGAR, Python, 18 kompanija, FY2022+.
-- DeepSeek V4.1 Flash preko plaćenog API-ja (2026-11-08, umesto lokalnog Qwen3 4B preko Ollame).
+- DeepSeek V4.1 Flash preko OpenRouter-a, zakucan na Alibaba Cloud (2026-11-08; umesto DeepSeek API-ja direktno i lokalnog Qwen3 4B preko Ollame).
 - Plan je zaključan 2026-11-08 (`hakaton.md`): bez web pretrage u eval sistemu, eval sa 13 pitanja.
 - Bez frameworka za agent petlju i MCP alate: mehanika mora da se vidi u kodu.
 - Samo `get_financials`, **bez `compare_companies`**, da poređenje rade agenti (prednost multi-agenta na uporednim pitanjima).

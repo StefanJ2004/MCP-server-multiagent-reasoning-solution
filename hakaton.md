@@ -82,7 +82,7 @@ Evaluacija je dokaz za CV: konkretan rezultat tipa „multi-agent tačan u 8/10 
   - [x] Vrednosti provereni (MSFT, AMD, HD, NVDA): poklapaju se sa objavljenim izveštajima, bez konflikata među prijavama za FY2022+
   - Zamke u podacima (rešava MCP server, ne model): duplikati istog perioda kroz više 10-K prijava; `fy` = godina prijave, ne perioda; fiskalna ≠ kalendarska godina; ista metrika pod više XBRL tagova (potrebna mapa tagova)
   - [x] Jezik: Python
-  - [x] Model/SDK: DeepSeek V4.1 Flash (`deepseek-flash`) preko `openai` Python SDK-a na `https://api.deepseek.com` (izmenjeno 2026-11-08, ranije Qwen3 4B preko Ollame); `mcp` SDK za server i klijent
+  - [x] Model/SDK: DeepSeek V4.1 Flash preko **OpenRouter-a, zakucan na Alibaba Cloud provajdera** (`deepseek/deepseek-v4.1-flash`, `provider.only=["alibaba"]`, `allow_fallbacks=false`), `openai` Python SDK na `https://openrouter.ai/api/v1` (izmenjeno 2026-11-08; pre toga DeepSeek API direktno, a još ranije Qwen3 4B preko Ollame); `mcp` SDK za server i klijent
   - [x] Konvencija: FY = kalendarska godina u kojoj se fiskalna godina završava (polje `fy` iz EDGAR-a je nepouzdano)
   - [x] Eval set: 12 pitanja u `eval/questions.json` (3 činjenična, 4 uporedna, 3 sa objašnjenjem, 2 bez odgovora); svi odgovori provereni (brojevi iz XBRL, objašnjenja E1–E3 iz teksta 10-K MD&A)
   - [x] Jezik evala: engleski (`question_en`); srpski za UI/demo
@@ -102,7 +102,18 @@ Evaluacija je dokaz za CV: konkretan rezultat tipa „multi-agent tačan u 8/10 
 - Handoff na drugi računar (2026-11-08): vidi `handoff.md`
 - [ ] Faza 2 — u toku
   - [x] `agents/single_agent.py` (ručna petlja) + `tests/test_single_agent.py` (lažni model)
-  - [ ] Probati na pravom modelu: F1, C2, E3
+  - [x] Teach-back petlje (2026-11-08)
+  - [x] Prelazak na OpenRouter/Alibaba: `provider_options()` gradi parametre po provajderu, petlja vraća `reasoning_details` ili `reasoning_content` (ukupno 71 test, prolaze)
+  - [x] Probati na pravom modelu: F1, C2, E3 (2026-11-08, OpenRouter/Alibaba, thinking isključen): **3/3 tačno**, svaki u 2 koraka, 2,7–4,8 s, ukupno ~$0,001
+    - C2: model sam pozove alat 3 puta u jednom koraku (po kompaniji) i napomene da se fiskalne godine razlikuju
+    - E3 sa thinking-om: 4 koraka, 5 pretraga, svih 5 ključnih tačaka (bez njega 4/5, fali $1,83B), ~3× više tokena, 9,6 s; vraćanje `reasoning_details` uz alate radi bez greške
+    - **Odluka: thinking isključen za ceo eval, za oba sistema** (2026-11-08). Sa thinking-om `temperature=0` nema efekta, pa bi rezultati bili manje ponovljivi, a thinking dodatno jača jednog agenta
+  - [x] Provera U1, U2, C4 (2026-11-08, thinking isključen):
+    - U1 ✅ kaže da FY2030 ne postoji i ne procenjuje; citat `[INTC]` nije pravi `source_id` (kvalitet citata)
+    - U2 ✅ ispravlja lažnu premisu (HD neto +14,806)
+    - C4 ⚠️ svi brojevi i periodi tačni (zamka sa FY nije okinula), ali **pogrešan zaključak**: kaže „Lowe's stabilniji", a sam navodi da LOW ima veći raspon (2,3 naspram 1,6 p.p.) i veće promene iz godine u godinu
+    - Prompt NE podešavamo prema ovim pitanjima (to bi bilo „učenje na ispitu"); greške ostaju da ih eval izmeri
+    - Za fazu 3: jak model rešava ova pitanja u 2 koraka, pa će razliku multi-agenta pokazati teža pitanja (C4 sa zamkom, 13. pitanje sa 18 kompanija)
   - Zašto nije Ollama: `qwen3:4b` je na CPU-u potrošio ceo limit na razmišljanje (F1 i C2 bez poziva alata, E3 pogrešan odgovor; razmišljanje nismo mogli pouzdano da ugasimo)
 - [ ] Faza 3
   - Dizajn: `asyncio`, jedna MCP veza za sve agente
